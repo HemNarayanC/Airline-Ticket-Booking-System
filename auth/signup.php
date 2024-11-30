@@ -1,56 +1,99 @@
-<?php
-    require('../partials/navbar/_navbar.php');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup Modals</title>
-    <link rel="stylesheet" href="styles101.css">
+    <title>Sign Up Page</title>
     <link rel="stylesheet" href="../assets/css/nav.css">
+    <link rel="stylesheet" href="s.css">
+    <!-- <link rel="stylesheet" href="signup01.css"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    
+    <?php
+        include '../partials/navbar/_navbar.php';
+    ?>
 
-    <button id="openPassengerModal">Passenger Signup</button>
-    <button id="openAirlineModal">Airline Company Signup</button>
+    <div class="signup-container">
+        <div class="signup-wrapper">
+            <h1>Create an Account</h1>
+            
+            <form action="signup.php" id="passenger-form" class="signup-from active" method="post">
+                <h2>Passenger Sign Up</h2>
+                <div class="input-group">
+                    <input type="text" name="fname" id="passenger-fname" required>
+                    <label for="passenger-fname">First Name</label>
+                </div>
 
-    <!-- Passenger Signup Modal -->
-    <div id="passengerModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Passenger Signup</h2>
-            <form id="passengerForm">
-                <input type="text" id="user_id" name="user_id" placeholder="User ID" required>
-                <input type="text" id="fname" name="fname" placeholder="First Name" required>
-                <input type="text" id="mid_name" name="mid_name" placeholder="Middle Name">
-                <input type="text" id="lname" name="lname" placeholder="Last Name" required>
-                <input type="email" id="passenger_email" name="email" placeholder="Email" required>
-                <input type="password" id="passenger_password" name="password" placeholder="Password" required>
-                <button type="submit">Sign Up</button>
+                <div class="input-group">
+                    <input type="text" name="mid_name" id="passenger-mid-name">
+                    <label for="passenger-mid-name">Middle Name</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" name="lname" id="passenger-lname" required>
+                    <label for="passenger-lname">Last Name</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="email" name="email" id="passenger-email" required>
+                    <label for="passenger-email">Email</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" name="pw" id="passenger-password" required>
+                    <label for="passenger-password">Password</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" name="cpw" id="passenger-cpassword" required>
+                    <label for="passenger-cpassword">Confirm Password</label>
+                </div>
+
+                <button type="submit" class="submit-btn">Sign Up</button>
+            </form>
+
+            <form action="signup.php" id="airline-form" class="signup-form" method="post">
+                <h2>Airline Sign Up</h2>
+                <div class="input-group">
+                    <input type="text" id="registration_number" name="registration_number" placeholder="Enter registration number" required>
+                    <label for="registration_number">Registration Number:</label>
+                </div>
+                
+                <div class="input-group">
+                    <input type="text" name="company-name" id="airline-company-name" required>
+                    <label for="airline-company-name">Company Name</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="email" name="email" id="airline-email">
+                    <label for="airline-email">Email</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" name="password" id="airline-passsword">
+                    <label for="airline-password">Password</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" name="password" id="confirm-passsword">
+                    <label for="confirm-password">Confirm Password</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="checkbox" id="accept_terms" name="accept_terms" required>
+                    <label for="accept_terms">
+                        I agree to the 
+                        <a href="terms.html" target="_blank">Terms and Conditions</a>
+                    </label>
+                <div>
+
+                <button type="submit" class="submit-btn">Sign Up</button>
             </form>
         </div>
     </div>
 
-    <!-- Airline Company Signup Modal -->
-    <div id="airlineModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Airline Company Signup</h2>
-            <form id="airlineForm">
-                <input type="text" id="admin_id" name="admin_id" placeholder="Admin ID" required>
-                <input type="text" id="c_name" name="c_name" placeholder="Company Name" required>
-                <input type="email" id="airline_email" name="email" placeholder="Email" required>
-                <input type="password" id="airline_password" name="password" placeholder="Password" required>
-                <textarea id="address" name="address" placeholder="Address" required></textarea>
-                <button type="submit">Sign Up</button>
-            </form>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
     <script src="../assets/js/navbar.js"></script>
+    <script src="signup.js"></script>
 </body>
 </html>
