@@ -1,0 +1,148 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*{
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+.navbar{
+    background-color: #003f75;
+    color: #f8fafc;
+    padding: 1rem 0;
+    /* min-width: 100vw; */
+    font-family: 'Roboto', sans-serif;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+}
+
+.navbar-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding:0 1.5rem;
+
+}
+
+.logo a{
+    color: #f8fafc;
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    padding-left: 2rem;
+    letter-spacing: 2px;
+}
+
+.nav-menu-list{
+    display: flex;
+    list-style: none;
+}
+
+.nav-item{
+    margin-left: 1.5rem;
+}
+
+.nav-link{
+    color: #f8fafc;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.4s ease;
+}
+
+.nav-link:hover{
+    color: #fbbf24;
+}
+
+.user-actions{
+    display: flex;
+    align-items: center;
+    position: relative;
+    right: 4.5rem;
+}
+
+.login-btn{
+    border: none;
+    color: #f8fafc;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    margin-right: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn a{
+    text-decoration: none;
+}
+
+.login-btn:hover{
+    background-color: rgba(219, 213, 213, 0.777);
+    cursor: pointer;
+}
+
+
+
+.signup-btn{
+    border: none;
+    color: #003f75;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    background-color: #fbbf24;
+    transition: background-color 0.3s ease;
+}
+
+.signup-btn:hover{
+    background-color: #fcd34d;
+    cursor: pointer;
+}
+
+.logout-btn{
+    border: none;
+    color: #f8fafc;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    margin-left: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn a{
+    text-decoration: none;
+}
+
+.logout-btn:hover{
+    background-color: rgba(219, 213, 213, 0.777);
+    cursor: pointer;
+}
+
+/* .signup-container{
+    display: inline-block;
+    position: relative;
+} */
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: #f8fafc;
+    background-color: aqua;
+    min-width: 100px;
+    z-index: 1;
+    border-radius: 4px;
+    top: 2.5rem;
+}
+
+.dropdown-content a{
+    color: #0f172a;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover{
+    background-color: #f1f5f9;
+}
+
+.show{
+    display: block;
+}
