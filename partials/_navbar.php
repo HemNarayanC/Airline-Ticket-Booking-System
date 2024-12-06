@@ -28,7 +28,7 @@
             <!-- Nav Menu-->
              <div class="nav-menu-container">
                 <ul class="nav-menu-list">
-                    <li class="nav-item"><a href="../pages/home.php" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="../pages/flightSearch.php" class="nav-link">Flight Search</a></li>
                     <li class="nav-item"><a href="" class="nav-link">Book a Flight</a></li>
                     <li class="nav-item"><a href="" class="nav-link">Check-in</a></li>
                     <li class="nav-item"><a href="" class="nav-link">Flight Status</a></li>
