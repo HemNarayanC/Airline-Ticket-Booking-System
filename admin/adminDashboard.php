@@ -1,4 +1,14 @@
 
+<?php
+
+    session_start();
+
+    if(!isset($_SESSION['user-type']) || ($_SESSION['user-type'])!="airline"){
+        header('Location: ../auth/login.php');
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
