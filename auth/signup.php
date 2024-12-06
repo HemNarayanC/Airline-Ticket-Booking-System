@@ -17,7 +17,7 @@
             <h1>Create an Account</h1>
 
             <div class="passenger-form-wrapper">
-                <form action="signupDB.php?form=passenger" id="passenger-form" class="signup-form" method="post">
+                <form action="passengerSignupDB.php?form=passenger" id="passenger-form" class="signup-form" method="post">
                     <h2>Passenger Sign Up</h2>
                     <div class="input-group">
                         <input type="text" name="fname" id="passenger-fname" placeholder="Enter First Name" required>
