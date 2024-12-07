@@ -67,8 +67,29 @@
         }
 
         //for reject
+
+        if(isset($_POST['reject_id'])) {
+            $reject_id = $_POST['reject_id'];
+
+            //update the status in the pending table to rejected
+            $updateReject = "UPDATE `pending_airline` SET `status` = 'rejected' WHERE `pending_id` = '$reject_id'";
+            $resultRejected = mysqli_query($conn, $updateReject);
+
+            if($resultRejected){
+                echo "Pending ID : $reject_id rejected successfully";
+            }
+
+            else{
+                echo "Error updating the status in pending_airline".mysqli_error();
+            }
+        }
+
+        else{
+            echo "No data found for the pending ID : $reject_id.";
+        }
     }
 
-
-
+    else{
+        echo "Invalid request method";
+    }
 ?>
