@@ -99,66 +99,78 @@
                     </div>
                 </div>
              </header>
-         </main>
+         
 
-         <div class="managing-container">
-            <div class="airline-review-table">
-                <h1>Airline Registration Requests</h1>
-                <table class="airline-table">
-                    <!-- table heading of airline table -->
-                    <thead>
-                        <tr>
-                            <th>Pending ID</th>
-                            <th>Registration No</th>
-                            <th>Company Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Status</th>
-                            <th>Submitted At</th>
-                            <th>Address</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
+            <div class="managing-container">
+                <div class="airline-review-table">
+                    <h1>Airline Registration Requests</h1>
+                    <table class="airline-table">
+                        <!-- table heading of airline table -->
+                        <thead>
+                            <tr>
+                                <th>Pending ID</th>
+                                <th>Registration No</th>
+                                <th>Company Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Status</th>
+                                <th>Submitted At</th>
+                                <th>Address</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
 
-                    <!-- body of airline review table -->
-                     <tbody>
-                        <?php
-                            $sqlAirlineCheck = "SELECT * FROM `pending_airline` WHERE `status` = 'pending'";
-                            $resultAirline = mysqli_query($conn, $sqlAirlineCheck);
-                            $numOfRows = mysqli_num_rows($resultAirline);
+                        <!-- body of airline review table -->
+                        <tbody>
+                            <?php
+                                $sqlAirlineCheck = "SELECT * FROM `pending_airline` WHERE `status` = 'pending'";
+                                $resultAirline = mysqli_query($conn, $sqlAirlineCheck);
+                                $numOfRows = mysqli_num_rows($resultAirline);
 
-                            if($numOfRows > 0) {
-                                while($row = mysqli_fetch_assoc($resultAirline)){
-                                    echo "<tr>";
-                                        echo "<td?>{$row['pending_id']}</td>";
-                                        echo "<td?>{$row['registration_no']}</td>";
-                                        echo "<td?>{$row['c_name']}</td>";
-                                        echo "<td?>{$row['email']}</td>";
-                                        echo "<td?>{$row['phone']}</td>";
+                                if($numOfRows > 0) {
+                                    while($row = mysqli_fetch_assoc($resultAirline)){
+                                        echo "<tr>";
+                                            echo "<td>{$row['pending_id']}</td>";
+                                            echo "<td>{$row['registration_no']}</td>";
+                                            echo "<td>{$row['c_name']}</td>";
+                                            echo "<td>{$row['email']}</td>";
+                                            echo "<td>{$row['phone']}</td>";
 
 
-                                        $status = $row['status'];
-                                        if($status == 'pending'){
-                                            echo "<td?>{$row[pending_id]}</td>";
-                                        }
+                                            $status = $row['status'];
+                                            if($status == 'pending'){
+                                                echo "<td?>{$row[pending_id]}</td>";
+                                            }
 
-                                        echo "<td>{$row['submitted_at']}</td>";
-                                        echo "<td>{$row['address']}</td>";
-                                        echo "<td>
-                                                <form method = 'POST' style = 'display: inline-block;'>
-                                                    <input type = 'hidden' name = 'approve_id' value = '{$row['pending_id']}'>
-                                                    <button type = 'submit' class = 'approve-btn'> Approve </button>
-                                                </form>
-                                        ";
+                                            echo "<td>{$row['submitted_at']}</td>";
+                                            echo "<td>{$row['address']}</td>";
+                                            echo "<tr>
+                                                    <form method = 'POST' style = 'display: inline-block;'>
+                                                        <input type = 'hidden' name = 'approve_id' value = '{$row['pending_id']}'>
+                                                        <button type = 'submit' class = 'approve-btn'> Approve </button>
+                                                    </form>
+                                            ";
 
+                                            echo "<td>
+                                                    <form method = 'POST' style = 'display: inline-block;'>
+                                                        <input type = 'hidden' name = 'reject_id' value = '{$row['pending_id']}'>
+                                                        <button type = 'submit' class = 'reject-btn'> Reject </button>
+                                                    </form>
+                                                </td>";
+
+                                        echo "</tr>";
+                                    }
                                 }
-                            }
-                        ?>
-                     </tbody>
-                </table>
-            </div>
-         </div>
 
+                                else{
+                                    echo "<tr><td colspan = '9'>No records found.</td></tr>";
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+         </main>
     </div>
 
 </body>
