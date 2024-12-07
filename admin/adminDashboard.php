@@ -17,6 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="adminDashboard.css">
+    <link rel="stylesheet" href="airlineReviewTable.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
 </head>
@@ -139,7 +140,7 @@
 
                                             $status = $row['status'];
                                             if($status == 'pending'){
-                                                echo "<td?>{$row[pending_id]}</td>";
+                                                echo "<td><span class = 'status-pending'>Pending</span></td>";
                                             }
 
                                             echo "<td>{$row['submitted_at']}</td>";
