@@ -1,6 +1,7 @@
 
 <?php
 
+    include('../partials/_db_connect.php');
     session_start();
 
     if(!isset($_SESSION['user-type']) || ($_SESSION['user-type'])!="airline"){
@@ -121,7 +122,38 @@
 
                     <!-- body of airline review table -->
                      <tbody>
-                        
+                        <?php
+                            $sqlAirlineCheck = "SELECT * FROM `pending_airline` WHERE `status` = 'pending'";
+                            $resultAirline = mysqli_query($conn, $sqlAirlineCheck);
+                            $numOfRows = mysqli_num_rows($resultAirline);
+
+                            if($numOfRows > 0) {
+                                while($row = mysqli_fetch_assoc($resultAirline)){
+                                    echo "<tr>";
+                                        echo "<td?>{$row['pending_id']}</td>";
+                                        echo "<td?>{$row['registration_no']}</td>";
+                                        echo "<td?>{$row['c_name']}</td>";
+                                        echo "<td?>{$row['email']}</td>";
+                                        echo "<td?>{$row['phone']}</td>";
+
+
+                                        $status = $row['status'];
+                                        if($status == 'pending'){
+                                            echo "<td?>{$row[pending_id]}</td>";
+                                        }
+
+                                        echo "<td>{$row['submitted_at']}</td>";
+                                        echo "<td>{$row['address']}</td>";
+                                        echo "<td>
+                                                <form method = 'POST' style = 'display: inline-block;'>
+                                                    <input type = 'hidden' name = 'approve_id' value = '{$row['pending_id']}'>
+                                                    <button type = 'submit' class = 'approve-btn'> Approve </button>
+                                                </form>
+                                        ";
+
+                                }
+                            }
+                        ?>
                      </tbody>
                 </table>
             </div>
