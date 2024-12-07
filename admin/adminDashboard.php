@@ -17,6 +17,7 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="adminDashboard.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
 </head>
 <body>
     
@@ -45,12 +46,22 @@
                     </i>
                     Manage Airports
                 </a>
-                <a href="" class="nav-item">
+                <div href="#" class="nav-item">
                     <i class="material-icons">
                         airlines
                     </i>
-                    Manage Airlines
-                </a>
+                    <!-- Manage Airlines -->
+                    <div class="dropdown m-airline">
+                        <label for="manageAirline">Manage Airlines</label>
+                        <select name="manageAirline" id="manageAirline">
+                            <option value="" disabled selected>Select an action</option>
+                            <option value="review-registration">Review Registration</option>
+                            <option value="update-airline-details">Update Details</option>
+                            <option value="manage-flights">Manage Flights</option>
+                        </select>
+                    </div>
+                </div>
+
                 <a href="" class="nav-item">
                     <i class="material-icons">
                     manage_accounts
@@ -90,7 +101,30 @@
          </main>
 
          <div class="managing-container">
+            <div class="airline-review-table">
+                <h1>Airline Registration Requests</h1>
+                <table class="airline-table">
+                    <!-- table heading of airline table -->
+                    <thead>
+                        <tr>
+                            <th>Pending ID</th>
+                            <th>Registration No</th>
+                            <th>Company Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Status</th>
+                            <th>Submitted At</th>
+                            <th>Address</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
 
+                    <!-- body of airline review table -->
+                     <tbody>
+                        
+                     </tbody>
+                </table>
+            </div>
          </div>
 
     </div>
