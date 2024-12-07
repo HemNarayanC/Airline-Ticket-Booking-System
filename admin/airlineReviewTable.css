@@ -1,0 +1,40 @@
+.managing-container{
+    width: 100%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid red;
+}
+
+.managing-container .airline-review-table h1{
+    text-align: center;
+    font-size: 24px;
+    color: #003f75;
+    margin-bottom: 30px;
+}
+
+.airline-review-table .airline-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.airline-review-table .airline-table th, .airline-review-table .airline-table td{
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.airline-review-table .airline-table th{
+    background-color: #003f75;
+    color: white;
+    font-size: 16px;
+}
+
+.airline-review-table .airline-table td{
+    font-size: 14px;
+}
+
+.status-pending{}
