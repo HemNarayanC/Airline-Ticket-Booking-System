@@ -5,7 +5,7 @@
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }
 
 .managing-container .airline-review-table h1{
@@ -63,4 +63,8 @@
 .reject-btn{
     background-color: #e74c3c;
     color: white;
+}
+
+.airline-review-table .airline-table button:hover{
+    opacity: 0.8;
 }
