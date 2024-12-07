@@ -37,9 +37,9 @@
             </div>
 
             <nav class="nav-menu">
-                <a href="../pages/home.php" class="nav-item" active>
+                <a href="../pages/flightSearch.php" class="nav-item" active>
                     <i class="material-icons">home</i>
-                    Dashboard
+                    Flight Search
                 </a>
 
                 <a href="" class="nav-item">
@@ -145,21 +145,19 @@
 
                                             echo "<td>{$row['submitted_at']}</td>";
                                             echo "<td>{$row['address']}</td>";
-                                            echo "<tr>
+                                            echo "<td>
                                                     <form method = 'POST' style = 'display: inline-block;'>
                                                         <input type = 'hidden' name = 'approve_id' value = '{$row['pending_id']}'>
                                                         <button type = 'submit' class = 'approve-btn'> Approve </button>
                                                     </form>
-                                            ";
 
-                                            echo "<td>
                                                     <form method = 'POST' style = 'display: inline-block;'>
                                                         <input type = 'hidden' name = 'reject_id' value = '{$row['pending_id']}'>
                                                         <button type = 'submit' class = 'reject-btn'> Reject </button>
                                                     </form>
                                                 </td>";
 
-                                        echo "</tr>";
+                                        echo "</td>";
                                     }
                                 }
 
