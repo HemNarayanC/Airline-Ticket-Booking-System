@@ -139,8 +139,17 @@
 
 
                                             $status = $row['status'];
+
                                             if($status == 'pending'){
                                                 echo "<td><span class = 'status-pending'>Pending</span></td>";
+                                            }
+
+                                            elseif($status == 'approved'){
+                                                echo "<td><span class = 'status-pending'>approved</span></td>";
+                                            }
+
+                                            elseif($status == 'rejected'){
+                                                echo "<td><span class = 'status-pending'>rejected</span></td>";
                                             }
 
                                             echo "<td>{$row['submitted_at']}</td>";
