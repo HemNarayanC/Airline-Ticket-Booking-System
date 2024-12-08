@@ -137,10 +137,6 @@ body{
     color: rgba(255, 255, 255, 0.8);
 }
 
-/* .dropdown.m-airline{
-    visibility: hidden;
-} */
-
 .nav-menu .nav-item .dropdown select{
     width: 100%;
     padding: 0.3rem;
@@ -155,4 +151,12 @@ body{
 
 .nav-menu .nav-item .dropdown{
     position: relative;
+}
+
+.airline-review-table{
+    display: none;
+}
+
+.show-requests{
+    display: block;
 }
