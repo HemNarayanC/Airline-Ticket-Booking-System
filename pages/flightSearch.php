@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -126,6 +125,11 @@
         </form>
     </div>
 
+    <!-- Script files -->
+    <script src="../assets/navbar.js"></script>
+    <!-- <script src="../auth/signup.js"></script> -->
+
+    <script src="flightSearch.js"></script>
 </body>
 </html>
 
