@@ -36,7 +36,7 @@
         }
 
         //Airline Login
-        $sqlAirlineCheck = "SELECT * FROM `pending_airline` WHERE `email` = '$userEmail'";
+        $sqlAirlineCheck = "SELECT * FROM `airline` WHERE `email` = '$userEmail'";
         $resultAirline = mysqli_query($conn, $sqlAirlineCheck);
 
         if ($resultAirline) {
