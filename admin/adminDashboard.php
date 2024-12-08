@@ -6,7 +6,12 @@
 
     if(!isset($_SESSION['user-type']) || ($_SESSION['user-type'])!="admin"){
         header('Location: ../auth/login.php');
+        exit();
     }
+
+    $adminName = $_SESSION['a_name'];
+    $initialName = $_SESSION['nameInitial'];
+
 ?>
 
 
@@ -28,10 +33,16 @@
         <aside class="sidebar">
             <div class="profile">
                 <div class="avatar">
-                    H
+                    <?php
+                        echo $initialName;
+                    ?>
                 </div>
                 <div class="profile-info">
-                    <div>Hem Narayan</div>
+                    <div>
+                        <?php 
+                            echo $adminName;
+                        ?>
+                    </div>
                     <div class="company-name">SkyBooker</div>
                 </div>
             </div>
