@@ -1,4 +1,30 @@
 
+
+<?php
+
+    include '../partials/_navbar.php';
+    include '../partials/_db_connect.php';
+    $sqlAirport = "SELECT airport_id, airport_name, location FROM `airport` ";
+
+    $result = mysqli_query($conn, $sqlAirport);
+
+    //an array to store airport details
+    $airports = [];
+
+    while($row = mysqli_fetch_assoc($result)){
+        //pushing the airport details into an array from database
+        $airports[] = $row;
+    }
+
+    // echo $airports;
+    // echo json_encode($airports);
+    // echo $_SESSION['loggedIn'];
+
+    if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn']!=true){
+        header('Location: ../auth/login.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +38,9 @@
 <body>
 
     <h1>Welcome to Home Page</h1>
+    <?php
+        echo $_SESSION['email'];
+    ?>
 
     <h1 id="home-heading">Let's SkyBooker take you around</h1>
     <div class="flight-search-container">
