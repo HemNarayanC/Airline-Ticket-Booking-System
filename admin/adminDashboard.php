@@ -146,12 +146,12 @@
                                             echo "<td>{$row['submitted_at']}</td>";
                                             echo "<td>{$row['address']}</td>";
                                             echo "<td>
-                                                    <form method = 'POST' style = 'display: inline-block;'>
+                                                    <form method = 'POST' action = 'airlineReviewTableDB.php' style = 'display: inline-block;'>
                                                         <input type = 'hidden' name = 'approve_id' value = '{$row['pending_id']}'>
                                                         <button type = 'submit' class = 'approve-btn'> Approve </button>
                                                     </form>
 
-                                                    <form method = 'POST' style = 'display: inline-block;'>
+                                                    <form method = 'POST' action = 'airlineReviewTableDB.php' style = 'display: inline-block;'>
                                                         <input type = 'hidden' name = 'reject_id' value = '{$row['pending_id']}'>
                                                         <button type = 'submit' class = 'reject-btn'> Reject </button>
                                                     </form>
