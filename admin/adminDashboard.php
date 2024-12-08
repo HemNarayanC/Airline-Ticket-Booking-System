@@ -145,11 +145,11 @@
                                             }
 
                                             elseif($status == 'approved'){
-                                                echo "<td><span class = 'status-pending'>approved</span></td>";
+                                                echo "<td><span class = 'status-approved'>approved</span></td>";
                                             }
 
                                             elseif($status == 'rejected'){
-                                                echo "<td><span class = 'status-pending'>rejected</span></td>";
+                                                echo "<td><span class = 'status-rejected'>rejected</span></td>";
                                             }
 
                                             echo "<td>{$row['submitted_at']}</td>";
