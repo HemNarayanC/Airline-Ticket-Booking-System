@@ -5,101 +5,87 @@
         $userEmail = $_POST['email'];
         $password = $_POST['password'];
 
+        //passenger sql query
         $sqlPassengerCheck = "SELECT * FROM `users` WHERE `email` = '$userEmail'";
         $resultPassenger = mysqli_query($conn, $sqlPassengerCheck);
 
-        //Passenger Login
-        if($resultPassenger){
-            $num = mysqli_num_rows($resultPassenger);
+         //Airline sql query
+         $sqlAirlineCheck = "SELECT * FROM `airline` WHERE `email` = '$userEmail'";
+         $resultAirline = mysqli_query($conn, $sqlAirlineCheck);
 
-            if($num==1){
-                while($row=mysqli_fetch_assoc($resultPassenger)){
-                    if(password_verify($password, $row['password'])){
-                        session_start();
-                        $_SESSION['loggedIn'] = true;
-                        $_SESSION['email'] = $userEmail;
-                        echo "Successfully Logged In";
-                        header('Location: ../pages/flightSearch.php');
-
-                        // exit();
-                    }
-
-                    else{
-                        echo "Password didn't match";
-                    }
-                }
-            }
-
-            else{
-                echo "No user found";
-            }
-        }
-
-        //Airline Login
-        $sqlAirlineCheck = "SELECT * FROM `airline` WHERE `email` = '$userEmail'";
-        $resultAirline = mysqli_query($conn, $sqlAirlineCheck);
-
-        if ($resultAirline) {
-            # code...
-            $num = mysqli_num_rows($resultAirline);
-
-            if($num==1){
-                while($row=mysqli_fetch_assoc($resultAirline)){
-                    if(password_verify($password, $row['password'])){
-                        session_start();
-                        $_SESSION['loggedIn'] = true;
-                        $_SESSION['user-type'] = "airline";
-                        $_SESSION['email'] = $userEmail;
-                        echo "Successfully Logged In";
-                        header('Location: ../admin/adminDashboard.php');
-
-                        // exit();
-                    }
-
-                    else{
-                        echo "Password didn't match";
-                    }
-                }
-            }
-
-            else{
-                echo "No user found";
-            }
-        }
-
-
-        //Admin Login
+        //Admin sql query
         $sqlAdminCheck = "SELECT * FROM `admin` WHERE `email` = '$userEmail'";
         $resultAdmin = mysqli_query($conn, $sqlAdminCheck);
 
-        if ($resultAdmin) {
-            # code...
-            $num = mysqli_num_rows($resultAdmin);
+        //Passenger Login
+        if($resultPassenger && mysqli_num_rows($resultPassenger)==1){
+            while($row=mysqli_fetch_assoc($resultPassenger)){
+                if(password_verify($password, $row['password'])){
+                    session_start();
+                    $_SESSION['loggedIn'] = true;
+                    $_SESSION['email'] = $userEmail;
+                    echo "Successfully Logged In";
+                    header('Location: ../pages/flightSearch.php');
 
-            if($num==1){
-                while($row=mysqli_fetch_assoc($resultAdmin)){
-                    if(hash('sha256', $password) === $row['password']){
-                        session_start();
-                        $_SESSION['loggedIn'] = true;
-                        $_SESSION['user-type'] = "admin";
-                        $_SESSION['email'] = $userEmail;
-                        echo "Successfully Logged In";
-                        header('Location: ../admin/adminDashboard.php');
+                    // exit();
+                }
 
-                        // exit();
-                    }
-
-                    else{
-                        echo "Password didn't match";
-                    }
+                else{
+                    echo "Password didn't match";
                 }
             }
 
-            else{
-                echo "No user found";
+        }
+
+        //login for airline
+        elseif ($resultAirline && mysqli_num_rows($resultAirline) == 1) {
+            # code...
+            while($row=mysqli_fetch_assoc($resultAirline)){
+                if(password_verify($password, $row['password'])){
+                    session_start();
+                    $_SESSION['loggedIn'] = true;
+                    $_SESSION['user-type'] = "airline";
+                    $_SESSION['email'] = $userEmail;
+                    echo "Successfully Logged In";
+                    header('Location: ../admin/adminDashboard.php');
+
+                    // exit();
+                }
+
+                else{
+                    echo "Password didn't match";
+                }
             }
         }
 
+        //login for admin
+        elseif($resultAdmin && mysqli_num_rows($resultAdmin) == 1) {
+            # code...
+            while($row=mysqli_fetch_assoc($resultAdmin)){
+                if(hash('sha256', $password) === $row['password']){
+                    session_start();
+                    $_SESSION['loggedIn'] = true;
+                    $_SESSION['user-type'] = "admin";
+                    $_SESSION['email'] = $userEmail;
+                    echo "Successfully Logged In";
+                    header('Location: ../admin/adminDashboard.php');
 
+                    // exit();
+                }
+
+                else{
+                    echo "Password didn't match";
+                }
+            }
+        }  
+        
+        else{
+            echo "No user found";
+            header('Location: login.php');
+        }
+    }
+
+    else{
+        echo "Wrong method of fetching";
     }
 ?>
