@@ -67,9 +67,11 @@
                     $_SESSION['loggedIn'] = true;
                     $_SESSION['user-type'] = "admin";
                     $_SESSION['email'] = $userEmail;
+                    $_SESSION['a_name'] = $row['name'];
+                    $firstLetter = strtoupper($row['name'][0]);
+                    $_SESSION['nameInitial'] = $firstLetter;
                     echo "Successfully Logged In";
                     header('Location: ../admin/adminDashboard.php');
-
                     // exit();
                 }
 
