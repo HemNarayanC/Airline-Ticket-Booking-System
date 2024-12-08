@@ -18,7 +18,7 @@
             $approve_id = $_POST['approve_id'];
 
             //updating the status in the pending airline table
-            $updateQuery = "UPDATE `pending_airline` SET `status` = 'approved'";
+            $updateQuery = "UPDATE `pending_airline` SET `status` = 'approved' WHERE `pending_id` = '$approve_id'";
             $resultUpdate = mysqli_query($conn, $updateQuery);
 
             if($resultUpdate){
@@ -35,7 +35,7 @@
             $fetchResult = mysqli_query($conn, $fetchApprovedQuery);
             $numOfFetchedRows = mysqli_num_rows($fetchResult);
 
-            if($fetchResult && $numOfFetchedRows > 0) {
+            if(($fetchResult) && $numOfFetchedRows > 0) {
                 $row = mysqli_fetch_assoc($fetchResult);
 
                 //Inserting the approved data to airline table
