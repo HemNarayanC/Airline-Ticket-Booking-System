@@ -66,5 +66,40 @@
                 echo "No user found";
             }
         }
+
+
+        //Admin Login
+        $sqlAdminCheck = "SELECT * FROM `admin` WHERE `email` = '$userEmail'";
+        $resultAdmin = mysqli_query($conn, $sqlAdminCheck);
+
+        if ($resultAdmin) {
+            # code...
+            $num = mysqli_num_rows($resultAdmin);
+
+            if($num==1){
+                while($row=mysqli_fetch_assoc($resultAdmin)){
+                    if(hash('sha256', $password) === $row['password']){
+                        session_start();
+                        $_SESSION['loggedIn'] = true;
+                        $_SESSION['user-type'] = "admin";
+                        $_SESSION['email'] = $userEmail;
+                        echo "Successfully Logged In";
+                        header('Location: ../admin/adminDashboard.php');
+
+                        // exit();
+                    }
+
+                    else{
+                        echo "Password didn't match";
+                    }
+                }
+            }
+
+            else{
+                echo "No user found";
+            }
+        }
+
+
     }
 ?>
