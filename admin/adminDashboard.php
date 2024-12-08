@@ -4,7 +4,7 @@
     include('../partials/_db_connect.php');
     session_start();
 
-    if(!isset($_SESSION['user-type']) || ($_SESSION['user-type'])!="airline"){
+    if(!isset($_SESSION['user-type']) || ($_SESSION['user-type'])!="admin"){
         header('Location: ../auth/login.php');
     }
 ?>
