@@ -57,7 +57,7 @@
                         <label for="manageAirline">Manage Airlines</label>
                         <select name="manageAirline" id="manageAirline">
                             <option value="" disabled selected>Select an action</option>
-                            <option value="review-registration">Review Registration</option>
+                            <option value="review-registration">Registration Requests</option>
                             <option value="update-airline-details">Update Details</option>
                             <option value="manage-flights">Manage Flights</option>
                         </select>
@@ -180,6 +180,8 @@
             </div>
          </main>
     </div>
+
+    <script src="airlineReviewTable.js"></script>
 
 </body>
 </html>
