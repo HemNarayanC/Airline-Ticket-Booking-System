@@ -157,7 +157,9 @@
     <!-- Script files -->
     <script src="../assets/navbar.js"></script>
     <!-- <script src="../auth/signup.js"></script> -->
-
+    <script>
+        const airports = <?php echo json_encode($airports); ?>;
+    </script>
     <script src="flightSearch.js"></script>
 </body>
 </html>
