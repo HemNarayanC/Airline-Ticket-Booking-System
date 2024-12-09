@@ -33,6 +33,7 @@
     <title>Flight Search</title>
     <link rel="stylesheet" href="../assets/navbar.css">
     <link rel="stylesheet" href="flightSearch.css">
+    <link rel="stylesheet" href="../assets/footer.css">
     <script src="https://kit.fontawesome.com/f4c39070b8.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -153,6 +154,10 @@
              <button type="submit" id="searchBtn">Search Best Airfares</button>
         </form>
     </div>
+
+    <?php
+        include('../partials/_footer.php');
+    ?>
 
     <!-- Script files -->
     <script src="../assets/navbar.js"></script>
