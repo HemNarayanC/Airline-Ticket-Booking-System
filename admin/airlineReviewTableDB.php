@@ -41,15 +41,15 @@
                 //Inserting the approved data to airline table
                 $insertQuery = "INSERT INTO airline (`registration_no`,`c_name`,`email`,`phone`,`password`,`address`)
                                 VALUES('".$row['registration_no']."',
-                                        ".$row['c_name'].",
-                                        ".$row['email'].",
-                                        ".$row['phone'].",
-                                        ".$row['password'].",
-                                        ".$row['address'].")";
+                                        '".$row['c_name']."',
+                                        '".$row['email']."',
+                                        '".$row['phone']."',
+                                        '".$row['password']."',
+                                        '".$row['address']."')";
 
-                $resultInsertion = mysqli_query($conn, $resultInsertion);
+                $resultInsertion = mysqli_query($conn, $insertQuery);
                 if($resultInsertion){
-                    echo "Data inserted into airline table successfully";
+                    echo "<br>Data inserted into airline table successfully";
                 }
 
                 else{
@@ -62,13 +62,9 @@
             }
         }
 
-        else{
-            echo "No record found for provided Id";
-        }
-
         //for reject
 
-        if(isset($_POST['reject_id'])) {
+        elseif(isset($_POST['reject_id'])) {
             $reject_id = $_POST['reject_id'];
 
             //update the status in the pending table to rejected
@@ -85,7 +81,7 @@
         }
 
         else{
-            echo "No data found for the pending ID : $reject_id.";
+            echo "No record found for provided Id";
         }
     }
 
