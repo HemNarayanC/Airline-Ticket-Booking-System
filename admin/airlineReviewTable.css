@@ -1,3 +1,10 @@
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
 .managing-container{
     width: 100%;
     margin: 50px auto;
@@ -5,7 +12,7 @@
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    /* border: 2px solid red; */
+    overflow-y: auto;
 }
 
 .managing-container .airline-review-table h1{
