@@ -23,8 +23,9 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="adminDashboard.css">
     <link rel="stylesheet" href="airlineReviewTable.css">
+    <link rel="stylesheet" href="manageAirport.css">
+    <link rel="stylesheet" href="addAirport.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    
 </head>
 <body>
     
@@ -188,6 +189,13 @@
                         </tbody>
                     </table>
                 </div>
+
+                <!-- table for managing airport -->
+                <?php
+                    include('addAirport.php');
+                    include('manageAirport.php');
+                ?>
+
             </div>
          </main>
     </div>
