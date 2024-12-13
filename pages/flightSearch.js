@@ -32,14 +32,14 @@ function generateAirports() {
         //For departure(FROM) dropdown
         const optionFrom = document.createElement("option");
         optionFrom.value = airport.airport_id;
-        optionFrom.textContent = airport.location;
+        optionFrom.textContent = `${airport.location}, ${airport.area_code}`;
         fromSelect.appendChild(optionFrom);
 
 
         //For destination(TO) dropdown
         const optionTo = document.createElement("option");
         optionTo.value = airport.airport_id;
-        optionTo.textContent = airport.location;
+        optionTo.textContent = `${airport.location}, ${airport.area_code}`;
         toSelect.appendChild(optionTo);
     });
 
