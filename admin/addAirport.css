@@ -125,3 +125,33 @@
 .show-airport-component{
     display: block;
 }
+
+#showAirportsBtn,
+#hideAirportsBtn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+#showAirportsBtn {
+    background-color: #003f75;
+    color: white;
+}
+
+#showAirportsBtn:hover {
+    background-color: #002a4f;
+}
+
+#hideAirportsBtn {
+    background-color: #f39c12;
+    color: white;
+}
+
+#hideAirportsBtn:hover {
+    background-color: #e67e22;
+}
