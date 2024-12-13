@@ -6,6 +6,7 @@
                 <th>ID</th>
                 <th>Airport Name</th>
                 <th>Location</th>
+                <th>Area Code</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -20,6 +21,7 @@
                         echo "<td>{$row['airport_id']}</td>";
                         echo "<td>{$row['airport_name']}</td>";
                         echo "<td>{$row['location']}</td>";
+                        echo "<td>{$row['area_code']}</td>";
                         echo "<td class = 'airport-action-btn'>";
                             echo "<button class = 'airport-edit-btn'> Edit </button>";
                             echo "<button class = 'airport-delete-btn'> Delete </button>";
