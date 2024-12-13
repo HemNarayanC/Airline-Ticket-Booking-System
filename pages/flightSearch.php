@@ -80,6 +80,7 @@
                         To
                     </label>
                     <select name="demoPlaceDest" id="to-location" class="airport-select-drop">
+                        <option value="airport" selected disabled>Select an airport</option>
                         <!-- options for destination airports -->
                     </select>
                     <small id="demoPlaceDest"></small>
