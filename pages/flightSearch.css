@@ -47,10 +47,6 @@ body{
     color: white;
 }
 
-#trip-type-two input[type="radio"]{
-    /* display: none; */
-}
-
 #trip-type-two input[type="radio"]:checked + label{
     background-color: #3498db;
     color: white;
