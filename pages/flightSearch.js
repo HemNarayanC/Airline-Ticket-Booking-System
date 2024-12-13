@@ -23,8 +23,8 @@ function generateAirports() {
     const toLocation = document.getElementById("demoPlaceDest");
 
     //clear already existing airport options
-    fromSelect.innerHTML = '';
-    toSelect.innerHTML = '';
+    // fromSelect.innerHTML = '';
+    // toSelect.innerHTML = '';
 
     //looping through airports and generating both departure and destination airports
     airports.forEach((airport) => {
