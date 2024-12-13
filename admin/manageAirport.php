@@ -1,4 +1,4 @@
-<div class = "airport-display">
+<div class = "airport-list-container">
     <h2>Airport List</h2>
     <table class="airport-table">
         <thead>
