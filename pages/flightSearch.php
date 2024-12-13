@@ -4,7 +4,7 @@
 
     include '../partials/_navbar.php';
     include '../partials/_db_connect.php';
-    $sqlAirport = "SELECT airport_id, airport_name, location FROM `airport` ";
+    $sqlAirport = "SELECT * FROM `airport`";
 
     $result = mysqli_query($conn, $sqlAirport);
 
