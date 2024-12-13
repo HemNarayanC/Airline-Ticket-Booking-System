@@ -7,5 +7,8 @@
             <input type="text" id="areaCode" placeholder="Area Code" required>
             <button type="submit">Add Airport</button>
         </form>
-        <div id="message" class="message"></div>
+        <div class="airport-btn-container">
+            <button id="showAirportsBtn">Show Airports</button>
+            <button id="hideAirportsBtn">Hide</button>
+        </div>
     </div>
