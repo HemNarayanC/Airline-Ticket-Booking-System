@@ -54,7 +54,7 @@
                     Flight Search
                 </a>
 
-                <a href="" class="nav-item">
+                <a href="" class="nav-item" id="add-airport-btn">
                     <i class="material-icons">
                     connecting_airports
                     </i>
