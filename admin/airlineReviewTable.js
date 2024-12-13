@@ -7,7 +7,9 @@ manageAirlineSelect.addEventListener('change', (event) => {
 
     //Hide the airport component if its visible
     let airportComponent = document.getElementsByClassName('airport-management')[0];
+    let airportList = document.querySelector('.airport-list-container');
     airportComponent.classList.remove('show-airport-component');
+    airportList.classList.remove('show-airports');
     if(event.target.value === 'review-registration'){
         tableContainer.classList.add('show-requests');
     }
