@@ -201,6 +201,6 @@
     </div>
 
     <script src="airlineReviewTable.js"></script>
-
+    <script src="showAirports.js"></script>
 </body>
 </html>
