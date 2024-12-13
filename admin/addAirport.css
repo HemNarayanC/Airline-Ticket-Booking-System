@@ -1,4 +1,8 @@
 
+.airport-management{
+    display: none;
+}
+
 .airport-management h2 {
     color: #003f75;
     margin-bottom: 20px;
@@ -116,4 +120,8 @@
 
 .delete-btn:hover {
     background-color: #c0392b;
+}
+
+.show-airport-component{
+    display: block;
 }
