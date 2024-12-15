@@ -1,34 +1,17 @@
-
-//displaying airline review table on changing option
-let tableContainer = document.querySelector('.airline-review-table');
+// Get the dropdown and listen for changes
 let manageAirlineSelect = document.getElementById('manageAirline');
 
 manageAirlineSelect.addEventListener('change', (event) => {
+    let baseUrl = window.location.origin;
+    console.log(baseUrl);
 
-    //Hide the airport component if its visible
-    let airportComponent = document.getElementsByClassName('airport-management')[0];
-    let airportList = document.querySelector('.airport-list-container');
-    airportComponent.classList.remove('show-airport-component');
-    airportList.classList.remove('show-airports');
-    if(event.target.value === 'review-registration'){
-        tableContainer.classList.add('show-requests');
+    if (event.target.value === 'review-registration') {
+        window.location.href = `${baseUrl}/airline%20ticket%20booking%20system/admin03/airlineReviewTable.php`;
+    } 
+    else if(event.target.value === 'update-airline-details'){
+        window.location.href = `${baseUrl}/airline%20ticket%20booking%20system/admin03/updateAirline.php`;
     }
-
-    else{
-        tableContainer.classList.remove('show-requests');
+    else if(event.target.value === 'manage-flights'){
+        window.location.href = `${baseUrl}/airline%20ticket%20booking%20system/admin03/manageFlight.php`;
     }
 });
-
-
-//Displaying adding airport component when clicked
-let addAirportBtn = document.getElementById('add-airport-btn');
-let airportComponent = document.getElementsByClassName('airport-management')[0];
-addAirportBtn.addEventListener('click', (event) => {
-    event.preventDefault();
-
-    //hide the airline review table if it's visible
-    tableContainer.classList.remove('show-requests');
-    manageAirlineSelect.value = '';
-    airportComponent.classList.add('show-airport-component');
-});
-
