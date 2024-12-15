@@ -1,7 +1,7 @@
-
+/* 
 .airport-list-container{
     display: none;
-}
+} */
 
 .airport-list-container h2 {
     text-align: center;
@@ -19,7 +19,7 @@
 .airport-table th,
 .airport-table td {
     padding: 12px;
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #ddd;
 }
 
@@ -39,6 +39,8 @@
 
 .airport-action-btn {
     display: flex;
+    /* align-items: center; */
+    justify-content: center;
     gap: 10px;
 }
 
@@ -57,6 +59,11 @@
     color: white;
 }
 
+.airport-edit-btn a{
+    color: white;
+    text-decoration: none;
+}
+
 .airport-edit-btn:hover {
     background-color: #27ae60;
 }
@@ -66,10 +73,19 @@
     color: white;
 }
 
+.airport-delete-btn a{
+    color: white;
+    text-decoration: none;
+}
+
 .airport-delete-btn:hover {
     background-color: #c0392b;
 }
 
 .show-airports{
+    display: block;
+}
+
+.show-update{
     display: block;
 }
