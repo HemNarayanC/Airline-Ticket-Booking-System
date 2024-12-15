@@ -1,9 +1,9 @@
 
-.airport-management{
+/* .airport-management{
     display: none;
-}
+} */
 
-.airport-management h2 {
+.update-container h2, .airport-management h2 {
     color: #003f75;
     margin-bottom: 20px;
     font-size: 24px;
@@ -104,9 +104,10 @@
     transition: background-color 0.3s ease;
 }
 
-.edit-btn {
+.edit-btn a{
     background-color: #2ecc71;
     color: white;
+    text-decoration: none;
 }
 
 .edit-btn:hover {
@@ -120,10 +121,6 @@
 
 .delete-btn:hover {
     background-color: #c0392b;
-}
-
-.show-airport-component{
-    display: block;
 }
 
 #showAirportsBtn,
@@ -140,6 +137,11 @@
 
 #showAirportsBtn {
     background-color: #003f75;
+    color: white;
+}
+
+#showAirportsBtn a{
+    text-decoration: none;
     color: white;
 }
 
