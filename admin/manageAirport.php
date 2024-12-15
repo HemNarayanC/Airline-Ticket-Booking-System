@@ -15,6 +15,19 @@
 <body>
     <?php
         include('adminDashboard.php');
+        // include('../partials/_db_connect.php');
+        if (isset($_GET['air_id']) && isset($_GET['action']) && $_GET['action'] === 'delete') {
+            $airport_id = $_GET['air_id'];
+            $delete_sql = "DELETE FROM `airport` WHERE `airport_id` = $airport_id";
+            $delete_result = mysqli_query($conn, $delete_sql);
+            if ($delete_result) {
+                echo "<p>Record deleted successfully!</p>";
+                header("Location: manageAirport.php");
+                exit();
+            } else {
+                echo "Error deleting record: " . mysqli_error($conn);
+            }
+        }
     ?>
     <!-- Main Content -->
     <main class="main-content">
@@ -59,7 +72,7 @@
                                         echo "<td>{$row['area_code']}</td>";
                                         echo "<td class = 'airport-action-btn'>";
                                             echo "<button class='airport-edit-btn'><a href='updateAirport.php?air_id={$row["airport_id"]}&action=edit'> Edit </a></button>";
-                                            echo "<button class = 'airport-delete-btn'><a href='addAirport.php?air_id = {$row['airport_id']}&action=delete'> Delete </a></button>";
+                                            echo "<button class = 'airport-delete-btn'><a href='manageAirport.php?air_id={$row['airport_id']}&action=delete'> Delete </a></button>";
                                         echo "</td>";
                                         echo "</tr>";
                                     }
