@@ -56,8 +56,6 @@
 
                         if($resultAddAirport){
                             echo "Airport Added Successfully";
-                            header('Location: adminDashboard.php');
-                            exit();
                         }
 
                         else{
