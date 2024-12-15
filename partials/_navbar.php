@@ -32,7 +32,7 @@
                     <li class="nav-item"><a href="" class="nav-link">Book a Flight</a></li>
                     <li class="nav-item"><a href="" class="nav-link">Check-in</a></li>
                     <li class="nav-item"><a href="" class="nav-link">Flight Status</a></li>
-                    <li class="nav-item"><a href="../admin/adminDashboard.php" class="nav-link">Dashboard</a></li>
+                    <li class="nav-item"><a href="../admin03/airlineReviewTable.php" class="nav-link">Dashboard</a></li>
                 </ul>
              </div>
 
