@@ -82,6 +82,24 @@
     background-color: #c0392b;
 }
 
+.airport-add-btn {
+    background-color: #007BFF;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-block;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin: 10px 0;
+}
+
+.airport-add-btn:hover {
+    background-color: #0056b3;
+}
+
+
 .show-airports{
     display: block;
 }
