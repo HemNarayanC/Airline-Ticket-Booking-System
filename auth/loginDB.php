@@ -71,7 +71,7 @@
                     $firstLetter = strtoupper($row['name'][0]);
                     $_SESSION['nameInitial'] = $firstLetter;
                     echo "Successfully Logged In";
-                    header('Location: ../admin/adminDashboard.php');
+                    header('Location: ../admin/airlineReviewTable.php');
                     // exit();
                 }
 
