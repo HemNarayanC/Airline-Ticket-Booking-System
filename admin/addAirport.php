@@ -13,6 +13,7 @@
         </div>
     </div>
 
+    <!-- Inserting the airport details into the database -->
     <?php
         include('../partials/_db_connect.php');
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -27,6 +28,7 @@
             if($resultAddAirport){
                 echo "Airport Added Successfully";
                 header('Location: adminDashboard.php');
+                exit();
             }
 
             else{
