@@ -58,8 +58,8 @@
                                         echo "<td>{$row['location']}</td>";
                                         echo "<td>{$row['area_code']}</td>";
                                         echo "<td class = 'airport-action-btn'>";
-                                            echo "<button class='airport-edit-btn'><a href='updateAirport.php?air_id={$row["airport_id"]}'> Edit </a></button>";
-                                            echo "<button class = 'airport-delete-btn'><a href='addAirport.php?air_id = {$row['airport_id']}'> Delete </a></button>";
+                                            echo "<button class='airport-edit-btn'><a href='updateAirport.php?air_id={$row["airport_id"]}&action=edit'> Edit </a></button>";
+                                            echo "<button class = 'airport-delete-btn'><a href='addAirport.php?air_id = {$row['airport_id']}&action=delete'> Delete </a></button>";
                                         echo "</td>";
                                         echo "</tr>";
                                     }
