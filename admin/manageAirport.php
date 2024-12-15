@@ -84,6 +84,7 @@
                             ?>
                         </tbody>
                     </table>
+                    <a href="addAirport.php" class="airport-add-btn">Add Airport</a>
                 </div>
          </main>
         <script src="airlineReviewTable.js"></script>
