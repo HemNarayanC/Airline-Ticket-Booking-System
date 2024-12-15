@@ -39,7 +39,7 @@
                     Flight Search
                 </a>
 
-                <a href="addAirport.php" class="nav-item" id="add-airport-btn">
+                <a href="manageAirport.php" class="nav-item" id="add-airport-btn">
                     <i class="material-icons">
                     connecting_airports
                     </i>
