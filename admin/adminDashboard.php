@@ -20,15 +20,19 @@
         <aside class="sidebar">
             <div class="profile">
                 <div class="avatar">
-                    <?php
-                        echo $initialName;
-                    ?>
+                    <a href="adminProfile.php" class="user-profile-initials">
+                        <?php
+                            echo $initialName;
+                        ?>
+                    </a>
                 </div>
                 <div class="profile-info">
                     <div>
-                        <?php 
-                            echo $adminName;
-                        ?>
+                        <a href="adminProfile.php" class="user-profile-initials">
+                            <?php
+                                echo $adminName;
+                            ?>
+                        </a>
                     </div>
                     <div class="company-name">SkyBooker</div>
                 </div>
