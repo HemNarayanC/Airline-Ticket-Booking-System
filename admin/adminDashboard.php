@@ -4,13 +4,14 @@
     include('../partials/_db_connect.php');
     session_start();
 
-    if(!isset($_SESSION['user-type']) || ($_SESSION['user-type'])!="admin"){
+    if(!isset($_SESSION['user-type']) || ($_SESSION['user-type'])!="Admin"){
         header('Location: ../auth/login.php');
         exit();
     }
 
     $adminName = $_SESSION['a_name'];
     $initialName = $_SESSION['nameInitial'];
+    $a_id = $_SESSION['admin_id'];
 
 ?>
  
