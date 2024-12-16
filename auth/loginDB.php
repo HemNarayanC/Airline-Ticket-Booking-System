@@ -65,7 +65,7 @@
                 if(hash('sha256', $password) === $row['password']){
                     session_start();
                     $_SESSION['loggedIn'] = true;
-                    $_SESSION['user-type'] = "admin";
+                    $_SESSION['user-type'] = "Admin";
                     $_SESSION['email'] = $userEmail;
                     $_SESSION['a_name'] = $row['name'];
                     $firstLetter = strtoupper($row['name'][0]);
