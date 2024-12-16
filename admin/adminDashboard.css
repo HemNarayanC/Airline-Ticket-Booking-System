@@ -45,6 +45,18 @@ body{
     font-weight: bold;
 }
 
+.user-profile-initials,
+.user-profile-initials:hover,
+.user-profile-initials:active,
+.user-profile-initials:visited {
+    color: #003f75;
+    text-decoration: none;
+}
+
+.profile-info .user-profile-initials{
+    color: white;
+}
+
 .company-name{
     font-size: 0.8rem;
     opacity: 0.8;
