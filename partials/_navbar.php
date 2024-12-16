@@ -51,7 +51,6 @@
                 echo'<div class="singup-container">
                     <button id="signupBtn" class="signup-btn">Sign Up</button>
                     <div id="userTypeDropdown" class="dropdown-content">
-                        <a href="signup.php?type=admin" id="adminLink" class="user-type">Admin</a>
                         <a href="signup.php?type=airline" id="airlineLink" class="user-type">Airline</a>
                         <a href="signup.php?type=passenger" id="passengerLink" class="user-type">Passenger</a>
                     </div>
