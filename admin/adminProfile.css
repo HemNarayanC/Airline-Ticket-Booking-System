@@ -1,0 +1,98 @@
+.profile-container{
+    /* max-width: 1000px; */
+    margin: 0 auto;
+    border-radius: 8px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+}
+
+.profile-container .avatar {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    margin-right: 20px;
+    font-size: 35px;
+}
+
+.profile-header{
+    background-color: #f1f1f1;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.info h2{
+    margin: 0;
+    color: #333;
+}
+
+.info p{
+    margin: 5px 0;
+    color: #666;
+}
+
+.profile-container .section{
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 3rem 1.5rem;
+}
+
+.section-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.section-header h3{
+    margin: 0;
+    color: #333;
+}
+
+.edit-btn, .save-btn{
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.save-btn{
+    background-color: #2196f3;
+}
+
+.hidden{
+    display: none;
+}
+
+.fields{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 15px;
+}
+
+.field{
+    display: flex;
+    flex-direction: column;
+}
+
+.field label{
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.field input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+}
+
+.field input[readonly] {
+    background-color: #f9f9f9;
+}
