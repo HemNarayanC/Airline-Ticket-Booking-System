@@ -31,6 +31,29 @@
             echo "No record found with ID:";
         }
     ?>
+
+    <?php
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $name = $_POST['name'];
+            $dob = $_POST['dob'];
+            $email = $_POST['email'];
+            $phone = $_POST['phone'];
+            $address=$_POST['address'];
+            // echo $name;
+            $updateAdmin = "UPDATE `admin` SET `name` = '$name', `date_of_birth` = '$dob', `email` = '$email', `phone` = '$phone', `address` = '$address' WHERE `admin_id` = '$a_id'";
+            $resultUpdateAdmin = mysqli_query($conn, $updateAdmin);
+
+            if($resultUpdateAdmin){
+                echo "Successfully Updated";
+                header('Location: adminProfile.php');
+                exit();
+            }
+
+            else{
+                echo "Error in updating admin data".mysqli_error();
+            }
+        }
+    ?>
     <main class="main-content">
             <!-- Header -->      
 
@@ -55,45 +78,49 @@
                             <button class="edit-btn">Edit</button>
                             <button class="save-btn hidden">Save</button>
                         </div>
-                        <div class="fields">
-                            <div class="field">
-                                <label for="admin-id">Admin ID</label>
-                                <input type="text" id="admin-id" value="<?php echo $a_id; ?>" readonly>
-                            </div>
+                        <form action="adminProfile.php" method="POST" id="profileForm.php">
+                            <div class="fields">
+                                <div class="field">
+                                    <label for="admin-id">Admin ID</label>
+                                    <input type="text" name="admin-id" id="admin-id" value="<?php echo $a_id; ?>" readonly>
+                                </div>
 
-                            <div class="field">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" value="<?php echo $name; ?>" readonly>
-                            </div>
+                                <div class="field">
+                                    <label for="name">Name</label>
+                                    <input type="text" name="name" id="name" value="<?php echo $name; ?>" readonly>
+                                </div>
 
-                            <div class="field">
-                                <label for="dob">Date of Birth</label>
-                                <input type="date" id="dob" value="<?php echo $dob; ?>" readonly>
-                            </div>
+                                <div class="field">
+                                    <label for="dob">Date of Birth</label>
+                                    <input type="date" name="dob" id="dob" value="<?php echo $dob; ?>" readonly>
+                                </div>
 
-                            <div class="field">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" value="<?php echo $email; ?>" readonly>
-                            </div>
+                                <div class="field">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" name="email" id="email" value="<?php echo $email; ?>" readonly>
+                                </div>
 
-                            <div class="field">
-                                <label for="phone">Phone Number</label>
-                                <input type="text" id="phone" value="<?php echo $phone; ?>" readonly>
-                            </div>
+                                <div class="field">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="text" name="phone" id="phone" value="<?php echo $phone; ?>" readonly>
+                                </div>
 
-                            <div class="field">
-                                <label for="address">Address</label>
-                                <input type="text" id="address" value="<?php echo $address; ?>" readonly>
-                            </div>
+                                <div class="field">
+                                    <label for="address">Address</label>
+                                    <input type="text" name="address" id="address" value="<?php echo $address; ?>" readonly>
+                                </div>
 
-                            <div class="field">
-                                <label for="doj">Date Of Joining</label>
-                                <input type="datetime-local" id="doj" value="<?php echo $formatted_doj; ?>" readonly>
+                                <div class="field">
+                                    <label for="doj">Date Of Joining</label>
+                                    <input type="datetime-local" name="doj" id="doj" value="<?php echo $formatted_doj; ?>" readonly>
+                                </div>
                             </div>
-                        </div>
+                            <button type="submit" class="submit-btn hidden">Update</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </main>
+        <script src="adminProfile.js"></script>
 </body>
 </html>
