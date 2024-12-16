@@ -40,7 +40,7 @@
 
     <h1>Welcome to Home Page</h1>
     <?php
-        echo $_SESSION['email'];
+        echo $_SESSION['admin-email'];
     ?>
 
     <h1 id="home-heading">Let's SkyBooker take you around</h1>
