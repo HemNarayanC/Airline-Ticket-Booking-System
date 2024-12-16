@@ -45,6 +45,7 @@
 
             if($resultUpdateAdmin){
                 echo "Successfully Updated";
+                $_SESSION['a_name'] = $name;
                 header('Location: adminProfile.php');
                 exit();
             }
