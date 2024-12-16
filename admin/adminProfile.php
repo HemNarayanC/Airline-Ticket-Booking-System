@@ -44,6 +44,10 @@
             $resultUpdateAdmin = mysqli_query($conn, $updateAdmin);
 
             if($resultUpdateAdmin){
+                if($email !== $_SESSION['admin-email']){
+                    header('Location: ../auth/logout.php');
+                    exit();
+                }
                 echo "Successfully Updated";
                 $_SESSION['a_name'] = $name;
                 header('Location: adminProfile.php');
