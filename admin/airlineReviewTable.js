@@ -6,12 +6,12 @@ manageAirlineSelect.addEventListener('change', (event) => {
     console.log(baseUrl);
 
     if (event.target.value === 'review-registration') {
-        window.location.href = `${baseUrl}/airline%20ticket%20booking%20system/admin03/airlineReviewTable.php`;
+        window.location.href = `${baseUrl}/airline%20ticket%20booking%20system/admin/airlineReviewTable.php`;
     } 
     else if(event.target.value === 'update-airline-details'){
-        window.location.href = `${baseUrl}/airline%20ticket%20booking%20system/admin03/updateAirline.php`;
+        window.location.href = `${baseUrl}/airline%20ticket%20booking%20system/admin/updateAirline.php`;
     }
     else if(event.target.value === 'manage-flights'){
-        window.location.href = `${baseUrl}/airline%20ticket%20booking%20system/admin03/manageFlight.php`;
+        window.location.href = `${baseUrl}/airline%20ticket%20booking%20system/admin/manageFlight.php`;
     }
 });
