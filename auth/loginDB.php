@@ -70,6 +70,7 @@
                     $_SESSION['a_name'] = $row['name'];
                     $firstLetter = strtoupper($row['name'][0]);
                     $_SESSION['nameInitial'] = $firstLetter;
+                    $_SESSION['admin_id'] = $row['admin_id'];
                     echo "Successfully Logged In";
                     header('Location: ../admin/airlineReviewTable.php');
                     // exit();
