@@ -77,6 +77,10 @@
             </nav>
 
             <div class="sidebar-footer">
+                <!-- Logout Button -->
+                <a href="../auth/logout.php" class="logout-btn">
+                    <i class="material-icons">exit_to_app</i> Logout
+                </a>
                 <div class="brand">
                     SkyBooker
                 </div>
