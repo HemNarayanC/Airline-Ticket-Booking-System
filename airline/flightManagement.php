@@ -82,34 +82,12 @@
                                 <label for="arrivalTime">Arrival Date & Time</label>
                                 <input type="datetime-local" id="arrivalTime" name="arrivalTime" required>
                             </div>
-
-                            <div class="form-group seat-fares">
-                                <label for="">Seat Class Fares</label>
-                                <div>
-                                    <label>
-                                        Economy:
-                                        <input type="number" name="economyFare" placeholder="Enter fare for Economy Class" required>
-                                    </label>
-                                </div>
-                                <div>
-                                    <label>
-                                        Business:
-                                        <input type="number" name="businessFare" placeholder="Enter fare for Business Class" required>
-                                    </label>
-                                </div>
-                                <div>
-                                    <label>
-                                        First Class:
-                                        <input type="number" name="firstClassFare" placeholder="Enter fare for First Class" required>
-                                    </label>
-                                </div>
-                            </div>
-
+                            
                             <div class="form-group">
                                 <label for="totalSeats">Total Seats</label>
                                 <input type="number" id="totalSeats" name="totalSeats" min=30 required>
                             </div>
-
+                            
                             <div class="form-group">
                                 <label for="flightStatus">Flight Status</label>
                                 <select name="flightStatus" id="flightStatus" required>
@@ -119,6 +97,28 @@
                                     <option value="delayed">Delayed</option>
                                     <option value="canceled">Canceled</option>
                                 </select>
+                            </div>
+                            
+                            <div class="form-group seat-fares">
+                                <label for="">Seat Class Fares</label>
+                                <div class="seat-fare-label">
+                                    <label>
+                                        Economy:
+                                        <input type="number" name="economyFare" placeholder="Enter fare for Economy Class" required>
+                                    </label>
+                                </div>
+                                <div  class="seat-fare-label">
+                                    <label>
+                                        Business:
+                                        <input type="number" name="businessFare" placeholder="Enter fare for Business Class" required>
+                                    </label>
+                                </div>
+                                <div class="seat-fare-label">
+                                    <label>
+                                        First Class:
+                                        <input type="number" name="firstClassFare" placeholder="Enter fare for First Class" required>
+                                    </label>
+                                </div>
                             </div>
 
                         </div>
