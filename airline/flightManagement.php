@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="airlineDashboard.css">
+    <link rel="stylesheet" href="flightManagement.css">
 </head>
 <body>
 
@@ -104,19 +105,19 @@
                                 <div class="seat-fare-label">
                                     <label>
                                         Economy:
-                                        <input type="number" name="economyFare" placeholder="Enter fare for Economy Class" required>
+                                        <input type="number" name="economyFare" placeholder="Enter fare for Economy Class" min=0 required>
                                     </label>
                                 </div>
                                 <div  class="seat-fare-label">
                                     <label>
                                         Business:
-                                        <input type="number" name="businessFare" placeholder="Enter fare for Business Class" required>
+                                        <input type="number" name="businessFare" placeholder="Enter fare for Business Class" min=0 required>
                                     </label>
                                 </div>
                                 <div class="seat-fare-label">
                                     <label>
                                         First Class:
-                                        <input type="number" name="firstClassFare" placeholder="Enter fare for First Class" required>
+                                        <input type="number" name="firstClassFare" placeholder="Enter fare for First Class" min=0 required>
                                     </label>
                                 </div>
                             </div>
