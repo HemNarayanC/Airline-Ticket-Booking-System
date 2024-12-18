@@ -1,4 +1,19 @@
 
+    <?php
+
+    include('../partials/_db_connect.php');
+    session_start();
+
+    if(!isset($_SESSION['user-type']) || ($_SESSION['user-type'])!="Airline"){
+        header('Location: ../auth/login.php');
+        exit();
+    }
+
+    $companyName = $_SESSION['c_name'];
+    $initialName = $_SESSION['nameInitial'];
+    $c_id = $_SESSION['c_id'];
+
+    ?>
 
     <div class="dashboard">
         <!-- Left Sidebar -->
