@@ -1,0 +1,57 @@
+
+
+    <div class="dashboard">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="profile">
+                <div class="avatar">
+                    <a href="#" class="user-profile-initials">
+                        <?php
+                            echo $initialName;
+                        ?>
+                    </a>
+                </div>
+                <div class="profile-info">
+                    <div>
+                        <a href="#" class="user-profile-initials">
+                            <?php
+                                echo $companyName;
+                            ?>
+                        </a>
+                    </div>
+                    <!-- <div class="company-name">SkyLine Airlines</div> -->
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-section="flight-management">
+                    <i class="material-icons">flight</i>
+                    Flight Management
+                </a>
+                <a href="#" class="nav-item" data-section="booking-management">
+                    <i class="material-icons">book_online</i>
+                    Booking Management
+                </a>
+                <a href="#" class="nav-item" data-section="price-management">
+                    <i class="material-icons">attach_money</i>
+                    Price Management
+                </a>
+                <a href="#" class="nav-item" data-section="schedule-management">
+                    <i class="material-icons">schedule</i>
+                    Flight Schedule Management
+                </a>
+                <a href="#" class="nav-item" data-section="cancellation-management">
+                    <i class="material-icons">cancel</i>
+                    Manage Flight Cancellations
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="../auth/logout.php" class="logout-btn">
+                    <i class="material-icons">exit_to_app</i> Logout
+                </a>
+                <div class="brand">
+                    SkyLine Airlines
+                </div>
+            </div>
+        </aside>
