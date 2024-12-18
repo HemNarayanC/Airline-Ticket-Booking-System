@@ -42,6 +42,7 @@
                             Round Trip
                         </label>
                     </div>
+                </div>
 
                     <!-- Onward Flight Section -->
                      <div class="flight-section onward-flight">
@@ -123,8 +124,46 @@
                         </div>
                      </div>
 
- 
-                 </div>
+                     <!-- Return Flight Section -->
+                      <div id="returnFlightSection" class="flight-section return-flight">
+                        <h3>Return Flight Details</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="returnFlightNumber">Return Flight Number</label>
+                                <input type="text" name="returnFlightNumber" id="returnFlightNumber">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="returnFlightName">Return Flight Name</label>
+                                <input type="text" id="returnFlightName" name="returnFlightName">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="returnSource">Return Source</label>
+                                <input type="text" id="returnSource" name="returnSource">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="returnDestination">Return Destination</label>
+                                <input type="text" id="returnDestination" name="returnDestination">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="returnDepartureTime">Return Departure Date & Time</label>
+                                <input type="datetime-local" id="returnDepartureTime" name="returnDepartureTime">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="returnArrivalTime">Return Arrival Date & Time</label>
+                                <input type="datetime-local" id="returnArrivalTime" name="returnArrivalTime">
+                            </div>
+                        </div>
+                      </div>
+
+                      <!-- submit button -->
+                       <div class="button-container">
+                            <button type="submit" class="submit-btn">Save Flight</button>
+                       </div>
             </form>
                 
         </div>
