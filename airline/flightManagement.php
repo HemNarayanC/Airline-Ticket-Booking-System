@@ -15,6 +15,11 @@
         include('airlineDashboard.php');
     ?>
 
+    <?php
+        $sqlCheckAirport = "SELECT * FROM `airport`";
+        $resultCheckAirport = mysqli_query($conn, $sqlCheckAirport);
+    ?>
+
  <!-- Main Content Area -->
     <main class="main-content">
         <header class="header">
@@ -32,7 +37,7 @@
             <form id="flightForm" class="flight-form" action="insertFlight.php" method="POST">
                 <!-- Trip Type Selection -->
                  <div class="form-group trip-type">
-                    <label for="">Trip Type</label>
+                    <label for="" id="trip-type-label">Trip Type</label>
                     <div>
                         <label for="oneWay">
                             <input type="radio" name="tripType" value="oneWay" checked>
@@ -66,12 +71,29 @@
 
                             <div class="form-group">
                                 <label for="departure">Source (Departure Airport/City)</label>
-                                <input type="text" id="departure" name="departureAirport" required>
+                                <select id="departure" name="departureAirport" required>
+                                    <option value="" selected disabled>Select Departure Airport</option>
+                                    <?php
+                                        while ($row = mysqli_fetch_assoc($resultCheckAirport)) {
+                                            echo "<option value=\"{$row['airport_id']}\">{$row['airport_name']}, {$row['area_code']}</option>";
+                                        }
+                                    ?>
+                                </select>
+                                <!-- <input type="text" id="departure" name="departureAirport" required> -->
                             </div>
 
                             <div class="form-group">
                                 <label for="destination">Destination (Arrival Airport/City)</label>
-                                <input type="text" id="destination" name="destinationAirport" required>
+                                <select id="destination" name="destinationAirport" required>
+                                    <option value="" selected disabled>Select Destination Airport</option>
+                                    <?php
+                                        $resultCheckAirport = mysqli_query($conn, "SELECT * FROM airport");
+                                        while ($row = mysqli_fetch_assoc($resultCheckAirport)) {
+                                            echo "<option value=\"{$row['airport_id']}\">{$row['airport_name']}, {$row['area_code']}</option>";
+                                        }
+                                    ?>
+                                </select>
+                                <!-- <input type="text" id="destination" name="destinationAirport" required> -->
                             </div>
 
                             <div class="form-group">
@@ -126,7 +148,7 @@
                      </div>
 
                      <!-- Return Flight Section -->
-                      <div id="returnFlightSection" class="flight-section return-flight">
+                      <div id="returnFlightSection" class="flight-section return-flight hidden">
                         <h3>Return Flight Details</h3>
                         <div class="form-grid">
                             <div class="form-group">
@@ -169,5 +191,7 @@
                 
         </div>
     </main>
+    <script src="flightManagement.js"></script>
+    <script src="toggleAirport.js"></script>
 </body>
 </html>
