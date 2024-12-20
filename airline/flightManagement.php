@@ -34,7 +34,7 @@
 
         <div class="content-area">
             <!-- Content for each section will be dynamically loaded here -->
-            <form id="flightForm" class="flight-form" action="insertFlight.php" method="POST">
+            <form id="flightForm" class="flight-form" action="insertFlights.php" method="POST">
                 <!-- Trip Type Selection -->
                  <div class="form-group trip-type">
                     <label for="" id="trip-type-label">Trip Type</label>
