@@ -66,7 +66,7 @@
                     </div>
                 </div>
 
-                <a href="#" class="nav-item">
+                <a href="manageUsers.php" class="nav-item">
                     <i class="material-icons">
                     manage_accounts
                     </i>
