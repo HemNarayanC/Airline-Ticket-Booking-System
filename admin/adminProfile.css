@@ -1,3 +1,9 @@
+.main-content{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
 .profile-container{
     /* max-width: 1000px; */
     margin: 0 auto;
@@ -56,9 +62,10 @@
     background-color: #4caf50;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
+    width: 80px;
 }
 
 .save-btn{
@@ -96,3 +103,28 @@
 .field input[readonly] {
     background-color: #f9f9f9;
 }
+
+.submit-btn {
+    background-color: #0074d9;
+    color: white;
+    padding: 12px 24px;
+    margin: 20px 0;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #005bb5;
+}
+
+.submit-btn:active {
+    background-color: #004080;
+}
+
+.submit-btn:focus {
+    outline: none;
+}
+
