@@ -98,7 +98,7 @@ body{
 }
 
 .returnDate-hidden{
-    display: none;
+    display: block;
 }
 
 #searchBtn{
