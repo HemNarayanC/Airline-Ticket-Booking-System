@@ -1,3 +1,22 @@
+
+<?php
+    include('../partials/_db_connect.php');
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $tripType = $_POST['tripType'];
+        $departureAirportId = $_POST['demoPlaceDepart'];
+        $destinationAirportId = $_POST['demoPlaceDest'];
+        $departureDate = $_POST['departureDate'];
+        $returnDate = $_POST['returnDate'];
+        $class = $_POST['seatClass'];
+        $noOfAdult = $_POST['adults'];
+        $noOfChildren = $_POST['children'];
+        $noOfInfants = $_POST['infants'];
+    }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +31,6 @@
 <body>
 
     <?php
-        include('../partials/_db_connect.php');
         include('../partials/_navbar.php');
         ?>
 
@@ -40,11 +58,7 @@
                                 r.return_departure_time as rd_time,
                                 r.return_arrival_time as ra_time,
                                 r.return_source_id as return_depart,
-                                return_depart.location as r_departure_location,
-                                return_depart.area_code as r_departure_area_code,
-                                r.return_destination_id as return_dest,
-                                return_dest.location as r_destination_location,
-                                return_dest.area_code as r_destination_area_code
+                                r.return_destination_id as return_dest
                                 FROM
                                     onward_flights o
                                 INNER JOIN 
@@ -57,15 +71,13 @@
                                     airport da ON o.departure_airport_id = da.airport_id
                                 INNER JOIN
                                     airport dest ON o.destination_airport_id = dest.airport_id
-                                LEFT JOIN
-                                    airport return_depart ON r.return_source_id = return_depart.airport_id
-                                LEFT JOIN
-                                    airport return_dest ON r.return_destination_id = return_dest.airport_id
                                 ";
+                                
         $resultFlightDetails01 = mysqli_query($conn, $sqlFlightDetails01);
         $noOfRows01 = mysqli_num_rows($resultFlightDetails01);
-        echo $noOfRows01;
-        echo "<br>";
+        // echo $noOfRows01;
+        // echo $class;
+        // echo "<br>";
 
         if($resultFlightDetails01 && ($noOfRows01 > 0)){
             while($row1 = mysqli_fetch_assoc($resultFlightDetails01)){
@@ -93,97 +105,112 @@
                     $raDate = date('D d M Y', $raTime);
                     $raTimeFormatted = date('h:iA', $raTime);
                 }
-   
-            echo' <div class="flight-card">
-            
-            <!-- Flight header -->
-            <div class="flight-card-header">
-            <div class="airline">
-            <span>'.$row1['company'].'</span>
-            </div>
-            <div class="seat-class">
-            <span>'.$row1['class'].'</span>
-            <span>'.$row1['trip'].'</span>
-            <button class="price-btn">Buy Now : NPR.'.$row1['price'].'</button>
-            </div>
-            </div>
-            
-            <!-- Flight Route -->
-            <div class="flight-routes-container">
-            <!-- onward-flight -->
-            <div class="flight-route onward-flight">
-                <div class="route-info">
-                    <div class="departure">
-                        <div class="time">'.$deptTimeFormatted.'</div>
-                        <div class="city">'.$row1['departure_location'].', '. $row1['departure_area_code'].'</div>
-                        <div class="date">'.$deptDate.'</div>
-                    </div>
                 
-                    <div class="flight-duration">
-                        <div class="duration-line">
-                            <span class="dot"></span>
-                            <span class="line"></span>
-                            <span class="dot"></span>
-                        </div>
-                    </div>
-                
-                    <div class="arrival">
-                        <div class="time">'.$arrTimeFormatted.'</div>
-                        <div class="city">'.$row1['destination_location'].', ' .$row1['destination_area_code'].'</div>
-                        <div class="date">'.$arrDate.'</div>
-                    </div>
-                
-                    <div class="flight-details">
-                        <div class="detail">
-                            <span class="label">Seats Left:</span>
-                            <span class="value">'.$row1['t_seats'].'</span>
-                        </div>
-                        <div class="detail">
-                            <span class="label">Flight:</span>
-                            <span class="value">'.$row1['flight_no'].'</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Return Flight -->
-            <div class="flight-route return flights">
-                <div class="route-info">
-                    <div class="departure">
-                        <div class="time">'.$rdTimeFormatted.'</div>
-                        <div class="city">'.$row1['r_departure_location'].', '. $row1['r_departure_area_code'].'</div>
-                        <div class="date">'.$rdDate.'</div>
-                    </div>
-                            
-                    <div class="flight-duration">
-                        <div class="duration-line">
-                            <span class="dot"></span>
-                            <span class="line"></span>
-                            <span class="dot"></span>
+            
+        
+        if(($deptDate >= $departureDate) && ($row1['da_id'] === $departureAirportId) && ($row1['dest_id'] === $destinationAirportId))
+            {
+                if(($row1['class'] === $class) && ($row1['trip'] === $tripType)){
+                    
+
+                echo'
+                 <div class="flight-card">
+                        
+                    <!-- Flight header -->
+                    <div class="flight-card-header">
+                        <div class="airline">
+                            <span>'.$row1['company'].'</span>
+                        </div>
+                        <div class="seat-class">
+                            <span>'.$row1['class'].'</span>
+                            <button class="price-btn">Buy Now : NPR.'.$row1['price'].'</button>
                         </div>
                     </div>
+                    
+                    <!-- Flight Route -->
+                    <div class="flight-routes-container">
+                        <!-- onward-flight -->
+                        
+                        <div class="flight-route onward-flight">
+                            <div class="route-info">
+                                <div class="departure">
+                                    <div class="time">'.$deptTimeFormatted.'</div>
+                                    <div class="city">'.$row1['departure_location'].', '. $row1['departure_area_code'].'</div>
+                                    <div class="date">'.$deptDate.'</div>
+                                </div>
                             
-                    <div class="arrival">
-                        <div class="time">'.$raTimeFormatted.'</div>
-                        <div class="city">'.$row1['r_destination_location'].', ' .$row1['r_destination_area_code'].'</div>
-                        <div class="date">'.$raDate.'</div>
-                    </div>
+                                <div class="flight-duration">
+                                    <div class="duration-line">
+                                        <span class="dot"></span>
+                                        <span class="line"></span>
+                                        <span class="dot"></span>
+                                    </div>
+                                </div>
                             
-                    <div class="flight-details">
-                        <div class="detail">
-                            <span class="label">Seats Left:</span>
-                            <span class="value">'.$row1['t_seats'].'</span>
-                        </div>
-                        <div class="detail">
-                            <span class="label">Flight:</span>
-                            <span class="value">'.$row1['rf_no'].'</span>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-            <!-- <button type="submit" id="buy-btn">Buy Now</button> -->
-        </div>
-    </div>';
+                                <div class="arrival">
+                                    <div class="time">'.$arrTimeFormatted.'</div>
+                                    <div class="city">'.$row1['destination_location'].', ' .$row1['destination_area_code'].'</div>
+                                    <div class="date">'.$arrDate.'</div>
+                                </div>
+                            
+                                <div class="flight-details">
+                                    <div class="detail">
+                                        <span class="label">Seats Left:</span>
+                                        <span class="value">'.$row1['t_seats'].'</span>
+                                    </div>
+                                    <div class="detail">
+                                        <span class="label">Flight:</span>
+                                        <span class="value">'.$row1['flight_no'].'</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>';
+
+
+                        // <!-- Return Flight -->
+                        if($tripType === 'roundTrip'){
+                        echo '
+                        <div class="flight-route return flights">
+                            <div class="route-info">
+                                <div class="departure">
+                                    <div class="time">'.$rdTimeFormatted.'</div>
+                                    <div class="city">'.$row1['destination_location'].', ' .$row1['destination_area_code'].'</div>
+                                    <div class="date">'.$rdDate.'</div>
+                                </div>
+                                        
+                                <div class="flight-duration">
+                                    <div class="duration-line">
+                                        <span class="dot"></span>
+                                        <span class="line"></span>
+                                        <span class="dot"></span>
+                                    </div>
+                                </div>
+                                        
+                                <div class="arrival">
+                                    <div class="time">'.$raTimeFormatted.'</div>
+                                    <div class="city">'.$row1['departure_location'].', '. $row1['departure_area_code'].'</div>
+                                    <div class="date">'.$raDate.'</div>
+                                </div>
+                                        
+                                <div class="flight-details">
+                                    <div class="detail">
+                                        <span class="label">Seats Left:</span>
+                                        <span class="value">'.$row1['t_seats'].'</span>
+                                    </div>
+                                    <div class="detail">
+                                        <span class="label">Flight:</span>
+                                        <span class="value">'.$row1['rf_no'].'</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>';
+                        }
+                        // <!-- <button type="submit" id="buy-btn">Buy Now</button> -->
+                echo'</div>
+                </div>';
+            }
+        }
     }
 }
 ?>
