@@ -38,8 +38,13 @@
                                 r.return_flight_id as rf_id,
                                 r.return_flight_number as rf_no,
                                 r.return_departure_time as rd_time,
-                                r.return_arrival_time as ra_time
-                                
+                                r.return_arrival_time as ra_time,
+                                r.return_source_id as return_depart,
+                                return_depart.location as r_departure_location,
+                                return_depart.area_code as r_departure_area_code,
+                                r.return_destination_id as return_dest,
+                                return_dest.location as r_destination_location,
+                                return_dest.area_code as r_destination_area_code
                                 FROM
                                     onward_flights o
                                 INNER JOIN 
@@ -51,8 +56,11 @@
                                 INNER JOIN
                                     airport da ON o.departure_airport_id = da.airport_id
                                 INNER JOIN
-                                    airport dest ON o.destination_airport_id = dest.airport_id;
-
+                                    airport dest ON o.destination_airport_id = dest.airport_id
+                                LEFT JOIN
+                                    airport return_depart ON r.return_source_id = return_depart.airport_id
+                                LEFT JOIN
+                                    airport return_dest ON r.return_destination_id = return_dest.airport_id
                                 ";
         $resultFlightDetails01 = mysqli_query($conn, $sqlFlightDetails01);
         $noOfRows01 = mysqli_num_rows($resultFlightDetails01);
@@ -143,7 +151,7 @@
                 <div class="route-info">
                     <div class="departure">
                         <div class="time">'.$rdTimeFormatted.'</div>
-                        <div class="city">'.$row1['destination_location'].', ' .$row1['destination_area_code'].'</div>
+                        <div class="city">'.$row1['r_departure_location'].', '. $row1['r_departure_area_code'].'</div>
                         <div class="date">'.$rdDate.'</div>
                     </div>
                             
@@ -157,7 +165,7 @@
                             
                     <div class="arrival">
                         <div class="time">'.$raTimeFormatted.'</div>
-                        <div class="city">'.$row1['departure_location'].', '. $row1['departure_area_code'].'</div>
+                        <div class="city">'.$row1['r_destination_location'].', ' .$row1['r_destination_area_code'].'</div>
                         <div class="date">'.$raDate.'</div>
                     </div>
                             
