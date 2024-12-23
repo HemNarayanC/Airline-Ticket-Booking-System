@@ -42,7 +42,7 @@
             if(!$loggedIn){
                 //<!-- login-btn -->
                 echo'<button class="login-btn">
-                    <a href="login.php" class="">Login</a>
+                    <a href="../auth/login.php" class="">Login</a>
                 </button>';
             }
 
