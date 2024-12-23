@@ -107,10 +107,10 @@
                 <div class="field">
                     <label for="seatClass">Seat Class</label>
                     <select name="seatClass" id="seatClass">
-                        <option value="select class">Select Class</option>
-                        <option value="economy">Economy</option>
-                        <option value="business">Business</option>
-                        <option value="firstClass">First Class</option>
+                        <option value="select class" disabled selected>Select Class</option>
+                        <option value="Economy">Economy</option>
+                        <option value="Business">Business</option>
+                        <option value="First Class">First Class</option>
                     </select>
                 </div>
 
