@@ -36,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $resultBusiness = mysqli_query($conn, $sqlInsertBusinessFare);
 
         $sqlInsertFirstClassFare = "INSERT INTO `seat_classes` (`flight_id`, `class_name`, `price`) 
-                                    VALUES ('$flightId', 'First Class', '$firstClassFare')";
+                                    VALUES ('$flightId', 'First_Class', '$firstClassFare')";
         $resultFirstClass = mysqli_query($conn, $sqlInsertFirstClassFare);
         
         if($tripType == 'roundTrip'){
