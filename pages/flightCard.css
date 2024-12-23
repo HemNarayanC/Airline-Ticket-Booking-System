@@ -1,0 +1,148 @@
+
+.main-flight-container{
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.flight-card{
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    width: 70%;
+    /* border: 2px solid red; */
+    margin: 20px;
+}
+
+.flight-card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid orangered;
+    padding-left: 20px;
+}
+
+.airline span{
+    font-weight: bold;
+    font-size: 20px;
+    color: red;
+}
+
+.seat-class{
+    display: flex;
+    align-items: center;
+    gap: 8rem;
+    color: rgb(188, 134, 16);
+    /* padding: 10px 18px; */
+    /* border: 2px solid green; */
+}
+
+.price-btn{
+    width: 12rem;
+    /* background-color: #ffeb3b; */
+    background-color: red;
+    border: none;
+    border-radius: 0 8px;
+    padding: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}
+
+.flight-routes-container{
+    padding: 20px;
+}
+
+.flight-route{
+    margin-bottom: 15px;
+}
+
+.route-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-bottom: 5px; */
+}
+
+.departure, .arrival{
+    /* border: 2px solid palevioletred; */
+    flex: 1;
+}
+
+
+.time{
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: darkgreen;
+}
+
+.city{
+    color: #666;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.date{
+    color: #999;
+    font-size: 14px;
+}
+
+.flight-duration{
+    flex: 2;
+    text-align: center;
+    position: relative;
+    padding: 0 20px;
+    /* border: 1px solid violet; */
+}
+
+.duration-line{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.dot{
+    width: 8px;
+    height: 8px;
+    background-color: #666;
+    border-radius: 50%;
+}
+
+.line{
+    flex: 1;
+    height: 1.5px;
+    background-color: #666;
+    margin: 0 5px;
+}
+
+.flight-details{
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    /* border: 1px solid black; */
+    padding: 11px 7px;
+}
+
+.detail{
+    display: flex;
+}
+
+.label{
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.value{
+    color: rgb(211, 13, 6);
+    font-weight: 600;
+    font-size: 15px;
+}
