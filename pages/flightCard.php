@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,16 @@
     <link rel="stylesheet" href="../assets/navbar.css">
     <link rel="stylesheet" href="flightCard.css">
 </head>
+
 <body>
-    
+
     <?php
         include('../partials/_db_connect.php');
         include('../partials/_navbar.php');
         ?>
 
-<div class="main-flight-container">
-    <?php
+    <div class="main-flight-container">
+        <?php
         $sqlFlightDetails01 = "SELECT
                                 o.flight_id as onward_id,
                                 o.flight_number as flight_no,
@@ -28,45 +30,39 @@
                                 o.total_seats as t_seats,
                                 sc.class_name as class,
                                 sc.price as price,
-                                c.c_name as company
+                                c.c_name as company,
+                                r.return_flight_id as rf_id,
+                                r.return_flight_number as rf_no,
+                                r.return_departure_time as rd_time,
+                                r.return_arrival_time as ra_time
                                 FROM
                                     onward_flights o
                                 INNER JOIN 
                                     seat_classes sc ON o.flight_id = sc.flight_id
                                 INNER JOIN
                                     airline c ON o.c_id = c.c_id
+                                LEFT JOIN
+                                    return_flights r ON o.flight_id = r.onward_flight_id
                                 ";
         $resultFlightDetails01 = mysqli_query($conn, $sqlFlightDetails01);
         $noOfRows01 = mysqli_num_rows($resultFlightDetails01);
         echo $noOfRows01;
         echo "<br>";
 
-        $sqlFlightDetails02 = "SELECT
-                                r.return_flight_id as rf_id,
-                                r.return_flight_number as rf_no,
-                                r.return_departure_time as rd_time,
-                                r.return_arrival_time as ra_time
-                                FROM
-                                    return_flights r
-                                INNER JOIN
-                                    onward_flights o ON r.onward_flight_id = o.flight_id
-                                ";
-        $resultFlightDetails02 = mysqli_query($conn, $sqlFlightDetails02);
-        $noOfRows02 = mysqli_num_rows($resultFlightDetails02);
-        echo $noOfRows02;
-        if(($resultFlightDetails01 && ($noOfRows01 > 0)) || ($resultFlightDetails02 && ($noOfRows02 > 0))){
-            while(($row1 = mysqli_fetch_assoc($resultFlightDetails01)) || ($row2 = mysqli_fetch_assoc($resultFlightDetails02))){
+        if($resultFlightDetails01 && ($noOfRows01 > 0)){
+            while($row1 = mysqli_fetch_assoc($resultFlightDetails01)){
                     
             echo' <div class="flight-card">
             
             <!-- Flight header -->
             <div class="flight-card-header">
             <div class="airline">
-            <span>Ransh Airline</span>
+            <span>'.$row1['company'].'</span>
             </div>
             <div class="seat-class">
-            <span>Seat Class</span>
-            <button class="price-btn">Buy Now : NPR. 7500</button>
+            <span>'.$row1['class'].'</span>
+            <span>'.$row1['trip'].'</span>
+            <button class="price-btn">Buy Now : NPR.'.$row1['price'].'</button>
             </div>
             </div>
             
@@ -148,6 +144,7 @@
                         }
                     }
                     ?>
-                    </div>
+    </div>
 </body>
+
 </html>
