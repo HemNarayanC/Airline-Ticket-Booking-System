@@ -8,13 +8,55 @@
     <link rel="stylesheet" href="flightCard.css">
 </head>
 <body>
-
+    
     <?php
         include('../partials/_db_connect.php');
         include('../partials/_navbar.php');
-    ?>
-    <div class="main-flight-container">
-            
+        ?>
+
+<div class="main-flight-container">
+    <?php
+        $sqlFlightDetails01 = "SELECT
+                                o.flight_id as onward_id,
+                                o.flight_number as flight_no,
+                                o.aircraft_model as aircraft,
+                                o.departure_airport_id as da_id,
+                                o.destination_airport_id as dest_id,
+                                o.departure_time as dept_time,
+                                o.arrival_time as arr_time,
+                                o.trip_type as trip,
+                                o.total_seats as t_seats,
+                                sc.class_name as class,
+                                sc.price as price,
+                                c.c_name as company
+                                FROM
+                                    onward_flights o
+                                INNER JOIN 
+                                    seat_classes sc ON o.flight_id = sc.flight_id
+                                INNER JOIN
+                                    airline c ON o.c_id = c.c_id
+                                ";
+        $resultFlightDetails01 = mysqli_query($conn, $sqlFlightDetails01);
+        $noOfRows01 = mysqli_num_rows($resultFlightDetails01);
+        echo $noOfRows01;
+        echo "<br>";
+
+        $sqlFlightDetails02 = "SELECT
+                                r.return_flight_id as rf_id,
+                                r.return_flight_number as rf_no,
+                                r.return_departure_time as rd_time,
+                                r.return_arrival_time as ra_time
+                                FROM
+                                    return_flights r
+                                INNER JOIN
+                                    onward_flights o ON r.onward_flight_id = o.flight_id
+                                ";
+        $resultFlightDetails02 = mysqli_query($conn, $sqlFlightDetails02);
+        $noOfRows02 = mysqli_num_rows($resultFlightDetails02);
+        echo $noOfRows02;
+        if(($resultFlightDetails01 && ($noOfRows01 > 0)) || ($resultFlightDetails02 && ($noOfRows02 > 0))){
+            while(($row1 = mysqli_fetch_assoc($resultFlightDetails01)) || ($row2 = mysqli_fetch_assoc($resultFlightDetails02))){
+                    
             echo' <div class="flight-card">
             
             <!-- Flight header -->
@@ -22,39 +64,39 @@
             <div class="airline">
             <span>Ransh Airline</span>
             </div>
-                <div class="seat-class">
-                <span>Seat Class</span>
-                <button class="price-btn">Buy Now : NPR. 7500</button>
+            <div class="seat-class">
+            <span>Seat Class</span>
+            <button class="price-btn">Buy Now : NPR. 7500</button>
+            </div>
+            </div>
+            
+            <!-- Flight Route -->
+            <div class="flight-routes-container">
+            <!-- onward-flight -->
+            <div class="flight-route onward-flight">
+                <div class="route-info">
+                <div class="departure">
+                <div class="time">9:45 am</div>
+                <div class="city">Kathmandu, KTM</div>
+                <div class="date">12 Oct 2024, Mon</div>
+                </div>
+                
+                <div class="flight-duration">
+                <div class="duration-line">
+                <span class="dot"></span>
+                <span class="line"></span>
+                <span class="dot"></span>
                 </div>
                 </div>
                 
-                <!-- Flight Route -->
-                <div class="flight-routes-container">
-                <!-- onward-flight -->
-                <div class="flight-route onward-flight">
-                <div class="route-info">
-                <div class="departure">
-                            <div class="time">9:45 am</div>
-                            <div class="city">Kathmandu, KTM</div>
-                            <div class="date">12 Oct 2024, Mon</div>
-                            </div>
-                            
-                            <div class="flight-duration">
-                            <div class="duration-line">
-                            <span class="dot"></span>
-                            <span class="line"></span>
-                            <span class="dot"></span>
-                            </div>
-                            </div>
-                            
-                            <div class="arrival">
-                            <div class="time">11:06 am</div>
-                            <div class="city">Pokhara, PKR</div>
-                            <div class="date">12 Oct, 2024, Mon</div>
-                            </div>
-                            
-                            <div class="flight-details">
-                            <div class="detail">
+                <div class="arrival">
+                <div class="time">11:06 am</div>
+                <div class="city">Pokhara, PKR</div>
+                <div class="date">12 Oct, 2024, Mon</div>
+                </div>
+                
+                <div class="flight-details">
+                <div class="detail">
                             <span class="label">Seats Left:</span>
                             <span class="value">10+</span>
                             </div>
@@ -89,21 +131,23 @@
                             </div>
                             
                             <div class="flight-details">
-                                <div class="detail">
-                                <span class="label">Seats Left:</span>
-                                <span class="value">10+</span>
-                                </div>
-                                <div class="detail">
-                                <span class="label">Flight:</span>
-                                <span class="value">U6-5084</span>
-                                </div>
-                                </div>
-                                </div>
-                                </div> 
-                                <!-- <button type="submit" id="buy-btn">Buy Now</button> -->
-                                </div>
-        </div>';
-        ?>
-    </div>
+                            <div class="detail">
+                            <span class="label">Seats Left:</span>
+                            <span class="value">10+</span>
+                            </div>
+                            <div class="detail">
+                            <span class="label">Flight:</span>
+                            <span class="value">U6-5084</span>
+                            </div>
+                            </div>
+                            </div>
+                            </div> 
+                            <!-- <button type="submit" id="buy-btn">Buy Now</button> -->
+                            </div>
+                            </div>';
+                        }
+                    }
+                    ?>
+                    </div>
 </body>
 </html>
