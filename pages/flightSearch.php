@@ -110,7 +110,7 @@
                         <option value="select class" disabled selected>Select Class</option>
                         <option value="Economy">Economy</option>
                         <option value="Business">Business</option>
-                        <option value="First Class">First Class</option>
+                        <option value="First_Class">First Class</option>
                     </select>
                 </div>
 
