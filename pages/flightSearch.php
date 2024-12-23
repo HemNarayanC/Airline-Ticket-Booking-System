@@ -45,7 +45,7 @@
 
     <h1 id="home-heading">Let's SkyBooker take you around</h1>
     <div class="flight-search-container">
-        <form action="flightSearch.php" method="post" id="flightSearch">
+        <form action="flightCard.php" method="post" id="flightSearch">
 
         <!-- Trip-Type tabs -->
             <div class="trip-type" id="trip-type-two">
