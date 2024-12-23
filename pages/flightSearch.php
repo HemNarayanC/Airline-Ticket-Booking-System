@@ -49,11 +49,11 @@
 
         <!-- Trip-Type tabs -->
             <div class="trip-type" id="trip-type-two">
-                <label for="roundTrip">
-                    <input type="radio" name="tripType" value="roundTrip" id="roundTrip" checked> Round-Trip
-                </label>
                 <label for="oneWay">
-                    <input type="radio" name="tripType" value="oneWay" id="oneWay"> One-Way
+                    <input type="radio" name="tripType" value="oneWay" id="oneWay" checked> One-Way
+                </label>
+                <label for="roundTrip">
+                    <input type="radio" name="tripType" value="roundTrip" id="roundTrip"> Round-Trip
                 </label>
             </div>
 
