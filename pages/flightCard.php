@@ -70,30 +70,30 @@
         if($resultFlightDetails01 && ($noOfRows01 > 0)){
             while($row1 = mysqli_fetch_assoc($resultFlightDetails01)){
 
-                 // Format Departure Date and Time
-                $deptTime = new DateTime($row1['dept_time']);
-                $deptDate = $deptTime->format('D d M Y');
-                $deptTimeFormatted = $deptTime->format('h:iA');
+                // Format Departure Date and Time
+                $deptTime = strtotime($row1['dept_time']);
+                $deptDate = date('D d M Y', $deptTime);
+                $deptTimeFormatted = date('h:iA', $deptTime);
 
                 // Format Arrival Date and Time
-                $arrTime = new DateTime($row1['arr_time']);
-                $arrDate = $arrTime->format('D d M Y');
-                $arrTimeFormatted = $arrTime->format('h:iA');
+                $arrTime = strtotime($row1['arr_time']);
+                $arrDate = date('D d M Y', $arrTime);
+                $arrTimeFormatted = date('h:iA', $arrTime);
 
                 // Format Return Departure Date and Time (if available)
                 if ($row1['rd_time']) {
-                    $rdTime = new DateTime($row1['rd_time']);
-                    $rdDate = $rdTime->format('D d M Y');
-                    $rdTimeFormatted = $rdTime->format('h:iA');
+                    $rdTime = strtotime($row1['rd_time']);
+                    $rdDate = date('D d M Y', $rdTime);
+                    $rdTimeFormatted = date('h:iA', $rdTime);
                 }
 
                 // Format Return Arrival Date and Time (if available)
                 if ($row1['ra_time']) {
-                    $raTime = new DateTime($row1['ra_time']);
-                    $raDate = $raTime->format('D d M Y');
-                    $raTimeFormatted = $raTime->format('h:iA');
+                    $raTime = strtotime($row1['ra_time']);
+                    $raDate = date('D d M Y', $raTime);
+                    $raTimeFormatted = date('h:iA', $raTime);
                 }
-                    
+   
             echo' <div class="flight-card">
             
             <!-- Flight header -->
