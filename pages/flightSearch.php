@@ -101,7 +101,7 @@
                     <label for="returnDate">
                         Return Date
                     </label>
-                    <input type="date" name="returnDate" id="returnDate" required>
+                    <input type="date" name="returnDate" id="returnDate">
                   </div>
 
                 <div class="field">
