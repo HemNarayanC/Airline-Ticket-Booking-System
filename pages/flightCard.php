@@ -23,7 +23,11 @@
                                 o.flight_number as flight_no,
                                 o.aircraft_model as aircraft,
                                 o.departure_airport_id as da_id,
+                                da.location as departure_location,
+                                da.area_code as departure_area_code,
                                 o.destination_airport_id as dest_id,
+                                dest.location as destination_location,
+                                dest.area_code as destination_area_code,
                                 o.departure_time as dept_time,
                                 o.arrival_time as arr_time,
                                 o.trip_type as trip,
@@ -35,6 +39,7 @@
                                 r.return_flight_number as rf_no,
                                 r.return_departure_time as rd_time,
                                 r.return_arrival_time as ra_time
+                                
                                 FROM
                                     onward_flights o
                                 INNER JOIN 
@@ -43,6 +48,11 @@
                                     airline c ON o.c_id = c.c_id
                                 LEFT JOIN
                                     return_flights r ON o.flight_id = r.onward_flight_id
+                                INNER JOIN
+                                    airport da ON o.departure_airport_id = da.airport_id
+                                INNER JOIN
+                                    airport dest ON o.destination_airport_id = dest.airport_id;
+
                                 ";
         $resultFlightDetails01 = mysqli_query($conn, $sqlFlightDetails01);
         $noOfRows01 = mysqli_num_rows($resultFlightDetails01);
@@ -51,6 +61,30 @@
 
         if($resultFlightDetails01 && ($noOfRows01 > 0)){
             while($row1 = mysqli_fetch_assoc($resultFlightDetails01)){
+
+                 // Format Departure Date and Time
+                $deptTime = new DateTime($row1['dept_time']);
+                $deptDate = $deptTime->format('D d M Y');
+                $deptTimeFormatted = $deptTime->format('h:iA');
+
+                // Format Arrival Date and Time
+                $arrTime = new DateTime($row1['arr_time']);
+                $arrDate = $arrTime->format('D d M Y');
+                $arrTimeFormatted = $arrTime->format('h:iA');
+
+                // Format Return Departure Date and Time (if available)
+                if ($row1['rd_time']) {
+                    $rdTime = new DateTime($row1['rd_time']);
+                    $rdDate = $rdTime->format('D d M Y');
+                    $rdTimeFormatted = $rdTime->format('h:iA');
+                }
+
+                // Format Return Arrival Date and Time (if available)
+                if ($row1['ra_time']) {
+                    $raTime = new DateTime($row1['ra_time']);
+                    $raDate = $raTime->format('D d M Y');
+                    $raTimeFormatted = $raTime->format('h:iA');
+                }
                     
             echo' <div class="flight-card">
             
@@ -71,79 +105,80 @@
             <!-- onward-flight -->
             <div class="flight-route onward-flight">
                 <div class="route-info">
-                <div class="departure">
-                <div class="time">9:45 am</div>
-                <div class="city">Kathmandu, KTM</div>
-                <div class="date">12 Oct 2024, Mon</div>
-                </div>
+                    <div class="departure">
+                        <div class="time">'.$deptTimeFormatted.'</div>
+                        <div class="city">'.$row1['departure_location'].', '. $row1['departure_area_code'].'</div>
+                        <div class="date">'.$deptDate.'</div>
+                    </div>
                 
-                <div class="flight-duration">
-                <div class="duration-line">
-                <span class="dot"></span>
-                <span class="line"></span>
-                <span class="dot"></span>
-                </div>
-                </div>
-                
-                <div class="arrival">
-                <div class="time">11:06 am</div>
-                <div class="city">Pokhara, PKR</div>
-                <div class="date">12 Oct, 2024, Mon</div>
-                </div>
-                
-                <div class="flight-details">
-                <div class="detail">
-                            <span class="label">Seats Left:</span>
-                            <span class="value">10+</span>
-                            </div>
-                            <div class="detail">
-                            <span class="label">Flight:</span>
-                            <span class="value">U6-5084</span>
-                            </div>
-                            </div>
-                            </div>
-                            </div>
-                            <!-- Return Flight -->
-                            <div class="flight-route return flights">
-                            <div class="route-info">
-                            <div class="departure">
-                            <div class="time">11:06 am</div>
-                            <div class="city">Pokhara, PKR</div>
-                            <div class="date">12 Oct, 2024, Mon</div>
-                            </div>
-                            
-                            <div class="flight-duration">
-                            <div class="duration-line">
+                    <div class="flight-duration">
+                        <div class="duration-line">
                             <span class="dot"></span>
                             <span class="line"></span>
                             <span class="dot"></span>
-                            </div>
-                            </div>
-                            
-                            <div class="arrival">
-                            <div class="time">9:45 am</div>
-                            <div class="city">Kathmandu, KTM</div>
-                            <div class="date">12 Oct 2024, Mon</div>
-                            </div>
-                            
-                            <div class="flight-details">
-                            <div class="detail">
+                        </div>
+                    </div>
+                
+                    <div class="arrival">
+                        <div class="time">'.$arrTimeFormatted.'</div>
+                        <div class="city">'.$row1['destination_location'].', ' .$row1['destination_area_code'].'</div>
+                        <div class="date">'.$arrDate.'</div>
+                    </div>
+                
+                    <div class="flight-details">
+                        <div class="detail">
                             <span class="label">Seats Left:</span>
-                            <span class="value">10+</span>
-                            </div>
-                            <div class="detail">
+                            <span class="value">'.$row1['t_seats'].'</span>
+                        </div>
+                        <div class="detail">
                             <span class="label">Flight:</span>
-                            <span class="value">U6-5084</span>
-                            </div>
-                            </div>
-                            </div>
-                            </div> 
-                            <!-- <button type="submit" id="buy-btn">Buy Now</button> -->
-                            </div>
-                            </div>';
-                        }
-                    }
-                    ?>
+                            <span class="value">'.$row1['flight_no'].'</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Return Flight -->
+            <div class="flight-route return flights">
+                <div class="route-info">
+                    <div class="departure">
+                        <div class="time">'.$rdTimeFormatted.'</div>
+                        <div class="city">'.$row1['destination_location'].', ' .$row1['destination_area_code'].'</div>
+                        <div class="date">'.$rdDate.'</div>
+                    </div>
+                            
+                    <div class="flight-duration">
+                        <div class="duration-line">
+                            <span class="dot"></span>
+                            <span class="line"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                            
+                    <div class="arrival">
+                        <div class="time">'.$raTimeFormatted.'</div>
+                        <div class="city">'.$row1['departure_location'].', '. $row1['departure_area_code'].'</div>
+                        <div class="date">'.$raDate.'</div>
+                    </div>
+                            
+                    <div class="flight-details">
+                        <div class="detail">
+                            <span class="label">Seats Left:</span>
+                            <span class="value">'.$row1['t_seats'].'</span>
+                        </div>
+                        <div class="detail">
+                            <span class="label">Flight:</span>
+                            <span class="value">'.$row1['rf_no'].'</span>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <!-- <button type="submit" id="buy-btn">Buy Now</button> -->
+        </div>
+    </div>';
+    }
+}
+?>
     </div>
 </body>
 
