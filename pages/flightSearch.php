@@ -97,7 +97,7 @@
                   </div>
 
                   <!-- Return date -->
-                  <div class="field" id="returnDateField">
+                  <div class="field returnDate-hidden" id="returnDateField">
                     <label for="returnDate">
                         Return Date
                     </label>
