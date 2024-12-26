@@ -39,9 +39,13 @@
             </div>
 
             <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-section="dashboard-overview">
+                    <i class="material-icons-round">dashboard</i>
+                    Overview
+                </a>
                 <a href="#" class="nav-item active" data-section="flight-management">
                     <i class="material-icons">flight</i>
-                    Flight Management
+                    Flights
                 </a>
                 <a href="#" class="nav-item" data-section="booking-management">
                     <i class="material-icons">book_online</i>
