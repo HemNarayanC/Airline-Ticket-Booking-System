@@ -43,7 +43,7 @@
                     <i class="material-icons-round">dashboard</i>
                     Overview
                 </a>
-                <a href="#" class="nav-item active" data-section="flight-management">
+                <a href="#" class="nav-item" data-section="flight-management">
                     <i class="material-icons">flight</i>
                     Flights
                 </a>
