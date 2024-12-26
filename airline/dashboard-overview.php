@@ -22,21 +22,9 @@ $company_name = $_SESSION['company_name'] ?? 'Skybooker Airlines';
 
     <!-- Main Content Area -->
     <main class="main-content">
-        <header class="top-bar">
-            <div class="search-bar">
-                <i class="material-icons-round">search</i>
-                <input type="text" placeholder="Search...">
-            </div>
-            <div class="user-menu">
-                <span class="user-name">Hell</span>
-                <div class="user-avatar">
-                    <i class="material-icons-round">person</i>
-                </div>
-            </div>
-        </header>
+        <h2 class="page-title">Dashboard Overview</h2>
 
         <div class="dashboard-content">
-            <h2 class="page-title">Dashboard Overview</h2>
 
             <div class="stats-grid">
                 <div class="stat-card" id="totalFlights">
