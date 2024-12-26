@@ -109,7 +109,7 @@
 
             
         
-        if(($deptDate >= $departureDate) && ($row1['da_id'] === $departureAirportId) && ($row1['dest_id'] === $destinationAirportId))
+        if((strtotime($deptDate) >= strtotime($departureDate)) && ($row1['da_id'] === $departureAirportId) && ($row1['dest_id'] === $destinationAirportId))
             {
                 if(($row1['class'] === $class) && ($row1['trip'] === $tripType)){
                     
