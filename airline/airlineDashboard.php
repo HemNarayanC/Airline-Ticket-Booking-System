@@ -39,7 +39,7 @@
             </div>
 
             <nav class="nav-menu">
-                <a href="#" class="nav-item active" data-section="dashboard-overview">
+                <a href="dashboard-overview.php" class="nav-item active" data-section="dashboard-overview">
                     <i class="material-icons-round">dashboard</i>
                     Overview
                 </a>
@@ -49,20 +49,20 @@
                 </a>
                 <a href="#" class="nav-item" data-section="booking-management">
                     <i class="material-icons">book_online</i>
-                    Booking Management
+                    Bookings
                 </a>
                 <a href="#" class="nav-item" data-section="price-management">
                     <i class="material-icons">attach_money</i>
-                    Price Management
+                    Pricing
                 </a>
-                <a href="#" class="nav-item" data-section="schedule-management">
+                <!-- <a href="#" class="nav-item" data-section="schedule-management">
                     <i class="material-icons">schedule</i>
                     Flight Schedule Management
-                </a>
-                <a href="#" class="nav-item" data-section="cancellation-management">
+                </a> -->
+                <!-- <a href="#" class="nav-item" data-section="cancellation-management">
                     <i class="material-icons">cancel</i>
                     Manage Flight Cancellations
-                </a>
+                </a> -->
             </nav>
 
             <div class="sidebar-footer">
