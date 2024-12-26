@@ -194,5 +194,6 @@
     </main>
     <script src="flightManagement.js"></script>
     <script src="toggleAirport.js"></script>
+    <script src="sidebarState.js"></script>
 </body>
 </html>
