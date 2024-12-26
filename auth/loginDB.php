@@ -23,7 +23,7 @@
                 if(password_verify($password, $row['password'])){
                     session_start();
                     $_SESSION['loggedIn'] = true;
-                    $_SESSION['email'] = $userEmail;
+                    $_SESSION['user-type-email'] = $userEmail;
                     echo "Successfully Logged In";
                     header('Location: ../pages/flightSearch.php');
 
@@ -44,12 +44,15 @@
                 if(password_verify($password, $row['password'])){
                     session_start();
                     $_SESSION['loggedIn'] = true;
-                    $_SESSION['user-type'] = "airline";
-                    $_SESSION['email'] = $userEmail;
+                    $_SESSION['user-type'] = "Airline";
+                    $_SESSION['user-type-email'] = $userEmail;
+                    $_SESSION['c_id'] = $row['c_id'];
+                    $_SESSION['c_name'] = $row['c_name'];
+                    $firstLetter = strtoupper($row['c_name'][0]);
+                    $_SESSION['nameInitial'] = $firstLetter;
                     echo "Successfully Logged In";
-                    header('Location: ../admin/adminDashboard.php');
-
-                    // exit();
+                    header('Location: ../airline/dashboard-overview.php');
+                    exit();
                 }
 
                 else{
@@ -66,7 +69,7 @@
                     session_start();
                     $_SESSION['loggedIn'] = true;
                     $_SESSION['user-type'] = "Admin";
-                    $_SESSION['admin-email'] = $userEmail;
+                    $_SESSION['user-type-email'] = $userEmail;
                     $_SESSION['a_name'] = $row['name'];
                     $firstLetter = strtoupper($row['name'][0]);
                     $_SESSION['nameInitial'] = $firstLetter;
