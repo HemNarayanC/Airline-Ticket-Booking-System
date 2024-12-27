@@ -106,7 +106,17 @@
                     $raDate = date('D d M Y', $raTime);
                     $raTimeFormatted = date('h:iA', $raTime);
                 }
-                
+
+                $on_duration = strtotime($row1['arr_time']) - strtotime($row1['dept_time']);
+                $hours = floor($on_duration / 3600);
+                $minutes = floor(($on_duration % 3600) / 60);
+                $on_duration_formatted = sprintf('%02dhrs : %02dm', $hours, $minutes);
+
+                $rn_duration = strtotime($row1['ra_time']) - strtotime($row1['rd_time']);
+                $hours = floor($rn_duration / 3600);
+                $minutes = floor(($on_duration % 3600) / 60);
+                $rn_duration_formatted = sprintf('%02dhrs : %02dm', $hours, $minutes);
+                // echo $on_duration_formatted;
 
             
         
@@ -119,6 +129,7 @@
                  <div class="flight-card">';
                     if($tripType === 'oneWay'){
                     echo '
+                    <form action = "" method="">
                         <!-- Flight header -->
                         <div class="flight-card-header">
                             <div class="airline">
@@ -142,6 +153,7 @@
                                     </div>
                                 
                                     <div class="flight-duration">
+                                        <div class="duration-time">'.$on_duration_formatted.'</div>
                                         <div class="duration-line">
                                             <span class="dot"></span>
                                             <span class="line"></span>
@@ -167,13 +179,15 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>';
+                        </div>
+                        </form>';
                     }
 
 
                     // <!-- Return Flight -->
                     if(($tripType === 'roundTrip') && isset($rdDate) && strtotime($rdDate) >= strtotime($returnDate)){
                     echo '
+                    <form action = "" method="">
                         <!-- Flight header -->
                         <div class="flight-card-header">
                             <div class="airline">
@@ -181,7 +195,7 @@
                             </div>
                             <div class="seat-class">
                                 <span>'.$row1['class'].'</span>
-                                <button class="price-btn">Buy Now : NPR.'.$row1['price'] * $total_passengers.'</button>
+                                <button type="submit" class="price-btn">Buy Now : NPR.'.$row1['price'] * $total_passengers.'</button>
                             </div>
                         </div>
                     
@@ -197,6 +211,7 @@
                                     </div>
                                 
                                     <div class="flight-duration">
+                                        <div class="duration-time">'.$on_duration_formatted.'</div>
                                         <div class="duration-line">
                                             <span class="dot"></span>
                                             <span class="line"></span>
@@ -231,6 +246,7 @@
                                     </div>
                                             
                                     <div class="flight-duration">
+                                        <div class = "duration-time">'.$rn_duration_formatted.'</div>
                                         <div class="duration-line">
                                             <span class="dot"></span>
                                             <span class="line"></span>
@@ -256,11 +272,12 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>';
+                            </div>
+                            </form>';
                         }
                             // <!-- <button type="submit" id="buy-btn">Buy Now</button> -->
                     echo'</div>';
-            }
+                }
         }
     }
 }
