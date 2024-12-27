@@ -11,6 +11,8 @@
         $noOfAdult = $_POST['adults'];
         $noOfChildren = $_POST['children'];
         $noOfInfants = $_POST['infants'];
+        $total_passengers = $noOfAdult + $noOfChildren + $noOfInfants;
+        // echo $total_passengers;
     }
 
 ?>
@@ -124,7 +126,7 @@
                             </div>
                             <div class="seat-class">
                                 <span>'.$row1['class'].'</span>
-                                <button class="price-btn">Buy Now : NPR.'.$row1['price'].'</button>
+                                <button class="price-btn">Buy Now : NPR.'.$row1['price'] * $total_passengers.'</button>
                             </div>
                         </div>
                     
@@ -179,7 +181,7 @@
                             </div>
                             <div class="seat-class">
                                 <span>'.$row1['class'].'</span>
-                                <button class="price-btn">Buy Now : NPR.'.$row1['price'].'</button>
+                                <button class="price-btn">Buy Now : NPR.'.$row1['price'] * $total_passengers.'</button>
                             </div>
                         </div>
                     
