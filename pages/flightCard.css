@@ -59,6 +59,11 @@
     color: white;
 }
 
+.price-btn:hover{
+    /* background-color: #ffeb3b; */
+    background-color: rgba(41, 214, 99, 1);
+}
+
 .flight-routes-container{
     padding: 20px;
 }
@@ -113,6 +118,14 @@
     align-items: center;
     justify-content: center;
     margin: 10px 0;
+}
+
+.duration-time {
+    font-size: 14px;
+    font-weight: bold;
+    color: #c91010;
+    /* padding: 5px; */
+    display: inline-block;
 }
 
 .dot{
