@@ -71,7 +71,7 @@
             <div class="managing-container">
                 <div id="airportManagement" class="update-container">
                     <h2>Update Airport</h2>
-                    <form action = "update02.php" method = "POST" id="addAirportForm">
+                    <form action = "updateAirport.php" method = "POST" id="addAirportForm">
                         <input type="hidden" name="airport_id" value="<?php echo isset($row['airport_id']) ? htmlspecialchars($row['airport_id']) : ''; ?>" />
                         <input type="text" id="airportName" name="updatedAirportName" placeholder="Airport Name" value="<?php echo isset($row['airport_name']) ? htmlspecialchars($row['airport_name']) : ''; ?>" required>
                         <input type="text" id="location" name="updatedLocation" placeholder="Location" value="<?php echo isset($row['location']) ? htmlspecialchars($row['location']) : ''; ?>" required>
