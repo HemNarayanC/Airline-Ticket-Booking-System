@@ -33,6 +33,8 @@
                 </div>
             </div>
 
+            <h2>Traveller Details</h2>
+
             <?php
                 $passenger_count = 1;
 
@@ -51,7 +53,7 @@
                     $passenger_count++;
                 }
             ?>
-
+            <button type="submit" class="submit-btn">Submit Details</button>
         </form>
     </div>
 </body>
