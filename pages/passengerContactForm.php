@@ -1,3 +1,14 @@
+
+<?php
+    session_start();
+    $noOfAdult = $_SESSION['noOfAdult'];
+    $noOfChildren = $_SESSION['noOfChildren'];
+    $noOfInfants = $_SESSION['noOfInfants'];
+    $total_passengers = $noOfAdult + $noOfChildren + $noOfInfants;
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
