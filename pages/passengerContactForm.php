@@ -73,44 +73,60 @@
     <?php
         include('../partials/_navbar.php');
     ?>
-    <div class="container">
-        <form action="" id="passengerForm" method="POST">
-            <div class="form-header">
-                <h2>Passenger Contact Details</h2>
-                <span class="mandatory-notice">All fields are mandatory*</span>
+        <div class = "main-container">
+            <div class="container">
+                <form action="" id="passengerForm" method="POST">
+                    <div class="form-header">
+                        <h2>Passenger Contact Details</h2>
+                        <span class="mandatory-notice">All fields are mandatory*</span>
+                    </div>
+
+                    <div class="contact-details">
+                        <div class="input-group">
+                            <input type="email" name="email" id="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+                        </div>
+                    </div>
+
+                    <h2>Traveller Details</h2>
+
+                    <?php
+                        $passenger_count = 1;
+
+                        for($i = 1; $i <= $noOfAdult; $i++){
+                            echo generatePassengerSection('ADULT', $i, $passenger_count);
+                            $passenger_count++;
+                        }
+
+                        for($i = 1; $i <= $noOfChildren; $i++){
+                            echo generatePassengerSection('CHILD', $i, $passenger_count);
+                            $passenger_count++;
+                        }
+
+                        for($i = 1; $i <= $noOfInfants; $i++){
+                            echo generatePassengerSection('INFANT', $i, $passenger_count);
+                            $passenger_count++;
+                        }
+                    ?>
+                    <button type="submit" class="submit-btn">Continue Booking</button>
+                </form>
             </div>
 
-            <div class="contact-details">
-                <div class="input-group">
-                    <input type="email" name="email" id="email" placeholder="Email Address" required>
-                </div>
-                <div class="input-group">
-                    <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+            <!-- Fare Section -->
+                <div class="fare-container">
+                    <div class="fare-section">
+                        <h3>Fare Summary</h3>
+                        <p><strong>Adults: </strong><?php echo $noOfAdult ." * ". $_SESSION['ticket-price'] ?></p>
+                        <p><strong>Children: </strong><?php echo $noOfChildren ." * ". $_SESSION['ticket-price'] ?></p>
+                        <p><strong>Infants: </strong><?php echo $noOfInfants ." * ". $_SESSION['ticket-price'] ?></p>
+                        <hr>
+                        <p><strong>Total Fare:</strong> NPR <?php echo ( $noOfAdult * $_SESSION['ticket-price']) + ($noOfChildren * $_SESSION['ticket-price']) + ($noOfInfants * $_SESSION['ticket-price']); ?></p>
+                    </div>
                 </div>
             </div>
 
-            <h2>Traveller Details</h2>
-
-            <?php
-                $passenger_count = 1;
-
-                for($i = 1; $i <= $noOfAdult; $i++){
-                    echo generatePassengerSection('ADULT', $i, $passenger_count);
-                    $passenger_count++;
-                }
-
-                for($i = 1; $i <= $noOfChildren; $i++){
-                    echo generatePassengerSection('CHILD', $i, $passenger_count);
-                    $passenger_count++;
-                }
-
-                for($i = 1; $i <= $noOfInfants; $i++){
-                    echo generatePassengerSection('INFANT', $i, $passenger_count);
-                    $passenger_count++;
-                }
-            ?>
-            <button type="submit" class="submit-btn">Continue Booking</button>
-        </form>
-    </div>
+        </div>
 </body>
 </html>
