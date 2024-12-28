@@ -1,4 +1,5 @@
 <?php
+session_start();
     include('../partials/_db_connect.php');
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -8,10 +9,10 @@
         $departureDate = $_POST['departureDate'];
         $returnDate = $_POST['returnDate'];
         $class = $_POST['seatClass'];
-        $noOfAdult = $_POST['adults'];
-        $noOfChildren = $_POST['children'];
-        $noOfInfants = $_POST['infants'];
-        $total_passengers = $noOfAdult + $noOfChildren + $noOfInfants;
+        $_SESSION['noOfAdult'] = $_POST['adults'];
+        $_SESSION['noOfChildren'] = $_POST['children'];
+        $_SESSION['noOfInfants'] = $_POST['infants'];
+        $total_passengers = $_SESSION['noOfAdult'] + $_SESSION['noOfChildren'] + $_SESSION['noOfInfants'];
         // echo $total_passengers;
     }
 
@@ -129,7 +130,7 @@
                  <div class="flight-card">';
                     if($tripType === 'oneWay'){
                     echo '
-                    <form action = "" method="">
+                    <form action = "../test02/form02.php" method="post">
                         <!-- Flight header -->
                         <div class="flight-card-header">
                             <div class="airline">
