@@ -32,6 +32,26 @@
                     <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
                 </div>
             </div>
+
+            <?php
+                $passenger_count = 1;
+
+                for($i = 1; $i <= $noOfAdult; $i++){
+                    echo generatePassengerSection('ADULT', $i, $passenger_count);
+                    $passenger_count++;
+                }
+
+                for($i = 1; $i <= $noOfChildren; $i++){
+                    echo generatePassengerSection('CHILD', $i, $passenger_count);
+                    $passenger_count++;
+                }
+
+                for($i = 1; $i <= $noOfInfants; $i++){
+                    echo generatePassengerSection('INFANT', $i, $passenger_count);
+                    $passenger_count++;
+                }
+            ?>
+
         </form>
     </div>
 </body>
