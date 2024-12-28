@@ -27,10 +27,14 @@
 
         return '
             <div class = "passenger-section">
-                <div class = "section-header"'. strtoupper($type).''.$number.'</div>
-                <div class = "input-row">
-                    <div class = "input-group">
-                        <input type = "text" id = "given-names-'.$passenger_count.'" name = "given-names-'.$passenger_count.'" placeholder = "First Name" required>
+                <div class = "section-header">'. strtoupper($type).''.$number.'</div>
+                    <div class = "input-row">
+                        <div class = "input-group">
+                            <input type = "text" id = "given-names-'.$passenger_count.'" name = "given-names-'.$passenger_count.'" placeholder = "First Name" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="surname-' . $passenger_count . '" name="surname-' . $passenger_count . '" required placeholder="Surname">
+                        </div>
                     </div>
                     <div class = "input-group">
                         <input type = "text" id = "nationality='.$passenger_count.'" name = "nationality-'.$passenger_count.'" placeholder = "Nationality" placeholder = "Nationality" required">
@@ -50,7 +54,7 @@
                         </div>
                     </div>
                     '.$age_field.'
-                </div>
+            </div>
                 ';
 }
 
@@ -62,6 +66,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Passenger Details Form</title>
+    <link rel="stylesheet" href="passengerContactForm.css">
 </head>
 <body>
     <div class="container">
