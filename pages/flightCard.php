@@ -130,7 +130,7 @@ session_start();
                  <div class="flight-card">';
                     if($tripType === 'oneWay'){
                     echo '
-                    <form action = "../test02/form02.php" method="post">
+                    <form action = "passengerContactForm.php" method="post">
                         <!-- Flight header -->
                         <div class="flight-card-header">
                             <div class="airline">
@@ -188,7 +188,7 @@ session_start();
                     // <!-- Return Flight -->
                     if(($tripType === 'roundTrip') && isset($rdDate) && strtotime($rdDate) >= strtotime($returnDate)){
                     echo '
-                    <form action = "" method="">
+                    <form action = "passengerContactForm.php" method="">
                         <!-- Flight header -->
                         <div class="flight-card-header">
                             <div class="airline">
