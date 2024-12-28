@@ -124,8 +124,7 @@ session_start();
         if((strtotime($deptDate) >= strtotime($departureDate)) && ($row1['da_id'] === $departureAirportId) && ($row1['dest_id'] === $destinationAirportId))
             {
                 if(($row1['class'] === $class) && ($row1['trip'] === $tripType)){
-                    
-
+                    $_SESSION['ticket-price'] = $row1['price'];
                 echo'
                  <div class="flight-card">';
                     if($tripType === 'oneWay'){
@@ -196,7 +195,7 @@ session_start();
                             </div>
                             <div class="seat-class">
                                 <span>'.$row1['class'].'</span>
-                                <button type="submit" class="price-btn">Buy Now : NPR.'.$row1['price'] * $total_passengers.'</button>
+                                <button type="submit" class="price-btn">Buy Now : NPR.'.$row1['price'] * $total_passengers.'</button> 
                             </div>
                         </div>
                     
