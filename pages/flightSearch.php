@@ -1,6 +1,7 @@
 
 
 <?php
+session_start();
 
     include '../partials/_navbar.php';
     include '../partials/_db_connect.php';
