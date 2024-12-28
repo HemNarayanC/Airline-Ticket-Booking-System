@@ -109,7 +109,7 @@
                     $passenger_count++;
                 }
             ?>
-            <button type="submit" class="submit-btn">Submit Details</button>
+            <button type="submit" class="submit-btn">Continue Booking</button>
         </form>
     </div>
 </body>
