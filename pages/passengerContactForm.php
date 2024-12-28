@@ -67,8 +67,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Passenger Details Form</title>
     <link rel="stylesheet" href="passengerContactForm.css">
+    <link rel="stylesheet" href="../assets/navbar.css">
 </head>
 <body>
+    <?php
+        include('../partials/_navbar.php');
+    ?>
     <div class="container">
         <form action="" id="passengerForm" method="POST">
             <div class="form-header">
