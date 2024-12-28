@@ -5,9 +5,12 @@
     $noOfChildren = $_SESSION['noOfChildren'];
     $noOfInfants = $_SESSION['noOfInfants'];
     $total_passengers = $noOfAdult + $noOfChildren + $noOfInfants;
+
+    if($total_passengers < 1 || $total_passengers > 9){
+        die("Invalid number of passengers. Please go back and try again");
+    }
+
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
