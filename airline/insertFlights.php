@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $businessFare = $_POST['businessFare'];
     $firstClassFare = $_POST['firstClassFare'];
 
-    $sqlInsertFlight = "INSERT INTO `onward_flights`(`c_id`, `flight_number`, `flight_name`, `aircraft_model`, `departure_airport_id`, `destination_airport_id`, `departure_time`, `arrival_time`, `flight_status`, `trip_type`, `total_seats`) VALUES ('$c_id','$onwardFlightNo','$flightName','$aircraftModel', '$departureAirportId','$destinationAirportId','$departureDateTime','$arrivalDateTime','$flightStatus','$tripType','$totalSeats')";
+    $sqlInsertFlight = "INSERT INTO `onward_flights`(`c_id`, `flight_number`, `flight_name`, `aircraft_model`, `departure_airport_id`, `destination_airport_id`, `departure_time`, `arrival_time`, `flight_status`, `trip_type`, `total_seats`, `available_seats`) VALUES ('$c_id','$onwardFlightNo','$flightName','$aircraftModel', '$departureAirportId','$destinationAirportId','$departureDateTime','$arrivalDateTime','$flightStatus','$tripType','$totalSeats', '$totalSeats')";
 
     $resultInsertFlight = mysqli_query($conn, $sqlInsertFlight);
 
