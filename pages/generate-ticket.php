@@ -22,13 +22,8 @@
                         <span class = "ticket-type"></span>
                     </div>  
 
-                    // ticket body
                     <div class = "ticket-body">
-
-                        // flight information
                         <div class = "flight-info">
-
-                            // flight route
                             <div class = "flight-route">
                                 <div class="airport">
                                     <div class="airport-code"></div>
@@ -41,7 +36,6 @@
                                 </div>
                             </div>
 
-                            // flight details
                             <div class="flight-details">
                                 <div class="detail">
                                     <span class="label">Flight</span>
@@ -66,7 +60,6 @@
                             </div>
                         </div>
 
-                        //passenger information
                         <div class="passengers-info">
                             <h3>Passenger Information</h3>
                             <div class="passenger-list">';
