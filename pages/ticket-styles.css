@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    background-color: #f8fafc;
+}
+
+.container{
+    max-width: 75%;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.main-title{
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #003580;
+    font-size: 2rem;
+}
+
+.ticket{
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.ticket-header{
+    background-color: #003580;
+    color: white;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ticket-header h2{
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.ticket-type{
+    font-size: 0.875rem;
+    background-color: #ffa500;
+    color: #003580;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    font-weight: 500;
+}
+
+.ticket-body{
+    padding: 1rem;
+}
+
+.flight-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.flight-route{
+    display: flex;
+    align-items: center;
+    width: 30%;
+}
+
+.flight-details{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 2.5rem
+}
+
+.detail{
+    display: flex;
+    flex-direction: column;
+    min-width: 80px;
+}
+
+.airport{
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #003580;
+}
+
+.airport-name{
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+.flight-icon{
+    font-size: 1.25rem;
+    color: #ffa500;
+    margin: 0 0.75rem;
+}
