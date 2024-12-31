@@ -32,36 +32,36 @@
                         <div class = "flight-info">
                             <div class = "flight-route">
                                 <div class="airport">
-                                    <div class="airport-code"></div>
-                                    <div class="airport-name"></div>
+                                    <div class="airport-code">' . $flight['departure']['code'] . '</div>
+                                    <div class="airport-name">' . $flight['departure']['location'] . '</div>
                                 </div>
                                 <div class="flight-icon">✈</div>
                                 <div class="airport">
-                                    <div class="airport-code"></div>
-                                    <div class="airport-name"></div>
+                                    <div class="airport-code">' . $flight['arrival']['code'] . '</div>
+                                    <div class="airport-name">' . $flight['arrival']['location'] . '</div>
                                 </div>
                             </div>
 
                             <div class="flight-details">
                                 <div class="detail">
                                     <span class="label">Flight</span>
-                                    <span class="value"></span>
+                                    <span class="value">' . $flight['flight_number'] . '</span>
                                 </div>
                                 <div class="detail">
                                     <span class="label">Date</span>
-                                    <span class="value"></span>
+                                    <span class="value">' . $flight['departure']['date'] . '</span>
                                 </div>
                                 <div class="detail">
                                     <span class="label">Departure</span>
-                                    <span class="value"></span>
+                                    <span class="value">' . $flight['departure']['time'] . '</span>
                                 </div>
                                 <div class="detail">
                                     <span class="label">Arrival</span>
-                                    <span class="value"></span>          
+                                    <span class="value">' . $flight['arrival']['time'] . '</span>          
                                 </div>
                                 <div class="detail">
                                     <span class="label">Boarding</span>
-                                    <span class="value"></span>
+                                    <span class="value">' . (isset($flight['boarding_time']) ? $flight['boarding_time'] : 'N/A' ) . '</span>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                                     <div class = "passenger-item">
                                         <div class="detail">
                                             <span class="label">Passenger</span>
-                                            <span class="value"></span>
+                                            <span class="value">' . $passenger['first_name'] . ' ' . $passenger['surname'] . '</span>
                                         </div>
                                     </div>';
                             }
