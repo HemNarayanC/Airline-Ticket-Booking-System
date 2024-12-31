@@ -7,17 +7,25 @@
 
     $_SESSION['booking_id'] = 'SY-B' . strtoupper(dechex(rand(100, 999))) . time();
 
+    function generateTicketNumber() {
+        $letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randomLetters = substr(str_shuffle($letters), 0, 2);
+        $randomNumbers = rand(1000, 9999);
+        return 'SKY-B-' . $randomLetters . $randomNumbers;
+    }
+
     if(isset($_SESSION['booking_details']) && !empty($_SESSION['booking_details'])) {
         $booking = $_SESSION['booking_details'];
 
         // function to generate ticket
         function generateTicket($passengers, $flight, $bookingId){
+            $ticketNumber = generateTicketNumber();
             echo'
                 <div class = "ticket">
                     <div class = "ticket-header">
                         <h2>Boarding Pass</h2>
-                        <span class = "ticket-number></span>
-                        <span class = "ticket-type"></span>
+                        <span class = "ticket-number">' . $ticketNumber . '</span>
+                        <span class = "ticket-type">' . $flight['type'] . '</span>
                     </div>  
 
                     <div class = "ticket-body">
