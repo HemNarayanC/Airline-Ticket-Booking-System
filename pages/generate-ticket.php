@@ -5,6 +5,9 @@
     session_start();
     $tripType = $_SESSION['tripType'];
 
+    if(!isset($_SESSION['booking_id'])) {
+        $_SESSION['booking_id'] = 'SY-B' . strtoupper(dechex(rand(10000, 9999))) . time();
+    }
 
     if(isset($_SESSION['booking_details']) && !empty($_SESSION['booking_details'])) {
         $booking = $_SESSION['booking_details'];
