@@ -3,11 +3,11 @@ session_start();
     include('../partials/_db_connect.php');
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $tripType = $_POST['tripType'];
+        $_SESSION['tripType'] = $_POST['tripType'];
         $departureAirportId = $_POST['demoPlaceDepart'];
         $destinationAirportId = $_POST['demoPlaceDest'];
-        $departureDate = $_POST['departureDate'];
-        $returnDate = $_POST['returnDate'];
+        $_SESSION['departureDate'] = $_POST['departureDate'];
+        $_SESSION['returnDate'] = $_POST['returnDate'];
         $class = $_POST['seatClass'];
         $_SESSION['noOfAdult'] = $_POST['adults'];
         $_SESSION['noOfChildren'] = $_POST['children'];
@@ -52,6 +52,7 @@ session_start();
                                 o.arrival_time as arr_time,
                                 o.trip_type as trip,
                                 o.total_seats as t_seats,
+                                o.available_seats as a_seats,
                                 sc.class_name as class,
                                 sc.price as price,
                                 c.c_name as company,
@@ -121,13 +122,29 @@ session_start();
 
             
         
-        if((strtotime($deptDate) >= strtotime($departureDate)) && ($row1['da_id'] === $departureAirportId) && ($row1['dest_id'] === $destinationAirportId))
+        if((strtotime($deptDate) >= strtotime($_SESSION['departureDate'])) && ($row1['da_id'] === $departureAirportId) && ($row1['dest_id'] === $destinationAirportId))
             {
-                if(($row1['class'] === $class) && ($row1['trip'] === $tripType)){
+                if(($row1['class'] === $class) && ($row1['trip'] === $_SESSION['tripType'])){
                     $_SESSION['ticket-price'] = $row1['price'];
+
+                    // for onward airport and area code details
+                    $_SESSION['o_flight_no'] = $row1['flight_no'];
+                    $_SESSION['r_flight_no'] = $row1['rf_no'];
+                    $_SESSION['deptAirportLocation'] = $row1['departure_location'];
+                    $_SESSION['dept_area_code'] = $row1['departure_area_code'];
+                    $_SESSION['destAirportLocation'] = $row1['destination_location'];
+                    $_SESSION['dest_area_code'] = $row1['destination_area_code'];
+                    $_SESSION['depart_date'] = $deptDate;
+                    $_SESSION['depart_time'] = $deptTimeFormatted;
+                    $_SESSION['arrival_time'] = $arrTimeFormatted;
+                    $_SESSION['return_date'] = $rdDate;
+                    $_SESSION['rd_time'] = $rdTimeFormatted;
+                    $_SESSION['ra_time'] = $raTimeFormatted;
+                    $_SESSION['a_seats'] = $row1['a_seats'];
+
                 echo'
                  <div class="flight-card">';
-                    if($tripType === 'oneWay'){
+                    if($_SESSION['tripType'] === 'oneWay'){
                     echo '
                     <form action = "passengerContactForm.php" method="post">
                         <!-- Flight header -->
@@ -185,9 +202,9 @@ session_start();
 
 
                     // <!-- Return Flight -->
-                    if(($tripType === 'roundTrip') && isset($rdDate) && strtotime($rdDate) >= strtotime($returnDate)){
+                    if(($_SESSION['tripType'] === 'roundTrip') && isset($rdDate) && strtotime($rdDate) >= strtotime($_SESSION['returnDate'])){
                     echo '
-                    <form action = "passengerContactForm.php" method="">
+                    <form action = "passengerContactForm.php" method="post">
                         <!-- Flight header -->
                         <div class="flight-card-header">
                             <div class="airline">
