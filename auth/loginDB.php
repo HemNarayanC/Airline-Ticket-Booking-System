@@ -25,7 +25,7 @@
                     $_SESSION['loggedIn'] = true;
                     $_SESSION['user-type-email'] = $userEmail;
                     $_SESSION['user-name'] = $row['fname'].' '.$row['mid_name'].' '.$row['lname'];
-                    $_session['phone'] = $row['phone'];
+                    $_SESSION['phone'] = $row['phone'];
                     echo "Successfully Logged In";
                     header('Location: ../pages/flightSearch.php');
 
