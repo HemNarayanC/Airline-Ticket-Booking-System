@@ -1,13 +1,39 @@
 
 <?php
     session_start();
+
+    $departureDate = $_SESSION['departureDate'];
+    $returnDate = $_SESSION['returnDate'];
+    $tripType = $_SESSION['tripType'];
+    $ticketPrice = $_SESSION['ticket-price'];
+
+    // Flight details
+    $onwardFlightNo = $_SESSION['o_flight_no'];
+    $returnFlightNo = $_SESSION['r_flight_no'];
+
+    $deptAirport = $_SESSION['deptAirportLocation'];
+    $deptAreaCode = $_SESSION['dept_area_code'];
+    $destAirport = $_SESSION['destAirportLocation'];
+    $destAreaCode = $_SESSION['dest_area_code'];
+    $departureDateOnly = $_SESSION['depart_date'];
+    $departureTime = $_SESSION['depart_time'];
+    $arrivalTime = $_SESSION['arrival_time'];
+
+    $returnDateOnly = $_SESSION['return_date'];
+    $returnTime = $_SESSION['rd_time'];
+    $returnArrivalTime = $_SESSION['ra_time'];
+
     $noOfAdult = $_SESSION['noOfAdult'];
     $noOfChildren = $_SESSION['noOfChildren'];
     $noOfInfants = $_SESSION['noOfInfants'];
+    $s_total_passengers = $noOfAdult + $noOfChildren;
     $total_passengers = $noOfAdult + $noOfChildren + $noOfInfants;
+    $_SESSION['totalPrice'] = ($noOfAdult * $_SESSION['ticket-price']) + ($noOfChildren * $_SESSION['ticket-price'])
+                                 + ($noOfInfants * $_SESSION['ticket-price']);
 
-    if($total_passengers < 1 || $total_passengers > 9){
-        die("Invalid number of passengers. Please go back and try again");
+    $available_seats = $_SESSION['a_seats'];
+    if ($available_seats < $s_total_passengers) {
+        die("Not enough seats available for the requested number of passengers. Please try again.");
     }
 
     function generatePassengerSection($type, $number, $passenger_count){
@@ -21,7 +47,7 @@
 
         elseif ($type === 'INFANT') {
         $age_field = '<div class="input-group">
-                        <input type="number" id="age-' . $passenger_count . '" name="age-' . $passenger_count . '" min="0" max="24" required placeholder="Age (in months)">
+                        <input type="number" id="age-'.$passenger_count.'" name="age-'.$passenger_count.'" min="0" max="24" required placeholder="Age (in months)">
                     </div>';
         }
 
@@ -33,7 +59,7 @@
                             <input type = "text" id = "given-names-'.$passenger_count.'" name = "given-names-'.$passenger_count.'" placeholder = "First Name" required>
                         </div>
                         <div class="input-group">
-                            <input type="text" id="surname-' . $passenger_count . '" name="surname-' . $passenger_count . '" required placeholder="Surname">
+                            <input type="text" id="surname-'.$passenger_count.'" name="surname-'.$passenger_count.'" required placeholder="Surname">
                         </div>
                     </div>
                     <div class = "input-group">
@@ -48,7 +74,7 @@
                                 Male
                             </label>
                             <label class="radio-label">
-                                <input type = "radio" name = "gender-' . $passenger_count . '" value= "female">
+                                <input type = "radio" name = "gender-'.$passenger_count.'" value= "female">
                                 Female
                             </label>
                         </div>
@@ -58,6 +84,61 @@
                 ';
 }
 
+?>
+
+<?php
+if($_SERVER['REQUEST_METHOD'] == 'GET'){
+
+    $flights = [];
+    $passenger_details = [];
+    
+    for ($i = 1; $i <= $total_passengers; $i++) {
+        $passenger = [
+            'first_name' => $_GET['given-names-'.$i],
+            'surname' => $_GET['surname-'.$i],
+            'gender' => $_GET['gender-'.$i],
+            'nationality' => $_GET['nationality-'.$i],
+            'age' => isset($_GET['age-'.$i]) ? $_GET['age-'.$i] : null,
+        ];
+        $passenger_details[] = $passenger;
+    }
+
+    function getBoardingTime($departureTime) {
+        $departureTimestamp = strtotime($departureTime);
+        $boardingTimestamp = $departureTimestamp - 30 * 60;
+        return date('g:i A', $boardingTimestamp);
+    }
+    
+    $flights = [
+            [
+                'type' => 'onward',
+                'flight_number' => $onwardFlightNo,
+                'departure' => ['code' => $deptAreaCode, 'location' => $deptAirport, 'time' => $departureTime, 'date' => $departureDateOnly],
+                'arrival' => ['code' => $destAreaCode, 'location' => $destAirport, 'time' => $arrivalTime, 'date' => ''],
+                // 'gate' => 'B22',
+                'boarding_time' => getBoardingTime($departureTime)
+            ],
+            [
+                'type' => 'return',
+                'flight_number' => $returnFlightNo,
+                'departure' => ['code' => $destAreaCode, 'location' => $destAirport, 'time' => $returnTime, 'date' => $returnDateOnly],
+                'arrival' => ['code' => $deptAreaCode, 'location' => $deptAirport, 'time' => $returnArrivalTime, 'date' => ''],
+                // 'gate' => 'C15',
+                'boarding_time' => getBoardingTime($returnTime)
+            ]
+        ];
+
+        $_SESSION['booking_details'] = [
+            'flights' => $flights,
+            'passenger_details' => $passenger_details
+        ];
+// echo '<pre>';
+// print_r($_SESSION['booking_details']);
+// echo '</pre>';
+
+header('Location: ../payment/pay.php');
+exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -73,9 +154,9 @@
     <?php
         include('../partials/_navbar.php');
     ?>
+    <form action="" id="passengerForm" method="GET">
         <div class = "main-container">
             <div class="container">
-                <form action="" id="passengerForm" method="POST">
                     <div class="form-header">
                         <h2>Passenger Contact Details</h2>
                         <span class="mandatory-notice">All fields are mandatory*</span>
@@ -83,10 +164,10 @@
 
                     <div class="contact-details">
                         <div class="input-group">
-                            <input type="email" name="email" id="email" placeholder="Email Address" required>
+                            <input type="email" name="email" id="email" value="<?php echo $_SESSION['user-type-email']; ?>" placeholder="Email Address" required>
                         </div>
                         <div class="input-group">
-                            <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+                            <input type="tel" id="phone" name="phone" value="<?php echo $_SESSION['phone']; ?>" placeholder="Phone Number" required>
                         </div>
                     </div>
 
@@ -111,7 +192,6 @@
                         }
                     ?>
                     <button type="submit" class="submit-btn">Continue Booking</button>
-                </form>
             </div>
 
             <!-- Fare Section -->
@@ -128,5 +208,6 @@
             </div>
 
         </div>
+    </form>
 </body>
 </html>
