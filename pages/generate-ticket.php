@@ -3,9 +3,25 @@
 
 <?php
     session_start();
+    include '../partials/_db_connect.php';
+
+    // Check if the booking is already processed
+    if (isset($_SESSION['booking_processed']) && $_SESSION['booking_processed'] === true) {
+    // If processed, skip further processing or redirect
+    echo "Booking already completed. Please check your booking details.";
+    exit();
+}
+
     $tripType = $_SESSION['tripType'];
 
-    $_SESSION['booking_id'] = 'SY-B' . strtoupper(dechex(rand(100, 999))) . time();
+    function generateBookingNumber(){
+        $_SESSION['booking_no'] = 'SY-B' . strtoupper(dechex(rand(100, 999))) . time();
+        $booking_no = $_SESSION['booking_no'];
+        return $booking_no;
+    }
+
+    $userId = $_SESSION['user-id'];
+    $totalFare = $_SESSION['totalPrice'];
 
     function generateTicketNumber() {
         $letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -16,10 +32,45 @@
 
     if(isset($_SESSION['booking_details']) && !empty($_SESSION['booking_details'])) {
         $booking = $_SESSION['booking_details'];
+        $flightsOn = $booking['flights'][0];
+        $flightId = $flightsOn['flight_id'];
+        $tripType = $_SESSION['tripType'];
+
+        $bnOnward = generateBookingNumber();
+        $bnReturn = $tripType === 'roundTrip' ? generateBookingNumber() : null;
+        $tnOnward = generateTicketNumber();
+        $tnReturn = $tripType === 'roundTrip' ? generateTicketNumber() : null;
+
+        // Insert into bookings table
+            $insertBookingQuery = "INSERT INTO `bookings`(`bn_onward`, `bn_return`, `tn_onward`, `tn_return`, `flight_type`, `user_id`, `flight_id`, `total_fare`) VALUES ('$bnOnward', '$bnReturn', '$tnOnward', '$tnReturn', '$tripType', '$userId', '$flightId', '$totalFare')";
+
+            if (mysqli_query($conn, $insertBookingQuery)) {
+            $bookingId = mysqli_insert_id($conn);
+
+            // Insert passenger details
+            $passengers = $booking['passenger_details'];
+
+            foreach ($passengers as $passenger) {
+                $firstName = $passenger['first_name'];
+                $surname = $passenger['surname'];
+                $gender = $passenger['gender'];
+                $nationality = $passenger['nationality'];
+                $age = $passenger['age'];
+
+                $insertPassengerQuery = "INSERT INTO passenger_details (`booking_id`, `first_name`, `surname`, `gender`, `nationality`, `age`)VALUES
+                ('$bookingId', '$firstName', '$surname', '$gender', '$nationality', '$age')";
+                $resultInsertPassenger = mysqli_query($conn, $insertPassengerQuery);
+
+                    if (!$resultInsertPassenger) {
+                        echo "Error inserting passenger details: " . mysqli_error($conn);
+                        exit();
+                    }
+            }
+            $_SESSION['booking_processed'] = true;
+        }
 
         // function to generate ticket
-        function generateTicket($passengers, $flight, $bookingId){
-            $ticketNumber = generateTicketNumber();
+        function generateTicket($passengers, $flight, $bookingId, $ticketNumber){
             echo'
                 <div class = "ticket">
                     <div class = "ticket-header">
@@ -107,15 +158,15 @@
 
         if($tripType == 'oneWay' && isset($booking['flights'][0])) {
             $flight = $booking['flights'][0];
-            generateTicket($booking['passenger_details'], $flight, $_SESSION['booking_id']);
+            generateTicket($booking['passenger_details'], $flight, $bnOnward, $tnOnward);
         }
 
         elseif($tripType == 'roundTrip' && isset($booking['flights'][0]) && isset($booking['flights'][1])) {
             $onwardFlight = $booking['flights'][0];
             $returnFlight = $booking['flights'][1];
 
-            generateTicket($booking['passenger_details'], $onwardFlight, $_SESSION['booking_id']);
-            generateTicket($booking['passenger_details'], $returnFlight, $_SESSION['booking_id']);
+            generateTicket($booking['passenger_details'], $onwardFlight, $bnOnward, $tnOnward);
+            generateTicket($booking['passenger_details'], $returnFlight, $bnReturn, $tnReturn);
 
         }
 
