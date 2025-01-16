@@ -2,7 +2,6 @@
 
 
 <?php
-    session_start();
     include '../partials/_db_connect.php';
 
     // Check if the booking is already processed
