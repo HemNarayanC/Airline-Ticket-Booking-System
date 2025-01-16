@@ -10,6 +10,7 @@
 </head>
 <body>
     <?php
+        session_start();
         include('../partials/_navbar.php');
     ?>
     <div class="container">
