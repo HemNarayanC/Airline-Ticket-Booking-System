@@ -46,8 +46,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $returnDestinationAirportId = $departureAirportId;
             $returnDepartureDateTime = $_POST['returnDepartureTime'];
             $returnArrivalDateTime = $_POST['returnArrivalTime'];
+            $r_totalSeats = $_POST['r_totalSeats'];
 
-            $sqlInsertReturnFlight = "INSERT INTO `return_flights`(`onward_flight_id`, `return_flight_number`, `return_flight_name`, `return_source_id`, `return_destination_id`, `return_departure_time`, `return_arrival_time`) VALUES ('$flightId','$returnFlightNo','$returnFlightName','$returnDepartureAirportId','$returnDestinationAirportId','$returnDepartureDateTime','$returnArrivalDateTime')";
+            $sqlInsertReturnFlight = "INSERT INTO `return_flights`(`onward_flight_id`, `return_flight_number`, `return_flight_name`, `return_source_id`, `return_destination_id`, `return_departure_time`, `return_arrival_time`, `total_seats`, `available_seats`) VALUES ('$flightId','$returnFlightNo','$returnFlightName','$returnDepartureAirportId','$returnDestinationAirportId','$returnDepartureDateTime','$returnArrivalDateTime', '$r_totalSeats', '$r_totalSeats')";
 
             $resultReturnFlight = mysqli_query($conn, $sqlInsertReturnFlight);
 
