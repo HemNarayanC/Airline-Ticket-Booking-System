@@ -56,7 +56,7 @@
                         <h3>Onward Flight Details</h3>
                         <div class="form-grid">
                             <div class="form-group">
-                                <label for="flightNumber">Flight Numeber</label>
+                                <label for="flightNumber">Flight Number</label>
                                 <input type="text" name="flightNumber" id="flightNumber" required>
                             </div>
 
