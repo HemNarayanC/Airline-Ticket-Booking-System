@@ -181,6 +181,11 @@
                                 <label for="returnArrivalTime">Return Arrival Date & Time</label>
                                 <input type="datetime-local" id="returnArrivalTime" name="returnArrivalTime">
                             </div>
+
+                            <div class="form-group">
+                                <label for="r_totalSeats">Total Seats</label>
+                                <input type="number" id="r_totalSeats" name="r_totalSeats" min=30 required>
+                            </div>
                         </div>
                       </div>
 
