@@ -44,7 +44,7 @@
         
         if($type === 'CHILD'){
             $age_field = '<div class="input-group">
-                            <input type = "number" id="age-'.$passenger_count.'" name="age-'.$passenger_count.' " min="2" max="11" placeholder = "Age (2-11 years)">
+                            <input type = "number" id="age-'.$passenger_count.'" name="age-'.$passenger_count.'" min="2" max="11" placeholder = "Age (2-11 years)">
                             </div>';
                         }
                         
@@ -143,6 +143,10 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 // print_r($_SESSION['booking_details']);
 // print_r($total_passengers);
 // echo '</pre>';
+
+    // echo '<pre>';
+    //     print_r($_GET);
+    // echo '</pre>';
 
 header('Location: ../payment/pay.php');
 exit();
