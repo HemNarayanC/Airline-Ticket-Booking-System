@@ -24,6 +24,7 @@
                     session_start();
                     $_SESSION['loggedIn'] = true;
                     $_SESSION['user-type-email'] = $userEmail;
+                    $_SESSION['user-id'] = $row['user_id'];
                     $_SESSION['user-name'] = $row['fname'].' '.$row['mid_name'].' '.$row['lname'];
                     $_SESSION['phone'] = $row['phone'];
                     echo "Successfully Logged In";
