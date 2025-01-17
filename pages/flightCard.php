@@ -53,7 +53,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                                 r.return_departure_time as rd_time,
                                 r.return_arrival_time as ra_time,
                                 r.return_source_id as return_depart,
-                                r.return_destination_id as return_dest
+                                r.return_destination_id as return_dest,
+                                r.total_seats as rt_seats,
+                                r.available_seats as ra_seats
                                 FROM
                                     onward_flights o
                                 INNER JOIN 
@@ -128,6 +130,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                                 <input type="hidden" name="depart_time" value="'.$deptTimeFormatted.'">
                                 <input type="hidden" name="arrival_time" value="'.$arrTimeFormatted.'">
                                 <input type="hidden" name="available_seats" value="'.$row1['a_seats'].'">
+                                <input type="hidden" name="total_seats" value="'.$row1['t_seats'].'">
                                 <input type="hidden" name="noOfAdult" value="'.$_SESSION['noOfAdult'].'">
                                 <input type="hidden" name="noOfChildren" value="'.$_SESSION['noOfChildren'].'">
                                 <input type="hidden" name="noOfInfants" value="'.$_SESSION['noOfInfants'].'">
@@ -194,6 +197,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                                 <input type="hidden" name="tripType" value="'.$_SESSION['tripType'].'">
                                 <input type="hidden" name="price" value="'.$row1['price'].'">
                                 <input type="hidden" name="flight_id" value="'.$row1['onward_id'].'">
+                                <input type="hidden" name="return_flight_id" value="'.$row1['rf_id'].'">
                                 <input type="hidden" name="flight_no" value="'.$row1['flight_no'].'">
                                 <input type="hidden" name="return_flight_no" value="'.$row1['rf_no'].'">
                                 <input type="hidden" name="departure_location" value="'.$row1['departure_location'].'">
@@ -206,7 +210,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                                 <input type="hidden" name="return_date" value="'.$rdDate.'">
                                 <input type="hidden" name="return_depart_time" value="'.$rdTimeFormatted.'">
                                 <input type="hidden" name="return_arrival_time" value="'.$raTimeFormatted.'">
-                                <input type="hidden" name="available_seats" value="'.$row1['a_seats'].'">
+                                <input type="hidden" name="r_available_seats" value="'.$row1['ra_seats'].'">
+                                <input type="hidden" name="r_total_seats" value="'.$row1['rt_seats'].'">
                                 <input type="hidden" name="noOfAdult" value="'.$_SESSION['noOfAdult'].'">
                                 <input type="hidden" name="noOfChildren" value="'.$_SESSION['noOfChildren'].'">
                                 <input type="hidden" name="noOfInfants" value="'.$_SESSION['noOfInfants'].'">
