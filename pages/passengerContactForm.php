@@ -10,6 +10,7 @@
 
         // Flight details
         $_SESSION['onwardFlightId'] = $_POST['flight_id'];
+        $_SESSION['returnFlightId'] = $_POST['flight_id'];
         $_SESSION['onwardFlightNo'] = $_POST['flight_no'];
         $_SESSION['returnFlightNo'] = $_POST['return_flight_no'] ?? null;
         
@@ -33,10 +34,15 @@
         $_SESSION['totalPrice'] = ($noOfAdult * $_SESSION['ticketPrice']) + ($noOfChildren * $_SESSION['ticketPrice'])
         + ($noOfInfants * $_SESSION['ticketPrice']);
         
-        $available_seats = $_POST['available_seats'];
-        if ($available_seats < $s_total_passengers) {
-            die("Not enough seats available for the requested number of passengers. Please try again.");
+        $_SESSION['oa_seats'] = $_POST['available_seats'];
+        $_SESSION['ot_seats'] = $_POST['total_seats'];
+        if($_SESSION['tripType'] == "roundTrip"){
+            $_SESSION['ra_seats'] = $_POST['r_available_seats'];
+            $_SESSION['rt_seats'] = $_POST['r_total_seats'];
         }
+        // if ($available_seats < $s_total_passengers) {
+        //     die("Not enough seats available for the requested number of passengers. Please try again.");
+        // }
 }
     
     function generatePassengerSection($type, $number, $passenger_count){
