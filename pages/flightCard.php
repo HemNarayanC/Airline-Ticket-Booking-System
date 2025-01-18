@@ -43,6 +43,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                                 o.departure_time as dept_time,
                                 o.arrival_time as arr_time,
                                 o.trip_type as trip,
+                                o.flight_status as of_status,
                                 o.total_seats as t_seats,
                                 o.available_seats as a_seats,
                                 sc.class_name as class,
@@ -54,6 +55,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                                 r.return_arrival_time as ra_time,
                                 r.return_source_id as return_depart,
                                 r.return_destination_id as return_dest,
+                                r.flight_status as rf_status,
                                 r.total_seats as rt_seats,
                                 r.available_seats as ra_seats
                                 FROM
@@ -109,11 +111,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $minutes = floor(($on_duration % 3600) / 60);
                 $rn_duration_formatted = sprintf('%02dhrs : %02dm', $hours, $minutes);
 
+                $on_flight_status = $row1['of_status'];
+                $rn_flight_status = $row1['rf_status'];
+
                 if((strtotime($deptDate) >= strtotime($_SESSION['departureDate'])) && ($row1['da_id'] === $departureAirportId) && ($row1['dest_id'] === $destinationAirportId))
                 {
                     if(($row1['class'] === $class) && ($row1['trip'] === $_SESSION['tripType'])){
                         echo '<div class="flight-card">';
-                        if($_SESSION['tripType'] === 'oneWay'){
+                        if($_SESSION['tripType'] === 'oneWay' && ($on_flight_status != 'completed' && $on_flight_status != 'canceled' && $on_flight_status != 'in_progress')) {
                             echo '
                             <form action="passengerContactForm.php" method="post">
                                 <input type="hidden" name="departureDate" value="'.$_SESSION['departureDate'].'">
@@ -189,7 +194,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                         }
 
                         // Return Flight
-                        if(($_SESSION['tripType'] === 'roundTrip') && isset($rdDate) && strtotime($rdDate) >= strtotime($_SESSION['returnDate'])){
+                        if(($_SESSION['tripType'] === 'roundTrip') && isset($rdDate) && strtotime($rdDate) >= strtotime($_SESSION['returnDate']) && ($rn_flight_status != 'completed' && $rn_flight_status != 'canceled' && $on_flight_status != 'in_progress')){
                             echo '
                             <form action="passengerContactForm.php" method="post">
                                 <input type="hidden" name="departureDate" value="'.$_SESSION['departureDate'].'">
