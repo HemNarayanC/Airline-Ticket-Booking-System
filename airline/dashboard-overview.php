@@ -33,7 +33,7 @@ $company_name = $_SESSION['company_name'] ?? 'Skybooker Airlines';
                     </div>
                     <div class="stat-content">
                         <h3>Total Flights</h3>
-                        <p class="stat-value">Loading...</p>
+                        <p class="stat-value"><?php echo $totalFlights; ?></p>
                     </div>
                 </div>
                 <div class="stat-card" id="totalPassengers">
@@ -42,7 +42,7 @@ $company_name = $_SESSION['company_name'] ?? 'Skybooker Airlines';
                     </div>
                     <div class="stat-content">
                         <h3>Total Passengers</h3>
-                        <p class="stat-value">Loading...</p>
+                        <p class="stat-value"><?php echo $totalPassengers; ?></p>
                     </div>
                 </div>
                 <div class="stat-card" id="totalRevenue">
@@ -51,7 +51,7 @@ $company_name = $_SESSION['company_name'] ?? 'Skybooker Airlines';
                     </div>
                     <div class="stat-content">
                         <h3>Total Revenue</h3>
-                        <p class="stat-value">Loading...</p>
+                        <p class="stat-value"><?php echo $totalRevenue; ?></p>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,6 @@ $company_name = $_SESSION['company_name'] ?? 'Skybooker Airlines';
             <div class="dashboard-grid">
                 <section class="dashboard-section recent-bookings">
                     <h3>Recent Bookings</h3>
-                    <ul id="recentBookingsList"></ul>
                 </section>
                 <section class="dashboard-section popular-routes">
                     <h3>Popular Routes</h3>
