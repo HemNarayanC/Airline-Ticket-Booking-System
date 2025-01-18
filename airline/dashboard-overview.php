@@ -18,6 +18,66 @@ $company_name = $_SESSION['company_name'] ?? 'Skybooker Airlines';
 <body>
     <?php
         include('airlineDashboard.php');
+
+        $company_id = $_SESSION['c_id'];
+
+        //For displaying dashboard stats
+
+        $onwardFlightsQuery = "
+            SELECT COUNT(f.flight_id) AS total_onward_flights
+            FROM onward_flights f
+            WHERE f.c_id = '$company_id'
+        ";
+        $onwardFlightsResult = mysqli_query($conn, $onwardFlightsQuery);
+        $onwardFlightsData = mysqli_fetch_assoc($onwardFlightsResult);
+        $totalOnwardFlights = $onwardFlightsData['total_onward_flights'] ?? 0;
+
+        // Query to get the total return flights for the company
+        $returnFlightsQuery = "
+            SELECT COUNT(r.return_flight_id) AS total_return_flights
+            FROM return_flights r
+            INNER JOIN onward_flights f ON r.onward_flight_id = f.flight_id
+            WHERE f.c_id = '$company_id'
+        ";
+        $returnFlightsResult = mysqli_query($conn, $returnFlightsQuery);
+        $returnFlightsData = mysqli_fetch_assoc($returnFlightsResult);
+        $totalReturnFlights = $returnFlightsData['total_return_flights'] ?? 0;
+
+        // Total flights (onward + return)
+        $totalFlights = $totalOnwardFlights + $totalReturnFlights;
+    
+        // Fetch total passengers for the company
+        $passengersQuery = "
+            SELECT COUNT(DISTINCT b.user_id) AS total_passengers 
+            FROM bookings b
+            JOIN onward_flights f ON b.flight_id = f.flight_id
+            WHERE f.c_id = '$company_id'
+        ";
+        $passengersResult = mysqli_query($conn, $passengersQuery);
+        $passengersData = mysqli_fetch_assoc($passengersResult);
+        $totalPassengers = $passengersData['total_passengers'] ?? 0;
+    
+        // Fetch total revenue for the company (sum of total_fare)
+        $revenueQuery = "
+            SELECT SUM(b.total_fare) AS total_revenue 
+            FROM bookings b
+            JOIN onward_flights f ON b.flight_id = f.flight_id
+            WHERE f.c_id = '$company_id'
+        ";
+        $revenueResult = mysqli_query($conn, $revenueQuery);
+        $revenueData = mysqli_fetch_assoc($revenueResult);
+        $totalRevenue = 0.95*$revenueData['total_revenue'] ?? 0;
+
+        //Query for displaying recent bookings
+        $recentBookingsQuery = "
+            SELECT b.booking_id, b.booking_date, b.user_id, b.flight_id, f.flight_number, f.flight_name
+            FROM bookings b
+            INNER JOIN onward_flights f ON b.flight_id = f.flight_id
+            WHERE f.c_id = '$company_id'
+            ORDER BY b.booking_date DESC
+            LIMIT 5
+        ";
+        $recentBookingsResult = mysqli_query($conn, $recentBookingsQuery);
     ?>
 
     <!-- Main Content Area -->
