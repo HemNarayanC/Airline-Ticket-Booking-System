@@ -89,16 +89,7 @@
                                     <td class = 'flightNumber'>$flightNumber</td>
                                     <td>$departureTime</td>
                                     <td>$arrivalTime</td>
-                                    <td>
-                                        <select class='flight-status-dropdown' data-flight-id='{$row['flight_id']}'>";
-                                        $statuses = ['scheduled', 'in_progress', 'completed', 'delayed', 'canceled'];
-                                        foreach ($statuses as $status) {
-                                            $selected = ($status == $row['flight_status']) ? 'selected' : ''; // Mark the current status as selected
-                                            echo "<option value='$status' $selected>$status</option>";
-                                        }
-                                        
-                                        echo "</select>
-                                    </td>
+                                    <td>$status</td>
                                     <td class= 'flight-action-btn'>";
                                         // <!-- Add actions like Edit, View, Delete -->
                                         echo "<button class='flight-edit-btn'><a href='editFlight.php?air_id={$flightId}&flight_type=onward&action=edit'> Edit </a></button>";
@@ -127,16 +118,7 @@
                                     <td class = 'flightNumber'>$returnFlightNumber</td>
                                     <td>$returnDepartureTime</td>
                                     <td>$returnArrivalTime</td>
-                                    <td>
-                                        <select class='flight-status-dropdown' data-flight-id='{$row['return_flight_id']}'>";
-                                        $statuses = ['scheduled', 'in_progress', 'completed', 'delayed', 'canceled'];
-                                        foreach ($statuses as $status) {
-                                            $selected = ($status == $row['flight_status']) ? 'selected' : ''; // Mark the current status as selected
-                                            echo "<option value='$status' $selected>$status</option>";
-                                        }
-                                        
-                                        echo "</select>
-                                    </td>
+                                    <td>$status</td>
                                     <td class= 'flight-action-btn'>";
                                         // <!-- Add actions like Edit, View, Delete -->
                                         echo "<button class='flight-edit-btn'><a href='editFlight.php?air_id={$returnFlightId}&flight_type=return&action=edit'> Edit </a></button>";
