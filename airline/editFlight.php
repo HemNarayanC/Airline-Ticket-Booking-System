@@ -49,14 +49,15 @@
         <div class="content-area">
             <div class="container">
                 <h1>Edit <?php echo $flightType; ?> flight</h1>
-                <form action="edit_flight.php" method="POST">
+                <form action="updateFlight.php" method="POST">
                     <div class="form-grid">
-                    <input type="hidden" name="id" value="<?php echo $onwardFlight['flight_id']; ?>">
-                    
-                    <!-- Onward Flight Details -->
-                    <?php 
+                        
+                        <!-- Onward Flight Details -->
+                        <?php 
                     if ($flightType == 'onward'){
                         echo '
+                        <input type="hidden" name="id" value="' . $onwardFlight['flight_id'] . '">
+                        <input type="hidden" name="flight_type" value="onward">
                         <div class="form-group">
                             <label for="onward_flight_number">Flight Number:</label>
                             <input type="text" id="onward_flight_number" name="onward_flight_number" value="' . $onwardFlight['flight_number'] . '" readonly required>
@@ -83,12 +84,12 @@
                         </div>
                         <div class="form-group">
                             <label for="onward_flight_status">Flight Status:</label>
-                            <select id="onward_flight_status" name="onward_flight_status" required>
-                                <option value="scheduled" ' . ($onwardFlight['flight_status'] == 'scheduled' ? 'selected' : '') . '>Scheduled</option>
-                                <option value="in_progress" ' . ($onwardFlight['flight_status'] == 'in_progress' ? 'selected' : '') . '>In Progress</option>
-                                <option value="completed" ' . ($onwardFlight['flight_status'] == 'completed' ? 'selected' : '') . '>Completed</option>
-                                <option value="delayed" ' . ($onwardFlight['flight_status'] == 'delayed' ? 'selected' : '') . '>Delayed</option>
-                                <option value="canceled" ' . ($onwardFlight['flight_status'] == 'canceled' ? 'selected' : '') . '>Canceled</option>
+                            <select id="onward_flight_status" name="flight_status" required>
+                                <option value="scheduled">Scheduled</option>
+                                <option value="in_progress">In Progress</option>
+                                <option value="completed">Completed</option>
+                                <option value="delayed">Delayed</option>
+                                <option value="canceled">Canceled</option>
                             </select>
                         </div>';
                     }
@@ -100,6 +101,8 @@
                         // Check if $returnFlight is set and not null
                         if (isset($returnFlight) && $returnFlight) {
                             echo '
+                            <input type="hidden" name="id" value="' . $returnFlight['return_flight_id'] . '">
+                            <input type="hidden" name="flight_type" value="return">
                             <div class="form-group">
                                 <label for="return_flight_number">Return Flight Number:</label>
                                 <input type="text" id="return_flight_number" name="return_flight_number" value="' . $returnFlight['return_flight_number'] . '" readonly required>
@@ -126,12 +129,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="return_flight_status">Return Flight Status:</label>
-                                <select id="return_flight_status" name="return_flight_status" required>
-                                    <option value="scheduled" ' . ($returnFlight['flight_status'] == 'scheduled' ? 'selected' : '') . '>Scheduled</option>
-                                    <option value="in_progress" ' . ($returnFlight['flight_status'] == 'in_progress' ? 'selected' : '') . '>In Progress</option>
-                                    <option value="completed" ' . ($returnFlight['flight_status'] == 'completed' ? 'selected' : '') . '>Completed</option>
-                                    <option value="delayed" ' . ($returnFlight['flight_status'] == 'delayed' ? 'selected' : '') . '>Delayed</option>
-                                    <option value="canceled" ' . ($returnFlight['flight_status'] == 'canceled' ? 'selected' : '') . '>Canceled</option>
+                                <select id="return_flight_status" name="flight_status" required>
+                                    <option value="scheduled">Scheduled</option>
+                                    <option value="in_progress">In Progress</option>
+                                    <option value="completed">Completed</option>
+                                    <option value="delayed">Delayed</option>
+                                    <option value="canceled">Canceled</option>
                                 </select>
                             </div>';
                         } else {
@@ -148,5 +151,8 @@
     </main>
 
     <script src="sidebarState.js"></script>
+    <?php
+    var_dump($_POST);
+    ?>
 </body>
 </html>
