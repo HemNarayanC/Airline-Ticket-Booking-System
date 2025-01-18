@@ -30,18 +30,19 @@
     }
 
     if(isset($_SESSION['booking_details']) && !empty($_SESSION['booking_details'])) {
+
         $booking = $_SESSION['booking_details'];
         $flightsOn = $booking['flights'][0];
         $flightId = $flightsOn['flight_id'];
+
+        $flightsRn = $booking['flights'][1];
+        $flightIdRn = $flightsRn['flight_id'];
         $tripType = $_SESSION['tripType'];
 
         $bnOnward = generateBookingNumber();
         $bnReturn = $tripType === 'roundTrip' ? generateBookingNumber() : null;
         $tnOnward = generateTicketNumber();
         $tnReturn = $tripType === 'roundTrip' ? generateTicketNumber() : null;
-
-        // Insert into bookings table
-            $insertBookingQuery = "INSERT INTO `bookings`(`bn_onward`, `bn_return`, `tn_onward`, `tn_return`, `flight_type`, `user_id`, `flight_id`, `total_fare`) VALUES ('$bnOnward', '$bnReturn', '$tnOnward', '$tnReturn', '$tripType', '$userId', '$flightId', '$totalFare')";
 
             if (mysqli_query($conn, $insertBookingQuery)) {
             $bookingId = mysqli_insert_id($conn);
@@ -139,9 +140,16 @@
                                 <div class="seats-info">
                                     <h3>Allocated Seats</h3>
                                     <div class="seats-list">';
+                                    if($flight['type'] == "onward"){
+                                        foreach ($_SESSION['reservedSeats'] as $seat) {
+                                            echo '<span class="seat">' . ($seat ? $seat : 'N/A') . '</span> ';
+                                        }
+                                    }
 
-                                    foreach ($passengers as $passenger) {
-                                        echo '<span class="seat">' . (isset($passenger['seat']) ? $passenger['seat'] : 'N/A') . '</span> ';
+                                    elseif ($flight['type'] == "return") {
+                                        foreach ($_SESSION['reservedReturnSeats'] as $seat) {
+                                            echo '<span class="seat">' . ($seat ? $seat : 'N/A') . '</span> ';
+                                        }
                                     }
                                 echo '    
                                     </div>  
