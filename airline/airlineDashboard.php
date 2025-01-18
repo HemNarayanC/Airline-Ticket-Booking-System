@@ -47,13 +47,13 @@
                     <i class="material-icons">flight</i>
                     Flights
                 </a>
+                <a href="viewFlight.php" class="nav-item" data-section="price-management">
+                    <i class="material-icons">table_view</i>
+                    View Flights
+                </a>
                 <a href="#" class="nav-item" data-section="booking-management">
                     <i class="material-icons">book_online</i>
                     Bookings
-                </a>
-                <a href="#" class="nav-item" data-section="price-management">
-                    <i class="material-icons">attach_money</i>
-                    Pricing
                 </a>
                 <!-- <a href="#" class="nav-item" data-section="schedule-management">
                     <i class="material-icons">schedule</i>
