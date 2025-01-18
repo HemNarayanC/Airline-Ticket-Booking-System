@@ -43,6 +43,32 @@
         $bnReturn = $tripType === 'roundTrip' ? generateBookingNumber() : null;
         $tnOnward = generateTicketNumber();
         $tnReturn = $tripType === 'roundTrip' ? generateTicketNumber() : null;
+        
+        $reservedSeats = $_SESSION['reservedSeats'];
+        $seatsOutboundString = implode(',', $reservedSeats);
+
+        if($tripType == 'roundTrip'){
+            $reservedReturnSeats = $_SESSION['reservedReturnSeats'];
+            $seatsReturnString = implode(',', $reservedReturnSeats);
+        }
+        else{
+            $seatsReturnString = null;
+        }
+
+        $updatedAvailableOutbound = $_SESSION['oa_seats'] - count($reservedSeats);
+        $queryUpdateOutbound = "UPDATE `onward_flights` SET `available_seats` = '$updatedAvailableOutbound' 
+                                WHERE `flight_id` = '$flightId'";
+        mysqli_query($conn, $queryUpdateOutbound);
+
+        if ($tripType == 'roundTrip') {
+            $updatedAvailableReturn = $_SESSION['ra_seats'] - count($reservedReturnSeats);
+            $queryUpdateReturn = "UPDATE `return_flights` SET `available_seats` = '$updatedAvailableReturn' 
+                                WHERE `return_flight_id` = '$flightIdRn'";
+            mysqli_query($conn, $queryUpdateReturn);
+        }
+
+        // Insert into bookings table
+            $insertBookingQuery = "INSERT INTO `bookings`(`bn_onward`, `bn_return`, `tn_onward`, `tn_return`, `flight_type`, `user_id`, `flight_id`, `total_fare`, `seat_no`, `return_seat_no`) VALUES ('$bnOnward', '$bnReturn', '$tnOnward', '$tnReturn', '$tripType', '$userId', '$flightId', '$totalFare', '$seatsOutboundString', '$seatsReturnString')";
 
             if (mysqli_query($conn, $insertBookingQuery)) {
             $bookingId = mysqli_insert_id($conn);
