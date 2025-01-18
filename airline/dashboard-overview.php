@@ -119,6 +119,36 @@ $company_name = $_SESSION['company_name'] ?? 'Skybooker Airlines';
             <div class="dashboard-grid">
                 <section class="dashboard-section recent-bookings">
                     <h3>Recent Bookings</h3>
+                    <table id="recentBookingsTable" style="width: 100%; text-align: center; border-collapse: collapse; font-size: 13px;">
+                        <thead>
+                            <tr>
+                                <th>Booking ID</th>
+                                <th>Flight</th>
+                                <th>User ID</th>
+                                <th>Booking Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                                if (mysqli_num_rows($recentBookingsResult) > 0){
+                                    while ($booking = mysqli_fetch_assoc($recentBookingsResult)){
+                                        echo '<tr>
+                                            <td>' . htmlspecialchars($booking['booking_id']) . '</td>
+                                            <td>' . htmlspecialchars($booking['flight_name']) . ' (' . htmlspecialchars($booking['flight_number']) . ')</td>
+                                            <td>' . htmlspecialchars($booking['user_id']) . '</td>
+                                            <td>' . htmlspecialchars($booking['booking_date']) . '</td>
+                                        </tr>';
+                                    }
+                                }
+                                    else{
+                                        echo'
+                                        <tr>
+                                            <td colspan="4" style="text-align: center;">No recent bookings found.</td>
+                                        </tr>';
+                                    }
+                            ?>
+                        </tbody>
+                    </table>
                 </section>
                 <section class="dashboard-section popular-routes">
                     <h3>Popular Routes</h3>
