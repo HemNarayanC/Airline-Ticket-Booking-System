@@ -83,7 +83,6 @@
                             $departureTime = $row['departure_time'];
                             $arrivalTime = $row['arrival_time'];
                             $status = $row['flight_status'];
-                    
                             // Output onward flight details in the table
                             echo "<tr>
                                     <td>$flightId</td>
@@ -102,7 +101,7 @@
                                     </td>
                                     <td class= 'flight-action-btn'>";
                                         // <!-- Add actions like Edit, View, Delete -->
-                                        echo "<button class='flight-edit-btn'><a href='EditFlight.php?air_id={$flightId}&action=edit'> Edit </a></button>";
+                                        echo "<button class='flight-edit-btn'><a href='editFlight.php?air_id={$flightId}&flight_type=onward&action=edit'> Edit </a></button>";
                                         echo "<button class = 'flight-delete-btn'><a href='viewFlight.php?air_id={$flightId}&action=delete'> Delete </a></button>";
                                    echo" </td>
                                     </td>
@@ -140,7 +139,7 @@
                                     </td>
                                     <td class= 'flight-action-btn'>";
                                         // <!-- Add actions like Edit, View, Delete -->
-                                        echo "<button class='flight-edit-btn'><a href='EditFlight.php?air_id={$returnFlightId}&action=edit'> Edit </a></button>";
+                                        echo "<button class='flight-edit-btn'><a href='editFlight.php?air_id={$returnFlightId}&flight_type=return&action=edit'> Edit </a></button>";
                                         echo "<button class = 'flight-delete-btn'><a href='viewFlight.php?air_id={$returnFlightId}&action=delete'> Delete </a></button>";
                                    echo" </td>
                                   </tr>";
