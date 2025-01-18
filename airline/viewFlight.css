@@ -1,0 +1,93 @@
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.content-area {
+    width: 100%;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+.container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid #e6e6e6;
+}
+
+.flight-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.flight-table th,
+.flight-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.flight-table th {
+    background-color: #003f75;
+    color: white;
+    font-weight: bold;
+}
+
+.flight-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.flight-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.flight-action-btn {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.flight-edit-btn,
+.flight-delete-btn {
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.flight-edit-btn {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.flight-edit-btn a {
+    color: white;
+    text-decoration: none;
+}
+
+.flight-edit-btn:hover {
+    background-color: #27ae60;
+}
+
+.flight-delete-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.flight-delete-btn a {
+    color: white;
+    text-decoration: none;
+}
+
+.flight-delete-btn:hover {
+    background-color: #c0392b;
+}
