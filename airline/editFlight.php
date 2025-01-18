@@ -49,7 +49,7 @@
         <div class="content-area">
             <div class="container">
                 <h1>Edit <?php echo $flightType; ?> flight</h1>
-                <form action="updateFlight.php" method="POST">
+                <form action="updateFlightDB.php" method="POST">
                     <div class="form-grid">
                         
                         <!-- Onward Flight Details -->
