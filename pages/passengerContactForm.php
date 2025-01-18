@@ -10,8 +10,8 @@
 
         // Flight details
         $_SESSION['onwardFlightId'] = $_POST['flight_id'];
-        $_SESSION['returnFlightId'] = $_POST['flight_id'];
         $_SESSION['onwardFlightNo'] = $_POST['flight_no'];
+        $_SESSION['returnFlightId'] = $_POST['return_flight_id'] ?? null;
         $_SESSION['returnFlightNo'] = $_POST['return_flight_no'] ?? null;
         
         $_SESSION['deptAirport'] = $_POST['departure_location'];
@@ -132,7 +132,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
             ],
             [
                 'type' => 'return',
-                'flight_id' => $_SESSION['onwardFlightId'],
+                'flight_id' =>  $_SESSION['returnFlightId'],
                 'flight_number' => $_SESSION['returnFlightNo'],
                 'departure' => ['code' => $_SESSION['destAreaCode'], 'location' => $_SESSION['destAirport'], 'time' => $_SESSION['returnTime'], 'date' => $_SESSION['returnDateOnly']],
                 'arrival' => ['code' => $_SESSION['deptAreaCode'], 'location' => $_SESSION['deptAirport'], 'time' => $_SESSION['returnArrivalTime'], 'date' => ''],
@@ -153,7 +153,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
     // echo '<pre>';
     //     print_r($_GET);
     // echo '</pre>';
-
+        include('../test02/newSeats.php');
 header('Location: ../payment/pay.php');
 exit();
 }
