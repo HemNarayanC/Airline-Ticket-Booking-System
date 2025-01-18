@@ -175,7 +175,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                                             <div class="flight-details">
                                                 <div class="detail">
                                                     <span class="label">Seats Left:</span>
-                                                    <span class="value">'.$row1['t_seats'].'</span>
+                                                    <span class="value">'.$row1['a_seats'].'</span>
                                                 </div>
                                                 <div class="detail">
                                                     <span class="label">Flight:</span>
@@ -210,6 +210,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                                 <input type="hidden" name="return_date" value="'.$rdDate.'">
                                 <input type="hidden" name="return_depart_time" value="'.$rdTimeFormatted.'">
                                 <input type="hidden" name="return_arrival_time" value="'.$raTimeFormatted.'">
+                                <input type="hidden" name="available_seats" value="'.$row1['a_seats'].'">
+                                <input type="hidden" name="total_seats" value="'.$row1['t_seats'].'">
                                 <input type="hidden" name="r_available_seats" value="'.$row1['ra_seats'].'">
                                 <input type="hidden" name="r_total_seats" value="'.$row1['rt_seats'].'">
                                 <input type="hidden" name="noOfAdult" value="'.$_SESSION['noOfAdult'].'">
@@ -256,7 +258,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                                             <div class="flight-details">
                                                 <div class="detail">
                                                     <span class="label">Seats Left:</span>
-                                                    <span class="value">'.$row1['t_seats'].'</span>
+                                                    <span class="value">'.$row1['a_seats'].'</span>
                                                 </div>
                                                 <div class="detail">
                                                     <span class="label">Flight:</span>
@@ -291,7 +293,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                                             <div class="flight-details">
                                                 <div class="detail">
                                                     <span class="label">Seats Left:</span>
-                                                    <span class="value">'.$row1['t_seats'].'</span>
+                                                    <span class="value">'.$row1['ra_seats'].'</span>
                                                 </div>
                                                 <div class="detail">
                                                     <span class="label">Flight:</span>
