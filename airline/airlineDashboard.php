@@ -70,7 +70,7 @@
                     <i class="material-icons">exit_to_app</i> Logout
                 </a>
                 <div class="brand">
-                    SkyLine Airlines
+                    SkyBooker
                 </div>
             </div>
         </aside>
