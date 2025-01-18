@@ -135,6 +135,6 @@
             </div>
         </div>
     </main>
-    <script src="sidebarState.js"></scrip>
+    <script src="sidebarState.js"></script>
 </body>
 </html>
