@@ -69,6 +69,8 @@
                             <th>Departure</th>
                             <th>Arrival</th>
                             <th>Status</th>
+                            <th>Total Seats</th>
+                            <th>Available Seats</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -83,6 +85,8 @@
                             $departureTime = $row['departure_time'];
                             $arrivalTime = $row['arrival_time'];
                             $status = $row['flight_status'];
+                            $total_seats = $row['total_seats'];
+                            $available_seats = $row['available_seats'];
                             // Output onward flight details in the table
                             echo "<tr>
                                     <td>$flightId</td>
@@ -90,6 +94,8 @@
                                     <td>$departureTime</td>
                                     <td>$arrivalTime</td>
                                     <td>$status</td>
+                                    <td>$total_seats</td>
+                                    <td>$available_seats</td>
                                     <td class= 'flight-action-btn'>";
                                         // <!-- Add actions like Edit, View, Delete -->
                                         echo "<button class='flight-edit-btn'><a href='editFlight.php?air_id={$flightId}&flight_type=onward&action=edit'> Edit </a></button>";
@@ -111,6 +117,8 @@
                             $returnDepartureTime = $row['return_departure_time'];
                             $returnArrivalTime = $row['return_arrival_time'];
                             $status = $row['flight_status'];
+                            $total_seats = $row['total_seats'];
+                            $available_seats = $row['available_seats'];
                     
                             // Output return flight details in the table
                             echo "<tr>
@@ -119,6 +127,8 @@
                                     <td>$returnDepartureTime</td>
                                     <td>$returnArrivalTime</td>
                                     <td>$status</td>
+                                    <td>$total_seats</td>
+                                    <td>$available_seats</td>
                                     <td class= 'flight-action-btn'>";
                                         // <!-- Add actions like Edit, View, Delete -->
                                         echo "<button class='flight-edit-btn'><a href='editFlight.php?air_id={$returnFlightId}&flight_type=return&action=edit'> Edit </a></button>";
