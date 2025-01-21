@@ -80,7 +80,7 @@
                         while ($row = mysqli_fetch_assoc($onwardFlightsResult)) {
                             // Fetch onward flight details
                             $flightId = $row['flight_id'];
-                            $flightNumber = $row['flight_number'];
+                            $flightNumber = $row['flight_number']."  (o)";
                             $flightName = $row['flight_name'];
                             $departureTime = $row['departure_time'];
                             $arrivalTime = $row['arrival_time'];
@@ -99,7 +99,7 @@
                                     <td class= 'flight-action-btn'>";
                                         // <!-- Add actions like Edit, View, Delete -->
                                         echo "<button class='flight-edit-btn'><a href='editFlight.php?air_id={$flightId}&flight_type=onward&action=edit'> Edit </a></button>";
-                                        echo "<button class = 'flight-delete-btn'><a href='viewFlight.php?air_id={$flightId}&action=delete'> Delete </a></button>";
+                                        echo "<button class = 'flight-delete-btn'><a href='deleteFlight.php?air_id={$flightId}&flight_type=onward&action=delete'> Delete </a></button>";
                                    echo" </td>
                                     </td>
                                   </tr>";
@@ -112,7 +112,7 @@
                         while ($row = mysqli_fetch_assoc($returnFlightsResult)) {
                             // Fetch return flight details
                             $returnFlightId = $row['return_flight_id'];
-                            $returnFlightNumber = $row['return_flight_number'];
+                            $returnFlightNumber = $row['return_flight_number']."  (r)";
                             $returnFlightName = $row['return_flight_name'];
                             $returnDepartureTime = $row['return_departure_time'];
                             $returnArrivalTime = $row['return_arrival_time'];
@@ -132,7 +132,7 @@
                                     <td class= 'flight-action-btn'>";
                                         // <!-- Add actions like Edit, View, Delete -->
                                         echo "<button class='flight-edit-btn'><a href='editFlight.php?air_id={$returnFlightId}&flight_type=return&action=edit'> Edit </a></button>";
-                                        echo "<button class = 'flight-delete-btn'><a href='viewFlight.php?air_id={$returnFlightId}&action=delete'> Delete </a></button>";
+                                        echo "<button class = 'flight-delete-btn'><a href='deleteFlight.php?air_id={$returnFlightId}&flight_type=return&action=delete'> Delete </a></button>";
                                    echo" </td>
                                   </tr>";
                         }
