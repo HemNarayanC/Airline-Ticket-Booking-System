@@ -48,14 +48,16 @@ $company_name = $_SESSION['company_name'] ?? 'Skybooker Airlines';
     
         // Fetch total passengers for the company
         $passengersQuery = "
-            SELECT COUNT(DISTINCT b.user_id) AS total_passengers 
-            FROM bookings b
+            SELECT COUNT(DISTINCT p.passenger_id) AS total_passengers
+            FROM passenger_details p
+            JOIN bookings b ON p.booking_id = b.booking_id
             JOIN onward_flights f ON b.flight_id = f.flight_id
             WHERE f.c_id = '$company_id'
         ";
         $passengersResult = mysqli_query($conn, $passengersQuery);
         $passengersData = mysqli_fetch_assoc($passengersResult);
         $totalPassengers = $passengersData['total_passengers'] ?? 0;
+    
     
         // Fetch total revenue for the company (sum of total_fare)
         $revenueQuery = "
