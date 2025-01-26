@@ -72,8 +72,9 @@ $company_name = $_SESSION['company_name'] ?? 'Skybooker Airlines';
 
         //Query for displaying recent bookings
         $recentBookingsQuery = "
-            SELECT b.booking_id, b.booking_date, b.user_id, b.flight_id, f.flight_number, f.flight_name
+            SELECT b.booking_id, b.booking_date, b.user_id, b.flight_id, f.flight_number, f.flight_name, u.fname, u.mid_name, u.lname
             FROM bookings b
+            INNER JOIN users u ON b.user_id = u.user_id
             INNER JOIN onward_flights f ON b.flight_id = f.flight_id
             WHERE f.c_id = '$company_id'
             ORDER BY b.booking_date DESC
@@ -126,7 +127,7 @@ $company_name = $_SESSION['company_name'] ?? 'Skybooker Airlines';
                             <tr>
                                 <th>Booking ID</th>
                                 <th>Flight</th>
-                                <th>User ID</th>
+                                <th>User</th>
                                 <th>Booking Date</th>
                             </tr>
                         </thead>
@@ -137,7 +138,7 @@ $company_name = $_SESSION['company_name'] ?? 'Skybooker Airlines';
                                         echo '<tr>
                                             <td>' . htmlspecialchars($booking['booking_id']) . '</td>
                                             <td>' . htmlspecialchars($booking['flight_name']) . ' (' . htmlspecialchars($booking['flight_number']) . ')</td>
-                                            <td>' . htmlspecialchars($booking['user_id']) . '</td>
+                                            <td>' . htmlspecialchars($booking['fname']." ".$booking['mid_name']." ".$booking['lname']) . '</td>
                                             <td>' . htmlspecialchars($booking['booking_date']) . '</td>
                                         </tr>';
                                     }
