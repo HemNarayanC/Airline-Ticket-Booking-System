@@ -44,4 +44,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    let now = new Date();
+    let minDateTime = now.toISOString().slice(0, 16);
+
+    document.getElementById("departureTime").setAttribute("min", minDateTime);
+    document.getElementById("arrivalTime").setAttribute("min", minDateTime);
+
+    let returnDeparture = document.getElementById("returnDepartureTime");
+    let returnArrival = document.getElementById("returnArrivalTime");
+
+    if (returnDeparture) {
+        returnDeparture.setAttribute("min", minDateTime);
+    }
+    if (returnArrival) {
+        returnArrival.setAttribute("min", minDateTime);
+    }
 });
