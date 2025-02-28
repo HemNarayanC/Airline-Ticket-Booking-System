@@ -116,10 +116,10 @@
                                 <label for="flightStatus">Flight Status</label>
                                 <select name="flightStatus" id="flightStatus" required>
                                     <option value="scheduled">Scheduled</option>
-                                    <option value="in_progress">In Progress</option>
-                                    <option value="completed">Completed</option>
-                                    <option value="delayed">Delayed</option>
-                                    <option value="canceled">Canceled</option>
+                                    <option value="in_progress" disabled>In Progress</option>
+                                    <option value="completed" disabled>Completed</option>
+                                    <option value="delayed" disabled>Delayed</option>
+                                    <option value="canceled" disabled>Canceled</option>
                                 </select>
                             </div>
                             
@@ -184,7 +184,7 @@
 
                             <div class="form-group">
                                 <label for="r_totalSeats">Total Seats</label>
-                                <input type="number" id="r_totalSeats" name="r_totalSeats" min=30 required>
+                                <input type="number" id="r_totalSeats" name="r_totalSeats" min=30>
                             </div>
                         </div>
                       </div>
