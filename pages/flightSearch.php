@@ -166,6 +166,13 @@ session_start();
     <!-- <script src="../auth/signup.js"></script> -->
     <script>
         const airports = <?php echo json_encode($airports); ?>;
+
+        document.addEventListener("DOMContentLoaded", function () {
+        let today = new Date().toISOString().split('T')[0];
+        document.getElementById("departureDate").setAttribute("min", today);
+        document.getElementById("returnDate").setAttribute("min", today);
+    });
+
     </script>
     <script src="flightSearch.js"></script>
 </body>
