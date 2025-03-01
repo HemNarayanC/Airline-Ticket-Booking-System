@@ -153,10 +153,10 @@ $company_name = $_SESSION['company_name'] ?? 'Skybooker Airlines';
                         </tbody>
                     </table>
                 </section>
-                <section class="dashboard-section popular-routes">
+                <!-- <section class="dashboard-section popular-routes">
                     <h3>Popular Routes</h3>
                     <ul id="popularRoutesList"></ul>
-                </section>
+                </section> -->
             </div>
         </div>
     </main>
