@@ -151,6 +151,7 @@
     </main>
 
     <script src="sidebarState.js"></script>
+    <script src="editFlightPastDates_Restriction.js"></script>
     <?php
     var_dump($_POST);
     ?>
