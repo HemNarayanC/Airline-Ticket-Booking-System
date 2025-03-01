@@ -100,6 +100,7 @@
                                         // <!-- Add actions like Edit, View, Delete -->
                                         echo "<button class='flight-edit-btn'><a href='editFlight.php?air_id={$flightId}&flight_type=onward&action=edit'> Edit </a></button>";
                                         echo "<button class = 'flight-delete-btn'><a href='deleteFlight.php?air_id={$flightId}&flight_type=onward&action=delete'> Delete </a></button>";
+                                        echo "<button class = 'booking-view-btn'><a href='bookingDetails.php?air_id={$flightId}&flight_type=onward&action=viewBooking'> View Bookings </a></button>";
                                    echo" </td>
                                     </td>
                                   </tr>";
