@@ -4,18 +4,29 @@
         include ('../partials/_db_connect.php');
         $userEmail = $_POST['email'];
         $password = $_POST['password'];
+        $userType = $_POST['user_type']; // Capture the selected user type
 
+        
         //passenger sql query
-        $sqlPassengerCheck = "SELECT * FROM `users` WHERE `email` = '$userEmail'";
-        $resultPassenger = mysqli_query($conn, $sqlPassengerCheck);
+        if ($userType == "user") {
+            echo "$userType";
+            $sqlPassengerCheck = "SELECT * FROM `users` WHERE `email` = '$userEmail'";
+            $resultPassenger = mysqli_query($conn, $sqlPassengerCheck);
+        }
 
          //Airline sql query
-         $sqlAirlineCheck = "SELECT * FROM `airline` WHERE `email` = '$userEmail'";
-         $resultAirline = mysqli_query($conn, $sqlAirlineCheck);
+         elseif ($userType == "airline") {
+            // echo "$userType";
+            $sqlAirlineCheck = "SELECT * FROM `airline` WHERE `email` = '$userEmail'";
+            $resultAirline = mysqli_query($conn, $sqlAirlineCheck);
+         }
 
         //Admin sql query
-        $sqlAdminCheck = "SELECT * FROM `admin` WHERE `email` = '$userEmail'";
-        $resultAdmin = mysqli_query($conn, $sqlAdminCheck);
+        elseif ($userType == "admin") {
+            // echo "$userType";
+            $sqlAdminCheck = "SELECT * FROM `admin` WHERE `email` = '$userEmail'";
+            $resultAdmin = mysqli_query($conn, $sqlAdminCheck);
+        }
 
         //Passenger Login
         if($resultPassenger && mysqli_num_rows($resultPassenger)==1){
@@ -89,7 +100,7 @@
         }  
         
         else{
-            echo "No user found";
+            // echo "No user found";
             header('Location: login.php');
         }
     }
