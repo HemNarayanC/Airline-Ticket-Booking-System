@@ -51,10 +51,10 @@
                     <i class="material-icons">table_view</i>
                     View Flights
                 </a>
-                <a href="#" class="nav-item" data-section="booking-management">
+                <!-- <a href="bookingDetails.php" class="nav-item" data-section="booking-management">
                     <i class="material-icons">book_online</i>
                     Bookings
-                </a>
+                </a> -->
                 <!-- <a href="#" class="nav-item" data-section="schedule-management">
                     <i class="material-icons">schedule</i>
                     Flight Schedule Management
