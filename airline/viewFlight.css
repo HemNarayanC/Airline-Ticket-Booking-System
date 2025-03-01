@@ -55,7 +55,9 @@
 }
 
 .flight-edit-btn,
-.flight-delete-btn {
+.flight-delete-btn,
+.booking-view-btn,
+.booking-cancel-btn {
     padding: 6px 12px;
     border: none;
     cursor: pointer;
@@ -78,16 +80,31 @@
     background-color: #27ae60;
 }
 
-.flight-delete-btn {
+.flight-delete-btn, .booking-cancel-btn {
     background-color: #e74c3c;
     color: white;
 }
 
-.flight-delete-btn a {
+.flight-delete-btn a, .booking-cancel-btn a {
     color: white;
     text-decoration: none;
 }
 
-.flight-delete-btn:hover {
+.flight-delete-btn:hover, .booking-cancel-btn:hover {
     background-color: #c0392b;
 }
+
+.booking-view-btn {
+    background-color: #3498db;
+    color: white;
+}
+
+.booking-view-btn a {
+    color: white;
+    text-decoration: none;
+}
+
+.booking-view-btn:hover {
+    background-color: #2980b9;
+}
+
