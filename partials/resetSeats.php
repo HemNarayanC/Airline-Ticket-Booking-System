@@ -1,7 +1,7 @@
 <?php
 include '_db_connect.php';
 
-function resetAvailableSeatsForFlights($conn, $table, $flightIdColumn, $departureTimeColumn, $arrivalTimeColumn, $totalSeatsColumn, $availableSeatsColumn) {
+function resetAvailableSeatsForFlights($conn, $table, $flightIdColumn, $departureTimeColumn, $arrivalTimeColumn, $totalSeatsColumn, $availableSeatsColumn, $status) {
 
     $query = "SELECT `$flightIdColumn`, `$departureTimeColumn`, `$arrivalTimeColumn`, `$totalSeatsColumn` FROM `$table`";
     $result = mysqli_query($conn, $query);
@@ -24,6 +24,16 @@ function resetAvailableSeatsForFlights($conn, $table, $flightIdColumn, $departur
                 if (!mysqli_query($conn, $updateQuery)) {
                     error_log("Error resetting seats for $flightId in $table: " . mysqli_error($conn));
                 }
+
+                if ($status !== 'completed' && $status !== 'canceled') {
+                    $updateStatusQuery = "UPDATE `$table` 
+                                          SET `$status` = 'completed' 
+                                          WHERE `$flightIdColumn` = '$flightId'";
+
+                    if (!mysqli_query($conn, $updateStatusQuery)) {
+                        error_log("Error updating status for $flightId in $table: " . mysqli_error($conn));
+                    }
+                }
             }
             var_dump($c);
         }
@@ -39,7 +49,8 @@ resetAvailableSeatsForFlights(
     'departure_time', 
     'arrival_time', 
     'total_seats', 
-    'available_seats'
+    'available_seats',
+    'flight_status'
 );
 
 resetAvailableSeatsForFlights(
@@ -49,6 +60,7 @@ resetAvailableSeatsForFlights(
     'return_departure_time', 
     'return_arrival_time', 
     'total_seats', 
-    'available_seats'
+    'available_seats',
+    'flight_status'
 );
 ?>
