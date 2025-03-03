@@ -72,6 +72,7 @@
 
             if (mysqli_query($conn, $insertBookingQuery)) {
             $bookingId = mysqli_insert_id($conn);
+            $_SESSION['booking_id'] =$bookingId;
 
             // Insert passenger details
             $passengers = $booking['passenger_details'];
@@ -185,6 +186,7 @@
                     </div>
                     <div class="ticket-footer">
                         <p>Booking ID: ' . $bookingId . '</p>
+                        <a href="pdf.php?booking_id=' . $bookingId . '" class="btn btn-primary"></a>
                     </div>
             </div>';
         }
@@ -192,6 +194,7 @@
         if($tripType == 'oneWay' && isset($booking['flights'][0])) {
             $flight = $booking['flights'][0];
             generateTicket($booking['passenger_details'], $flight, $bnOnward, $tnOnward);
+            include('../payment/payDB.php');
         }
 
         elseif($tripType == 'roundTrip' && isset($booking['flights'][0]) && isset($booking['flights'][1])) {
@@ -200,6 +203,7 @@
 
             generateTicket($booking['passenger_details'], $onwardFlight, $bnOnward, $tnOnward);
             generateTicket($booking['passenger_details'], $returnFlight, $bnReturn, $tnReturn);
+            include('../payment/payDB.php');
 
         }
 
