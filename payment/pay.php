@@ -3,8 +3,8 @@ session_start();
 $curl = curl_init();
 
 $data = array(
-    "return_url" => "http://localhost/airline%20ticket%20booking%20system/payment/paymentConfirmation.php", // Redirect to this page after payment
-    "website_url" => "http://localhost/airline%20ticket%20booking%20system/page/flightSearch.php",
+    "return_url" => "http://localhost/airline-ticket-booking-system/payment/paymentConfirmation.php",
+    "website_url" => "http://localhost/airline-ticket-booking-system/pages/flightSearch.php",
     "amount" => $_SESSION['totalPrice'] * 100, // Amount in paisa (multiplied by 100)
     "purchase_order_id" => "Order01",
     "purchase_order_name" => "test",
@@ -26,7 +26,7 @@ curl_setopt_array($curl, array(
     CURLOPT_CUSTOMREQUEST => 'POST',
     CURLOPT_POSTFIELDS => json_encode($data),
     CURLOPT_HTTPHEADER => array(
-        'Authorization: key ff54f78d4be748599962088c27e0db13', // Khalti API key
+        'Authorization: key 0d9203628e674a2b93f84dcd74f19a0b', // Khalti API key
         'Content-Type: application/json',
     ),
 ));

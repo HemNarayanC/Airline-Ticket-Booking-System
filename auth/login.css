@@ -116,3 +116,57 @@ h2 {
     color: #3498db;
     text-decoration: none;
 }
+
+.error-message{
+    color: red;
+}
+
+.user-type-tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 3rem;
+    background-color: #f0f4f8;
+    border-radius: 8px;
+    padding: 0.5rem;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tab-btn {
+    background: transparent;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    color: #4a5568;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    flex: 1;
+    margin: 0 0.25rem;
+  }
+  
+  .tab-btn i {
+    font-size: 1rem;
+  }
+  
+  .tab-btn.active {
+    background: linear-gradient(135deg, #3498db 0%, #3498db 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+  }
+  
+  .tab-btn:hover:not(.active) {
+    background-color: #e2e8f0;
+    color: #2d3748;
+  }
+  
+  .tab-btn span {
+    display: inline-block;
+    vertical-align: middle;
+  }

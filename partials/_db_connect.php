@@ -4,7 +4,7 @@
     $username = "root";
     $password = "";
     $database = "skybooker-airline ticket booking system";
-    $port = 3307;
+    $port = 3309;
     $conn = mysqli_connect($servername, $username, $password, $database, $port);
 
     if(!$conn){

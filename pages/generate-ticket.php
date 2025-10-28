@@ -1,6 +1,10 @@
 
 
-
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
 <?php
     include '../partials/_db_connect.php';
 
@@ -81,10 +85,13 @@
                 $surname = $passenger['surname'];
                 $gender = $passenger['gender'];
                 $nationality = $passenger['nationality'];
-                $age = $passenger['age'];
+                $age = isset($passenger['age']) && $passenger['age'] !== '' ? $passenger['age'] : NULL;
 
-                $insertPassengerQuery = "INSERT INTO passenger_details (`booking_id`, `first_name`, `surname`, `gender`, `nationality`, `age`)VALUES
-                ('$bookingId', '$firstName', '$surname', '$gender', '$nationality', '$age')";
+$insertPassengerQuery = "INSERT INTO passenger_details 
+    (`booking_id`, `first_name`, `surname`, `gender`, `nationality`, `age`)
+    VALUES 
+    ('$bookingId', '$firstName', '$surname', '$gender', '$nationality', " . ($age === NULL ? "NULL" : "'$age'") . ")";
+
                 $resultInsertPassenger = mysqli_query($conn, $insertPassengerQuery);
 
                     if (!$resultInsertPassenger) {

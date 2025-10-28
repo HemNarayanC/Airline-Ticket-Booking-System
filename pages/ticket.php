@@ -15,6 +15,11 @@
     ?>
     <div class="container">
         <h1 class="main-title">Your Flight Tickets</h1>
+        <?php
+            foreach ($_SESSION['reservedSeats'] as $seat) {
+    echo $seat . "<br>";  // This will print each seat on a new line
+}
+        ?>
         <div class="tickets-container">
             <?php
                 include 'generate-ticket.php';
